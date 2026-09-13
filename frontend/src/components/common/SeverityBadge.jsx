@@ -31,13 +31,19 @@ export function SeverityBadge({ severity = 'LOW', showIcon = true, size = 'md' }
     }
   };
 
+  const isCritical = normSev === 'CRITICAL';
+  const isHigh = normSev === 'HIGH';
+
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-semibold tracking-wide rounded-md border ${sizeClasses}`}
+      className={`inline-flex items-center gap-1.5 font-semibold tracking-wide rounded-md border transition-shadow ${sizeClasses} ${
+        isCritical ? 'glow-critical' : isHigh ? 'shadow-sm' : ''
+      }`}
       style={{
         backgroundColor: config.bg,
         borderColor: config.border,
         color: config.color,
+        boxShadow: isCritical ? '0 0 12px rgba(244, 63, 94, 0.35)' : undefined,
       }}
       aria-label={`Severity tier: ${config.label}`}
     >

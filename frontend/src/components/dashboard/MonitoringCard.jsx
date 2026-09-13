@@ -18,7 +18,14 @@ export function MonitoringCard({ status = null, onNavigateToMonitoring }) {
   const flowsPerSec = status?.throughput_flows_sec || 0;
 
   return (
-    <div className="p-5 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md shadow-lg flex flex-col justify-between">
+    <div className="p-5 rounded-2xl border border-white/10 bg-slate-900/70 backdrop-blur-md shadow-xl flex flex-col justify-between relative overflow-hidden transition-all duration-200 hover:border-white/15">
+      {/* Top subtle highlight line */}
+      <div className={`absolute top-0 left-0 right-0 h-[2px] ${
+        isRunning
+          ? 'bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent'
+          : 'bg-gradient-to-r from-transparent via-white/10 to-transparent'
+      }`} />
+
       <div className="flex items-center justify-between pb-3 border-b border-white/5">
         <div className="flex items-center gap-2.5">
           <div className={`p-2 rounded-lg ${isRunning ? 'bg-emerald-500/10 text-emerald-400' : 'bg-slate-800 text-slate-400'}`}>

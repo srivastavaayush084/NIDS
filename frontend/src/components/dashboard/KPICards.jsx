@@ -59,22 +59,39 @@ export function KPICards({ summary = null }) {
         return (
           <div
             key={idx}
-            className="p-4 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md shadow-md flex flex-col justify-between"
+            className="p-4 rounded-2xl border border-white/10 bg-slate-900/70 backdrop-blur-md shadow-lg flex flex-col justify-between relative overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:shadow-xl group"
           >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+            {/* Top Color Accent Line */}
+            <div
+              className="absolute top-0 left-0 right-0 h-[2px] transition-opacity duration-200"
+              style={{
+                background: `linear-gradient(to right, transparent, ${card.color}, transparent)`,
+              }}
+            />
+
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 group-hover:text-slate-300 transition-colors">
                 {card.label}
               </span>
               <div
-                className="p-1.5 rounded-lg shrink-0"
-                style={{ backgroundColor: card.bg, color: card.color }}
+                className="p-2 rounded-xl shrink-0 transition-transform duration-200 group-hover:scale-105"
+                style={{
+                  backgroundColor: card.bg,
+                  color: card.color,
+                  boxShadow: `0 0 10px ${card.bg}`,
+                }}
               >
                 <Icon className="w-4 h-4" />
               </div>
             </div>
+
             <div>
-              <div className="text-2xl font-extrabold font-mono text-slate-100">{card.value}</div>
-              <p className="text-[11px] text-slate-400 mt-1">{card.subtext}</p>
+              <div className="text-2xl font-extrabold font-mono text-slate-100 tracking-tight">
+                {card.value}
+              </div>
+              <p className="text-[11px] text-slate-400 mt-1 flex items-center justify-between">
+                <span>{card.subtext}</span>
+              </p>
             </div>
           </div>
         );

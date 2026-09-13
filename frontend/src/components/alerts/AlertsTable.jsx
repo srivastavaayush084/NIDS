@@ -44,14 +44,24 @@ export function AlertsTable({
             const dst = alt.destination_ip || alt.flow_context?.dst_ip || '—';
             const srcPort = alt.source_port || alt.flow_context?.src_port;
             const dstPort = alt.destination_port || alt.flow_context?.dst_port;
-            const risk = Number(alt.risk_score || 0).toFixed(1);
             const occ = alt.occurrence_count || alt.count || 1;
             const status = alt.status || 'OPEN';
+
+            const riskNum = Number(alt.risk_score || 0);
+            const risk = riskNum.toFixed(1);
+            const sevNorm = (alt.severity || 'LOW').toUpperCase();
+            const borderClass = sevNorm === 'CRITICAL'
+              ? 'border-l-critical'
+              : sevNorm === 'HIGH'
+              ? 'border-l-high'
+              : sevNorm === 'MEDIUM'
+              ? 'border-l-medium'
+              : 'border-l-low';
 
             return (
               <tr
                 key={alertId}
-                className="hover:bg-slate-800/30 transition group cursor-pointer"
+                className={`hover:bg-slate-800/40 transition-all duration-150 group cursor-pointer ${borderClass}`}
                 onClick={() => onViewDetails && onViewDetails(alertId)}
               >
                 <td className="px-4 py-3">
@@ -59,34 +69,56 @@ export function AlertsTable({
                 </td>
 
                 <td className="px-4 py-3 font-medium text-slate-200">
-                  <div className="font-semibold text-slate-100 truncate max-w-xs">{alt.title || 'Multi-Model Consensus Anomaly'}</div>
+                  <div className="font-semibold text-slate-100 truncate max-w-xs group-hover:text-indigo-300 transition-colors">
+                    {alt.title || 'Multi-Model Consensus Anomaly'}
+                  </div>
                   <div className="text-[10px] font-mono text-slate-500 mt-0.5">{alertId}</div>
                 </td>
 
-                <td className="px-4 py-3 font-mono text-slate-300">
-                  <div>
-                    <span className="text-slate-200">{src}</span>
-                    {srcPort && <span className="text-slate-500">:{srcPort}</span>}
-                  </div>
-                  <div className="text-[10px] text-slate-400">
-                    &rarr; <span className="text-slate-200">{dst}</span>
-                    {dstPort && <span className="text-slate-500">:{dstPort}</span>}
+                <td className="px-4 py-3 font-mono text-xs">
+                  <div className="px-2 py-1 rounded bg-slate-900/80 border border-white/5 inline-block text-slate-300">
+                    <div>
+                      <span className="text-slate-200 font-semibold">{src}</span>
+                      {srcPort && <span className="text-slate-500">:{srcPort}</span>}
+                    </div>
+                    <div className="text-[10px] text-slate-400">
+                      <span className="text-indigo-400">&rarr;</span> <span className="text-slate-200 font-semibold">{dst}</span>
+                      {dstPort && <span className="text-slate-500">:{dstPort}</span>}
+                    </div>
                   </div>
                 </td>
 
-                <td className="px-4 py-3 font-mono font-bold text-rose-400">
-                  {risk}
+                <td className="px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <span className={`font-mono font-bold text-xs ${
+                      riskNum >= 70 ? 'text-rose-400' : riskNum >= 40 ? 'text-amber-400' : 'text-emerald-400'
+                    }`}>
+                      {risk}
+                    </span>
+                    <div className="w-10 h-1.5 rounded-full bg-slate-800 overflow-hidden shrink-0 hidden sm:block">
+                      <div
+                        className="h-full rounded-full transition-all duration-300"
+                        style={{
+                          width: `${Math.min(100, Math.max(0, riskNum))}%`,
+                          backgroundColor: riskNum >= 70 ? '#f43f5e' : riskNum >= 40 ? '#f59e0b' : '#10b981',
+                          boxShadow: riskNum >= 70 ? '0 0 6px #f43f5e' : undefined,
+                        }}
+                      />
+                    </div>
+                  </div>
                 </td>
 
                 <td className="px-4 py-3 font-mono text-slate-300">
-                  {occ}x
+                  <span className="px-2 py-0.5 rounded bg-slate-800/80 text-xs font-semibold">
+                    {occ}x
+                  </span>
                 </td>
 
                 <td className="px-4 py-3">
                   <StatusPill status={status} size="sm" />
                 </td>
 
-                <td className="px-4 py-3 text-slate-400" title={formatDate(alt.created_at)}>
+                <td className="px-4 py-3 text-slate-400 font-mono text-xs" title={formatDate(alt.created_at)}>
                   {formatRelativeTime(alt.created_at)}
                 </td>
 

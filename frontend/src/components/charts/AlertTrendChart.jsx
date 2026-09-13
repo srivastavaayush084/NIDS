@@ -38,19 +38,48 @@ export function AlertTrendChart({
       {/* SVG Responsive Area & Bars */}
       <div className="relative w-full overflow-hidden" style={{ height: `${height}px` }}>
         <svg className="w-full h-full" viewBox="0 0 500 120" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="detectionAreaGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#6366f1" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#6366f1" stopOpacity="0.0" />
+            </linearGradient>
+            <linearGradient id="alertBarGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fb7185" />
+              <stop offset="100%" stopColor="#e11d48" />
+            </linearGradient>
+            <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#6366f1" floodOpacity="0.5" />
+            </filter>
+          </defs>
+
           {/* Grid lines */}
           <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(255,255,255,0.05)" strokeDasharray="3,3" />
           <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(255,255,255,0.05)" strokeDasharray="3,3" />
           <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(255,255,255,0.05)" strokeDasharray="3,3" />
 
+          {/* Detections Area Fill */}
+          {points.length > 1 && (
+            <polygon
+              fill="url(#detectionAreaGradient)"
+              points={`10,110 ${points
+                .map((p, idx) => {
+                  const x = (idx / (points.length - 1)) * 480 + 10;
+                  const y = 110 - ((p.detections || 0) / maxVal) * 95;
+                  return `${x},${y}`;
+                })
+                .join(' ')} 490,110`}
+            />
+          )}
+
           {/* Detections Line Path */}
           {points.length > 1 && (
             <polyline
               fill="none"
-              stroke="#6366f1"
+              stroke="#818cf8"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              filter="url(#lineGlow)"
               points={points
                 .map((p, idx) => {
                   const x = (idx / (points.length - 1)) * 480 + 10;
@@ -68,17 +97,36 @@ export function AlertTrendChart({
             const y = 110 - barHeight;
             return (
               <rect
-                key={idx}
+                key={`bar-${idx}`}
                 x={x}
                 y={y}
                 width="8"
                 height={barHeight}
-                rx="2"
-                fill="#f43f5e"
-                opacity="0.85"
+                rx="3"
+                fill="url(#alertBarGradient)"
+                opacity="0.9"
               >
                 <title>{`${p.label}: ${p.alerts} alerts, ${p.detections} detections`}</title>
               </rect>
+            );
+          })}
+
+          {/* Node circles on detection points */}
+          {points.map((p, idx) => {
+            const cx = (idx / (points.length - 1)) * 480 + 10;
+            const cy = 110 - ((p.detections || 0) / maxVal) * 95;
+            return (
+              <circle
+                key={`node-${idx}`}
+                cx={cx}
+                cy={cy}
+                r="3"
+                fill="#060913"
+                stroke="#a5b4fc"
+                strokeWidth="2"
+              >
+                <title>{`${p.label}: ${p.detections} total detections`}</title>
+              </circle>
             );
           })}
         </svg>

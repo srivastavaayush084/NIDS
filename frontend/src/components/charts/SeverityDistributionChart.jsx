@@ -14,7 +14,7 @@ export function SeverityDistributionChart({ data = {} }) {
   return (
     <div className="flex flex-col gap-4">
       {/* Distribution Progress Bar */}
-      <div className="h-4 w-full bg-slate-800 rounded-full overflow-hidden flex">
+      <div className="h-5 w-full bg-slate-950/80 rounded-full p-0.5 border border-white/10 overflow-hidden flex shadow-inner">
         {total > 0 ? (
           Object.entries(counts).map(([sev, count]) => {
             if (count === 0) return null;
@@ -23,18 +23,19 @@ export function SeverityDistributionChart({ data = {} }) {
             return (
               <div
                 key={sev}
-                className="h-full transition-all duration-500"
+                className="h-full first:rounded-l-full last:rounded-r-full transition-all duration-500 hover:opacity-90"
                 style={{
                   width: `${pct}%`,
                   backgroundColor: tier.color,
+                  boxShadow: sev === 'CRITICAL' ? '0 0 8px rgba(244, 63, 94, 0.4)' : undefined,
                 }}
                 title={`${sev}: ${count} (${pct.toFixed(1)}%)`}
               />
             );
           })
         ) : (
-          <div className="w-full h-full bg-slate-800 flex items-center justify-center text-[10px] text-slate-500">
-            No incidents recorded
+          <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-500 font-mono">
+            Zero anomalous flows recorded
           </div>
         )}
       </div>
@@ -44,21 +45,46 @@ export function SeverityDistributionChart({ data = {} }) {
         {Object.entries(counts).map(([sev, count]) => {
           const tier = SEVERITY_TIERS[sev] || SEVERITY_TIERS.LOW;
           const pct = total > 0 ? ((count / total) * 100).toFixed(1) : '0.0';
+          const hasIncidents = count > 0;
+
           return (
             <div
               key={sev}
-              className="p-3 rounded-lg border border-white/5 bg-slate-800/40 flex flex-col"
+              className={`p-3 rounded-xl border transition-all duration-200 flex flex-col justify-between ${
+                hasIncidents && sev === 'CRITICAL'
+                  ? 'bg-rose-950/20 border-rose-500/30'
+                  : hasIncidents && sev === 'HIGH'
+                  ? 'bg-orange-950/20 border-orange-500/30'
+                  : 'bg-slate-800/40 border-white/5'
+              }`}
             >
-              <div className="flex items-center gap-1.5 mb-1">
-                <span
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: tier.color }}
-                />
-                <span className="text-[11px] font-semibold text-slate-300">{sev}</span>
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-1.5">
+                  <span
+                    className="w-2 h-2 rounded-full shrink-0"
+                    style={{
+                      backgroundColor: tier.color,
+                      boxShadow: hasIncidents ? `0 0 8px ${tier.color}` : undefined,
+                    }}
+                  />
+                  <span className="text-[11px] font-semibold text-slate-300">{sev}</span>
+                </div>
+                <span className="text-[10px] font-mono text-slate-400">{pct}%</span>
               </div>
-              <div className="flex items-baseline justify-between mt-auto">
-                <span className="text-lg font-bold font-mono text-slate-100">{count}</span>
-                <span className="text-[11px] font-mono text-slate-400">{pct}%</span>
+
+              <div className="flex items-baseline justify-between mt-1">
+                <span className="text-xl font-black font-mono text-slate-100">{count}</span>
+              </div>
+
+              {/* Micro proportion bar */}
+              <div className="w-full h-1 bg-slate-900 rounded-full overflow-hidden mt-2">
+                <div
+                  className="h-full rounded-full transition-all duration-500"
+                  style={{
+                    width: `${pct}%`,
+                    backgroundColor: tier.color,
+                  }}
+                />
               </div>
             </div>
           );

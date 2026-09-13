@@ -52,7 +52,10 @@ export function StatusPill({ status = 'STOPPED', customLabel = null, size = 'md'
     >
       <span
         className={`w-1.5 h-1.5 rounded-full shrink-0 ${config.pulse ? 'animate-pulse' : ''}`}
-        style={{ backgroundColor: config.color }}
+        style={{
+          backgroundColor: config.color,
+          boxShadow: config.pulse ? `0 0 8px ${config.color}` : undefined,
+        }}
       />
       <span className="tracking-wide font-semibold">{displayText}</span>
     </span>

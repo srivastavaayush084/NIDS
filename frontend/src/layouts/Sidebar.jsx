@@ -90,9 +90,9 @@ export function Sidebar({ openAlertsCount = 0, isMonitoring = false, onCloseMobi
                 to={item.to}
                 onClick={onCloseMobile}
                 className={({ isActive }) =>
-                  `w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
+                  `w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
                     isActive
-                      ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                      ? 'bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-600/25 border-l-2 border-indigo-300'
                       : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
                   }`
                 }
@@ -116,9 +116,9 @@ export function Sidebar({ openAlertsCount = 0, isMonitoring = false, onCloseMobi
                 to="/users"
                 onClick={onCloseMobile}
                 className={({ isActive }) =>
-                  `w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
+                  `w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
                     isActive
-                      ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                      ? 'bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-600/25 border-l-2 border-indigo-300'
                       : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
                   }`
                 }
