@@ -1,0 +1,874 @@
+{
+  "comparison_id": "comp_synthetic_20260908_072258",
+  "timestamp": "2026-09-08T07:22:58.626731+00:00",
+  "dataset": "synthetic",
+  "evaluated_models": [
+    "isolation_forest",
+    "autoencoder",
+    "lstm_autoencoder",
+    "random_forest",
+    "ensemble"
+  ],
+  "total_test_samples": 5,
+  "unseen_categories_evaluated": [
+    "zero_day_unseen"
+  ],
+  "rankings": {
+    "ranking_standard_f1": [
+      "lstm_autoencoder",
+      "autoencoder",
+      "random_forest",
+      "ensemble",
+      "isolation_forest"
+    ],
+    "ranking_zero_day_resilience": [
+      "autoencoder",
+      "isolation_forest",
+      "random_forest",
+      "ensemble",
+      "lstm_autoencoder"
+    ],
+    "ranking_low_false_alarm": [
+      "lstm_autoencoder",
+      "autoencoder",
+      "random_forest",
+      "ensemble",
+      "isolation_forest"
+    ],
+    "ranking_breach_sensitivity": [
+      "autoencoder",
+      "lstm_autoencoder",
+      "random_forest",
+      "ensemble",
+      "isolation_forest"
+    ],
+    "ranking_efficiency": [
+      "autoencoder",
+      "lstm_autoencoder",
+      "random_forest",
+      "isolation_forest",
+      "ensemble"
+    ],
+    "composite_ranking": [
+      "lstm_autoencoder",
+      "autoencoder",
+      "random_forest",
+      "isolation_forest",
+      "ensemble"
+    ],
+    "composite_scores": {
+      "isolation_forest": 0.6787,
+      "autoencoder": 0.8632,
+      "lstm_autoencoder": 0.9946,
+      "random_forest": 0.7482,
+      "ensemble": 0.6575
+    },
+    "composite_weights": {
+      "unseen_recall": 0.35,
+      "standard_f1": 0.25,
+      "precision": 0.2,
+      "fpr_suppression": 0.1,
+      "efficiency": 0.1
+    }
+  },
+  "comparison_tables": {
+    "standard": [
+      {
+        "Model": "isolation_forest",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 0.4,
+        "Balanced Accuracy": 0.3333,
+        "Precision": 0.5,
+        "Recall (Detection Rate)": 0.6667,
+        "F1-Score": 0.5714,
+        "ROC-AUC": 0.3333,
+        "PR-AUC": 0.5333,
+        "FPR": 1.0,
+        "FNR": 0.3333,
+        "Specificity (TNR)": 0.0,
+        "Avg Latency (ms)": 12.9604,
+        "Throughput (items/sec)": 77.16
+      },
+      {
+        "Model": "autoencoder",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 0.8,
+        "Balanced Accuracy": 0.75,
+        "Precision": 0.75,
+        "Recall (Detection Rate)": 1.0,
+        "F1-Score": 0.8571,
+        "ROC-AUC": 0.75,
+        "PR-AUC": 0.75,
+        "FPR": 0.5,
+        "FNR": 0.0,
+        "Specificity (TNR)": 0.5,
+        "Avg Latency (ms)": 0.9413,
+        "Throughput (items/sec)": 1062.36
+      },
+      {
+        "Model": "lstm_autoencoder",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 1.0,
+        "Balanced Accuracy": 1.0,
+        "Precision": 1.0,
+        "Recall (Detection Rate)": 1.0,
+        "F1-Score": 1.0,
+        "ROC-AUC": NaN,
+        "PR-AUC": NaN,
+        "FPR": NaN,
+        "FNR": 0.0,
+        "Specificity (TNR)": NaN,
+        "Avg Latency (ms)": 4.9857,
+        "Throughput (items/sec)": 200.57
+      },
+      {
+        "Model": "random_forest",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 0.6,
+        "Balanced Accuracy": 0.5,
+        "Precision": 0.6,
+        "Recall (Detection Rate)": 1.0,
+        "F1-Score": 0.75,
+        "ROC-AUC": 0.3333,
+        "PR-AUC": 0.7333,
+        "FPR": 1.0,
+        "FNR": 0.0,
+        "Specificity (TNR)": 0.0,
+        "Avg Latency (ms)": 8.5412,
+        "Throughput (items/sec)": 117.08
+      },
+      {
+        "Model": "ensemble",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 0.6,
+        "Balanced Accuracy": 0.5,
+        "Precision": 0.6,
+        "Recall (Detection Rate)": 1.0,
+        "F1-Score": 0.75,
+        "ROC-AUC": 0.5,
+        "PR-AUC": 0.6389,
+        "FPR": 1.0,
+        "FNR": 0.0,
+        "Specificity (TNR)": 0.0,
+        "Avg Latency (ms)": 91.7689,
+        "Throughput (items/sec)": 10.9
+      }
+    ],
+    "unseen_attack": [
+      {
+        "Model": "isolation_forest",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Unseen Attack (Zero-Day Proxy)",
+        "Zero-Day Recall (Detection Rate)": 1.0,
+        "Zero-Day F1-Score": 0.6667,
+        "Zero-Day Miss Rate (FNR)": 0.0,
+        "Precision": 0.5,
+        "FPR": 1.0,
+        "ROC-AUC": 0.5,
+        "PR-AUC": 0.5
+      },
+      {
+        "Model": "autoencoder",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Unseen Attack (Zero-Day Proxy)",
+        "Zero-Day Recall (Detection Rate)": 1.0,
+        "Zero-Day F1-Score": 0.8,
+        "Zero-Day Miss Rate (FNR)": 0.0,
+        "Precision": 0.6667,
+        "FPR": 0.5,
+        "ROC-AUC": 0.75,
+        "PR-AUC": 0.6667
+      },
+      {
+        "Model": "lstm_autoencoder",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Unseen Attack (Zero-Day Proxy)",
+        "Zero-Day Recall (Detection Rate)": NaN,
+        "Zero-Day F1-Score": NaN,
+        "Zero-Day Miss Rate (FNR)": NaN,
+        "Precision": NaN,
+        "FPR": NaN,
+        "ROC-AUC": NaN,
+        "PR-AUC": NaN
+      },
+      {
+        "Model": "random_forest",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Unseen Attack (Zero-Day Proxy)",
+        "Zero-Day Recall (Detection Rate)": 1.0,
+        "Zero-Day F1-Score": 0.6667,
+        "Zero-Day Miss Rate (FNR)": 0.0,
+        "Precision": 0.5,
+        "FPR": 1.0,
+        "ROC-AUC": 0.0,
+        "PR-AUC": 0.5
+      },
+      {
+        "Model": "ensemble",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Unseen Attack (Zero-Day Proxy)",
+        "Zero-Day Recall (Detection Rate)": 1.0,
+        "Zero-Day F1-Score": 0.6667,
+        "Zero-Day Miss Rate (FNR)": 0.0,
+        "Precision": 0.5,
+        "FPR": 1.0,
+        "ROC-AUC": 0.5,
+        "PR-AUC": 0.5833
+      }
+    ],
+    "overall": [
+      {
+        "Model": "isolation_forest",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 0.4,
+        "Balanced Accuracy": 0.3333,
+        "Precision": 0.5,
+        "Recall (Detection Rate)": 0.6667,
+        "F1-Score": 0.5714,
+        "ROC-AUC": 0.3333,
+        "PR-AUC": 0.5333,
+        "FPR": 1.0,
+        "FNR": 0.3333,
+        "Specificity (TNR)": 0.0,
+        "Avg Latency (ms)": 12.9604,
+        "Throughput (items/sec)": 77.16,
+        "Zero-Day Recall (Detection Rate)": 1.0,
+        "Zero-Day F1-Score": 0.6667,
+        "Zero-Day Miss Rate (FNR)": 0.0
+      },
+      {
+        "Model": "autoencoder",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 0.8,
+        "Balanced Accuracy": 0.75,
+        "Precision": 0.75,
+        "Recall (Detection Rate)": 1.0,
+        "F1-Score": 0.8571,
+        "ROC-AUC": 0.75,
+        "PR-AUC": 0.75,
+        "FPR": 0.5,
+        "FNR": 0.0,
+        "Specificity (TNR)": 0.5,
+        "Avg Latency (ms)": 0.9413,
+        "Throughput (items/sec)": 1062.36,
+        "Zero-Day Recall (Detection Rate)": 1.0,
+        "Zero-Day F1-Score": 0.8,
+        "Zero-Day Miss Rate (FNR)": 0.0
+      },
+      {
+        "Model": "lstm_autoencoder",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 1.0,
+        "Balanced Accuracy": 1.0,
+        "Precision": 1.0,
+        "Recall (Detection Rate)": 1.0,
+        "F1-Score": 1.0,
+        "ROC-AUC": NaN,
+        "PR-AUC": NaN,
+        "FPR": NaN,
+        "FNR": 0.0,
+        "Specificity (TNR)": NaN,
+        "Avg Latency (ms)": 4.9857,
+        "Throughput (items/sec)": 200.57,
+        "Zero-Day Recall (Detection Rate)": NaN,
+        "Zero-Day F1-Score": NaN,
+        "Zero-Day Miss Rate (FNR)": NaN
+      },
+      {
+        "Model": "random_forest",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 0.6,
+        "Balanced Accuracy": 0.5,
+        "Precision": 0.6,
+        "Recall (Detection Rate)": 1.0,
+        "F1-Score": 0.75,
+        "ROC-AUC": 0.3333,
+        "PR-AUC": 0.7333,
+        "FPR": 1.0,
+        "FNR": 0.0,
+        "Specificity (TNR)": 0.0,
+        "Avg Latency (ms)": 8.5412,
+        "Throughput (items/sec)": 117.08,
+        "Zero-Day Recall (Detection Rate)": 1.0,
+        "Zero-Day F1-Score": 0.6667,
+        "Zero-Day Miss Rate (FNR)": 0.0
+      },
+      {
+        "Model": "ensemble",
+        "Dataset": "synthetic",
+        "Evaluation Type": "Standard",
+        "Accuracy": 0.6,
+        "Balanced Accuracy": 0.5,
+        "Precision": 0.6,
+        "Recall (Detection Rate)": 1.0,
+        "F1-Score": 0.75,
+        "ROC-AUC": 0.5,
+        "PR-AUC": 0.6389,
+        "FPR": 1.0,
+        "FNR": 0.0,
+        "Specificity (TNR)": 0.0,
+        "Avg Latency (ms)": 91.7689,
+        "Throughput (items/sec)": 10.9,
+        "Zero-Day Recall (Detection Rate)": 1.0,
+        "Zero-Day F1-Score": 0.6667,
+        "Zero-Day Miss Rate (FNR)": 0.0
+      }
+    ]
+  },
+  "saved_artifacts": {
+    "standard_csv": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\standard_comparison.csv",
+    "unseen_attack_csv": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\unseen_attack_comparison.csv",
+    "overall_csv": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\overall_comparison.csv",
+    "plots": [
+      "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\plots\\metrics_comparison_standard_synthetic.png",
+      "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\plots\\metrics_comparison_unseen_attack_synthetic.png",
+      "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\plots\\roc_combined_synthetic.png",
+      "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\plots\\pr_curve_combined_synthetic.png",
+      "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\plots\\latency_comparison_synthetic.png",
+      "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\comparisons\\plots\\confusion_matrix_grid_synthetic.png"
+    ]
+  },
+  "individual_evaluations": {
+    "isolation_forest": {
+      "standard_metrics": {
+        "classification": {
+          "accuracy": 0.4,
+          "balanced_accuracy": 0.3333,
+          "precision": 0.5,
+          "recall": 0.6667,
+          "f1_score": 0.5714,
+          "roc_auc": 0.3333,
+          "pr_auc": 0.5333,
+          "specificity": 0.0,
+          "false_positive_rate": 1.0,
+          "false_negative_rate": 0.3333
+        },
+        "confusion_matrix": {
+          "true_positives": 2,
+          "true_negatives": 0,
+          "false_positives": 2,
+          "false_negatives": 1,
+          "total_samples": 5
+        },
+        "performance": {
+          "total_inference_time_ms": 64.802,
+          "average_latency_ms": 12.9604,
+          "throughput_samples_per_sec": 77.16
+        },
+        "metric_diagnostics": {}
+      },
+      "scenario_metrics": {
+        "known_attack": {
+          "classification": {
+            "accuracy": 0.0,
+            "balanced_accuracy": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "roc_auc": 0.0,
+            "pr_auc": 0.3333,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0,
+            "false_negative_rate": 1.0
+          },
+          "confusion_matrix": {
+            "true_positives": 0,
+            "true_negatives": 0,
+            "false_positives": 2,
+            "false_negatives": 1,
+            "total_samples": 3
+          },
+          "performance": {
+            "total_inference_time_ms": 38.881,
+            "average_latency_ms": 12.9604,
+            "throughput_samples_per_sec": 77.16
+          },
+          "metric_diagnostics": {}
+        },
+        "unseen_attack": {
+          "classification": {
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1_score": 0.6667,
+            "roc_auc": 0.5,
+            "pr_auc": 0.5,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0,
+            "false_negative_rate": 0.0
+          },
+          "confusion_matrix": {
+            "true_positives": 2,
+            "true_negatives": 0,
+            "false_positives": 2,
+            "false_negatives": 0,
+            "total_samples": 4
+          },
+          "performance": {
+            "total_inference_time_ms": 51.842,
+            "average_latency_ms": 12.9604,
+            "throughput_samples_per_sec": 77.16
+          },
+          "metric_diagnostics": {}
+        }
+      },
+      "category_breakdown": {
+        "normal": {
+          "samples": 2,
+          "detected_as_attack": 2,
+          "detection_rate": 1.0,
+          "false_negative_rate": null,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        },
+        "zero_day_unseen": {
+          "samples": 2,
+          "detected_as_attack": 2,
+          "detection_rate": 1.0,
+          "false_negative_rate": 0.0,
+          "is_unseen_during_training": true,
+          "status_label": "UNSEEN DURING TRAINING"
+        },
+        "dos": {
+          "samples": 1,
+          "detected_as_attack": 0,
+          "detection_rate": 0.0,
+          "false_negative_rate": 1.0,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        }
+      },
+      "threshold_used": 20.0,
+      "input_unit": "samples"
+    },
+    "autoencoder": {
+      "standard_metrics": {
+        "classification": {
+          "accuracy": 0.8,
+          "balanced_accuracy": 0.75,
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1_score": 0.8571,
+          "roc_auc": 0.75,
+          "pr_auc": 0.75,
+          "specificity": 0.5,
+          "false_positive_rate": 0.5,
+          "false_negative_rate": 0.0
+        },
+        "confusion_matrix": {
+          "true_positives": 3,
+          "true_negatives": 1,
+          "false_positives": 1,
+          "false_negatives": 0,
+          "total_samples": 5
+        },
+        "performance": {
+          "total_inference_time_ms": 4.706,
+          "average_latency_ms": 0.9413,
+          "throughput_samples_per_sec": 1062.36
+        },
+        "metric_diagnostics": {}
+      },
+      "scenario_metrics": {
+        "known_attack": {
+          "classification": {
+            "accuracy": 0.6667,
+            "balanced_accuracy": 0.75,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1_score": 0.6667,
+            "roc_auc": 0.75,
+            "pr_auc": 0.5,
+            "specificity": 0.5,
+            "false_positive_rate": 0.5,
+            "false_negative_rate": 0.0
+          },
+          "confusion_matrix": {
+            "true_positives": 1,
+            "true_negatives": 1,
+            "false_positives": 1,
+            "false_negatives": 0,
+            "total_samples": 3
+          },
+          "performance": {
+            "total_inference_time_ms": 2.824,
+            "average_latency_ms": 0.9413,
+            "throughput_samples_per_sec": 1062.36
+          },
+          "metric_diagnostics": {}
+        },
+        "unseen_attack": {
+          "classification": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.75,
+            "precision": 0.6667,
+            "recall": 1.0,
+            "f1_score": 0.8,
+            "roc_auc": 0.75,
+            "pr_auc": 0.6667,
+            "specificity": 0.5,
+            "false_positive_rate": 0.5,
+            "false_negative_rate": 0.0
+          },
+          "confusion_matrix": {
+            "true_positives": 2,
+            "true_negatives": 1,
+            "false_positives": 1,
+            "false_negatives": 0,
+            "total_samples": 4
+          },
+          "performance": {
+            "total_inference_time_ms": 3.765,
+            "average_latency_ms": 0.9413,
+            "throughput_samples_per_sec": 1062.36
+          },
+          "metric_diagnostics": {}
+        }
+      },
+      "category_breakdown": {
+        "normal": {
+          "samples": 2,
+          "detected_as_attack": 1,
+          "detection_rate": 0.5,
+          "false_negative_rate": null,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        },
+        "zero_day_unseen": {
+          "samples": 2,
+          "detected_as_attack": 2,
+          "detection_rate": 1.0,
+          "false_negative_rate": 0.0,
+          "is_unseen_during_training": true,
+          "status_label": "UNSEEN DURING TRAINING"
+        },
+        "dos": {
+          "samples": 1,
+          "detected_as_attack": 1,
+          "detection_rate": 1.0,
+          "false_negative_rate": 0.0,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        }
+      },
+      "threshold_used": 1.0788573026657104,
+      "input_unit": "samples"
+    },
+    "lstm_autoencoder": {
+      "standard_metrics": {
+        "classification": {
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "roc_auc": null,
+          "pr_auc": null,
+          "specificity": null,
+          "false_positive_rate": null,
+          "false_negative_rate": 0.0
+        },
+        "confusion_matrix": {
+          "true_positives": 3,
+          "true_negatives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "total_samples": 3
+        },
+        "performance": {
+          "total_inference_time_ms": 14.957,
+          "average_latency_ms": 4.9857,
+          "throughput_samples_per_sec": 200.57
+        },
+        "metric_diagnostics": {
+          "specificity": "No normal samples (y_true=0) in evaluation split",
+          "false_positive_rate": "No normal samples (y_true=0) in evaluation split",
+          "roc_auc": "Only one class present (1), ROC-AUC mathematically undefined",
+          "pr_auc": "Only one class present (1), PR-AUC mathematically undefined"
+        }
+      },
+      "scenario_metrics": {
+        "known_attack": {
+          "classification": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "roc_auc": null,
+            "pr_auc": null,
+            "specificity": null,
+            "false_positive_rate": null,
+            "false_negative_rate": 0.0
+          },
+          "confusion_matrix": {
+            "true_positives": 3,
+            "true_negatives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "total_samples": 3
+          },
+          "performance": {
+            "total_inference_time_ms": 14.957,
+            "average_latency_ms": 4.9857,
+            "throughput_samples_per_sec": 200.57
+          },
+          "metric_diagnostics": {
+            "specificity": "No normal samples (y_true=0) in evaluation split",
+            "false_positive_rate": "No normal samples (y_true=0) in evaluation split",
+            "roc_auc": "Only one class present (1), ROC-AUC mathematically undefined",
+            "pr_auc": "Only one class present (1), PR-AUC mathematically undefined"
+          }
+        }
+      },
+      "category_breakdown": {
+        "dos": {
+          "samples": 3,
+          "detected_as_attack": 3,
+          "detection_rate": 1.0,
+          "false_negative_rate": 0.0,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        }
+      },
+      "threshold_used": 0.658657431602478,
+      "input_unit": "sequences"
+    },
+    "random_forest": {
+      "standard_metrics": {
+        "classification": {
+          "accuracy": 0.6,
+          "balanced_accuracy": 0.5,
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1_score": 0.75,
+          "roc_auc": 0.3333,
+          "pr_auc": 0.7333,
+          "specificity": 0.0,
+          "false_positive_rate": 1.0,
+          "false_negative_rate": 0.0
+        },
+        "confusion_matrix": {
+          "true_positives": 3,
+          "true_negatives": 0,
+          "false_positives": 2,
+          "false_negatives": 0,
+          "total_samples": 5
+        },
+        "performance": {
+          "total_inference_time_ms": 42.706,
+          "average_latency_ms": 8.5412,
+          "throughput_samples_per_sec": 117.08
+        },
+        "metric_diagnostics": {}
+      },
+      "scenario_metrics": {
+        "known_attack": {
+          "classification": {
+            "accuracy": 0.3333,
+            "balanced_accuracy": 0.5,
+            "precision": 0.3333,
+            "recall": 1.0,
+            "f1_score": 0.5,
+            "roc_auc": 1.0,
+            "pr_auc": 1.0,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0,
+            "false_negative_rate": 0.0
+          },
+          "confusion_matrix": {
+            "true_positives": 1,
+            "true_negatives": 0,
+            "false_positives": 2,
+            "false_negatives": 0,
+            "total_samples": 3
+          },
+          "performance": {
+            "total_inference_time_ms": 25.624,
+            "average_latency_ms": 8.5412,
+            "throughput_samples_per_sec": 117.08
+          },
+          "metric_diagnostics": {}
+        },
+        "unseen_attack": {
+          "classification": {
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1_score": 0.6667,
+            "roc_auc": 0.0,
+            "pr_auc": 0.5,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0,
+            "false_negative_rate": 0.0
+          },
+          "confusion_matrix": {
+            "true_positives": 2,
+            "true_negatives": 0,
+            "false_positives": 2,
+            "false_negatives": 0,
+            "total_samples": 4
+          },
+          "performance": {
+            "total_inference_time_ms": 34.165,
+            "average_latency_ms": 8.5412,
+            "throughput_samples_per_sec": 117.08
+          },
+          "metric_diagnostics": {}
+        }
+      },
+      "category_breakdown": {
+        "normal": {
+          "samples": 2,
+          "detected_as_attack": 2,
+          "detection_rate": 1.0,
+          "false_negative_rate": null,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        },
+        "zero_day_unseen": {
+          "samples": 2,
+          "detected_as_attack": 2,
+          "detection_rate": 1.0,
+          "false_negative_rate": 0.0,
+          "is_unseen_during_training": true,
+          "status_label": "UNSEEN DURING TRAINING"
+        },
+        "dos": {
+          "samples": 1,
+          "detected_as_attack": 1,
+          "detection_rate": 1.0,
+          "false_negative_rate": 0.0,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        }
+      },
+      "threshold_used": 0.1,
+      "input_unit": "samples"
+    },
+    "ensemble": {
+      "standard_metrics": {
+        "classification": {
+          "accuracy": 0.6,
+          "balanced_accuracy": 0.5,
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1_score": 0.75,
+          "roc_auc": 0.5,
+          "pr_auc": 0.6389,
+          "specificity": 0.0,
+          "false_positive_rate": 1.0,
+          "false_negative_rate": 0.0
+        },
+        "confusion_matrix": {
+          "true_positives": 3,
+          "true_negatives": 0,
+          "false_positives": 2,
+          "false_negatives": 0,
+          "total_samples": 5
+        },
+        "performance": {
+          "total_inference_time_ms": 458.844,
+          "average_latency_ms": 91.7689,
+          "throughput_samples_per_sec": 10.9
+        },
+        "metric_diagnostics": {}
+      },
+      "scenario_metrics": {
+        "known_attack": {
+          "classification": {
+            "accuracy": 0.3333,
+            "balanced_accuracy": 0.5,
+            "precision": 0.3333,
+            "recall": 1.0,
+            "f1_score": 0.5,
+            "roc_auc": 0.5,
+            "pr_auc": 0.5,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0,
+            "false_negative_rate": 0.0
+          },
+          "confusion_matrix": {
+            "true_positives": 1,
+            "true_negatives": 0,
+            "false_positives": 2,
+            "false_negatives": 0,
+            "total_samples": 3
+          },
+          "performance": {
+            "total_inference_time_ms": 275.307,
+            "average_latency_ms": 91.7689,
+            "throughput_samples_per_sec": 10.9
+          },
+          "metric_diagnostics": {}
+        },
+        "unseen_attack": {
+          "classification": {
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1_score": 0.6667,
+            "roc_auc": 0.5,
+            "pr_auc": 0.5833,
+            "specificity": 0.0,
+            "false_positive_rate": 1.0,
+            "false_negative_rate": 0.0
+          },
+          "confusion_matrix": {
+            "true_positives": 2,
+            "true_negatives": 0,
+            "false_positives": 2,
+            "false_negatives": 0,
+            "total_samples": 4
+          },
+          "performance": {
+            "total_inference_time_ms": 367.076,
+            "average_latency_ms": 91.7689,
+            "throughput_samples_per_sec": 10.9
+          },
+          "metric_diagnostics": {}
+        }
+      },
+      "category_breakdown": {
+        "normal": {
+          "samples": 2,
+          "detected_as_attack": 2,
+          "detection_rate": 1.0,
+          "false_negative_rate": null,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        },
+        "zero_day_unseen": {
+          "samples": 2,
+          "detected_as_attack": 2,
+          "detection_rate": 1.0,
+          "false_negative_rate": 0.0,
+          "is_unseen_during_training": true,
+          "status_label": "UNSEEN DURING TRAINING"
+        },
+        "dos": {
+          "samples": 1,
+          "detected_as_attack": 1,
+          "detection_rate": 1.0,
+          "false_negative_rate": 0.0,
+          "is_unseen_during_training": false,
+          "status_label": "KNOWN"
+        }
+      },
+      "threshold_used": 50.0,
+      "input_unit": "samples"
+    }
+  }
+}

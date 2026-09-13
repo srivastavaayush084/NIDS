@@ -1,0 +1,17 @@
+"""Centralized MongoDB collection name constants and collection utilities."""
+
+USERS_COLLECTION = "users"
+NETWORK_LOGS_COLLECTION = "network_logs"
+DETECTION_RESULTS_COLLECTION = "detection_results"
+ALERTS_COLLECTION = "alerts"
+SYSTEM_EVENTS_COLLECTION = "system_events"
+AUDIT_LOGS_COLLECTION = "audit_logs"
+
+ALL_COLLECTIONS = [
+    USERS_COLLECTION,
+    NETWORK_LOGS_COLLECTION,
+    DETECTION_RESULTS_COLLECTION,
+    ALERTS_COLLECTION,
+    SYSTEM_EVENTS_COLLECTION,
+    AUDIT_LOGS_COLLECTION,
+]

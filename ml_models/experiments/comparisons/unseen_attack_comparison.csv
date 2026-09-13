@@ -1,0 +1,6 @@
+Model,Dataset,Evaluation Type,Zero-Day Recall (Detection Rate),Zero-Day F1-Score,Zero-Day Miss Rate (FNR),Precision,FPR,ROC-AUC,PR-AUC
+isolation_forest,synthetic,Unseen Attack (Zero-Day Proxy),1.0,0.6667,0.0,0.5,1.0,0.5,0.5
+autoencoder,synthetic,Unseen Attack (Zero-Day Proxy),1.0,0.8,0.0,0.6667,0.5,0.75,0.6667
+lstm_autoencoder,synthetic,Unseen Attack (Zero-Day Proxy),,,,,,,
+random_forest,synthetic,Unseen Attack (Zero-Day Proxy),1.0,0.6667,0.0,0.5,1.0,0.0,0.5
+ensemble,synthetic,Unseen Attack (Zero-Day Proxy),1.0,0.6667,0.0,0.5,1.0,0.5,0.5833

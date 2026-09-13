@@ -1,0 +1,60 @@
+{
+  "model_name": "isolation_forest",
+  "model_type": "unsupervised_anomaly_detector",
+  "dataset": "synthetic",
+  "version": "1.0.0",
+  "trained_at": "2026-09-07T21:26:49.759489+00:00",
+  "hyperparameters": {
+    "n_estimators": 100,
+    "contamination": 0.05,
+    "max_samples": "auto",
+    "max_features": 1.0,
+    "bootstrap": false,
+    "random_state": 42,
+    "n_jobs": -1,
+    "anomaly_threshold": 20.0,
+    "score_min": -0.42222558841736835,
+    "score_max": -0.39330805306502475,
+    "feature_count": 26
+  },
+  "optimal_threshold": 20.0,
+  "feature_count": 26,
+  "feature_names": [
+    "src_bytes",
+    "dst_bytes",
+    "count",
+    "srv_count",
+    "serror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "dst_host_count",
+    "dst_host_srv_count",
+    "feat_byte_ratio",
+    "feat_total_bytes",
+    "feat_src_byte_rate",
+    "feat_packet_ratio",
+    "protocol_type_icmp",
+    "protocol_type_tcp",
+    "service_eco_i",
+    "service_ftp",
+    "service_ftp_data",
+    "service_http",
+    "service_private",
+    "service_smtp",
+    "service_ssl_tls",
+    "service_telnet",
+    "flag_REJ",
+    "flag_S0",
+    "flag_SF"
+  ],
+  "score_bounds": {
+    "score_min": -0.42222558841736835,
+    "score_max": -0.39330805306502475
+  },
+  "training_strategy": {
+    "normal_only_training": true,
+    "random_state": 42
+  },
+  "preprocessing_dir": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\preprocessing\\synthetic",
+  "artifact_path": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\trained\\isolation_forest_synthetic_v1.0.0.joblib"
+}

@@ -1,0 +1,70 @@
+{
+  "model_name": "autoencoder",
+  "model_type": "deep_learning_autoencoder",
+  "dataset": "synthetic",
+  "version": "1.0.0",
+  "trained_at": "2026-09-07T21:43:57.469446+00:00",
+  "training_duration_sec": 3.489,
+  "hyperparameters": {
+    "input_dim": 26,
+    "hidden_dims": [
+      64,
+      32
+    ],
+    "latent_dim": 8,
+    "activation": "relu",
+    "dropout_rate": 0.1,
+    "learning_rate": 0.001,
+    "batch_size": 64,
+    "epochs": 30,
+    "early_stopping_patience": 10,
+    "random_seed": 42,
+    "threshold_percentile": 95.0,
+    "reconstruction_threshold": 1.0788573026657104,
+    "threshold_strategy": "percentile_95.0_normal_val",
+    "mse_min": 0.42067721486091614,
+    "mse_max": 0.5832818150520325,
+    "feature_count": 26
+  },
+  "feature_count": 26,
+  "feature_names": [
+    "src_bytes",
+    "dst_bytes",
+    "count",
+    "srv_count",
+    "serror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "dst_host_count",
+    "dst_host_srv_count",
+    "feat_byte_ratio",
+    "feat_total_bytes",
+    "feat_src_byte_rate",
+    "feat_packet_ratio",
+    "protocol_type_icmp",
+    "protocol_type_tcp",
+    "service_eco_i",
+    "service_ftp",
+    "service_ftp_data",
+    "service_http",
+    "service_private",
+    "service_smtp",
+    "service_ssl_tls",
+    "service_telnet",
+    "flag_REJ",
+    "flag_S0",
+    "flag_SF"
+  ],
+  "reconstruction_threshold": 1.0788573026657104,
+  "threshold_strategy": "percentile_95.0_normal_val",
+  "score_bounds": {
+    "mse_min": 0.42067721486091614,
+    "mse_max": 0.5832818150520325
+  },
+  "training_strategy": {
+    "normal_only_training": true,
+    "random_seed": 42
+  },
+  "preprocessing_dir": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\preprocessing\\synthetic",
+  "artifact_path": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\trained\\autoencoder_synthetic_v1.0.0.pt"
+}

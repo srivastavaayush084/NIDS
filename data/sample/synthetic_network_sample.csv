@@ -1,0 +1,21 @@
+# SYNTHETIC DEMO DATASET - CREATED EXCLUSIVELY FOR UNIT TESTING AND PIPELINE MECHANICS VERIFICATION
+# DO NOT REPRESENT AS GENUINE NSL-KDD, CICIDS2017, OR UNSW-NB15 TRAFFIC
+duration,protocol_type,service,flag,src_bytes,dst_bytes,count,srv_count,serror_rate,same_srv_rate,diff_srv_rate,dst_host_count,dst_host_srv_count,label,attack_category
+0.0,tcp,http,SF,215,45076,1,1,0.0,1.0,0.0,0,0,normal,normal
+0.0,tcp,http,SF,162,4528,2,2,0.0,1.0,0.0,1,1,normal,normal
+0.0,tcp,ftp,SF,236,1228,1,1,0.0,1.0,0.0,2,2,normal,normal
+0.0,udp,domain_u,SF,45,45,1,1,0.0,1.0,0.0,3,3,normal,normal
+0.0,tcp,smtp,SF,105,1453,1,1,0.0,1.0,0.0,4,4,normal,normal
+0.0,tcp,private,S0,0,0,123,6,1.0,0.05,0.07,255,6,neptune,dos
+0.0,tcp,private,S0,0,0,234,12,1.0,0.05,0.06,255,12,neptune,dos
+0.0,icmp,eco_i,SF,8,0,1,1,0.0,1.0,0.0,1,1,ipsweep,probe
+0.0,icmp,eco_i,SF,8,0,2,2,0.0,1.0,0.0,2,2,ipsweep,probe
+0.0,tcp,private,REJ,0,0,1,1,0.0,1.0,0.0,255,1,portsweep,probe
+0.0,tcp,telnet,SF,124,342,1,1,0.0,1.0,0.0,5,1,guess_passwd,r2l
+0.0,tcp,ftp_data,SF,0,2856,1,1,0.0,1.0,0.0,6,1,warezclient,r2l
+0.0,tcp,telnet,SF,200,1200,1,1,0.0,1.0,0.0,7,1,buffer_overflow,u2r
+0.0,tcp,http,SF,312,8940,1,1,0.0,1.0,0.0,8,8,normal,normal
+0.0,tcp,http,SF,245,11200,2,2,0.0,1.0,0.0,9,9,normal,normal
+0.0,tcp,ssl_tls,SF,512,1024,1,1,0.0,1.0,0.0,10,10,normal,normal
+0.0,tcp,custom_zero_day,SF,8990,45000,45,45,0.0,1.0,0.0,11,1,synthetic_zero_day,zero_day_unseen
+0.0,tcp,custom_zero_day,SF,9200,48000,50,50,0.0,1.0,0.0,12,1,synthetic_zero_day,zero_day_unseen

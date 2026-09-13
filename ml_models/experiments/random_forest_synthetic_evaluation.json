@@ -1,0 +1,120 @@
+{
+  "model_name": "random_forest",
+  "model_type": "supervised_classifier_baseline",
+  "dataset": "synthetic",
+  "evaluation_timestamp": "2026-09-07T22:17:32.271181+00:00",
+  "threshold_used": 0.1,
+  "threshold_strategy": "f1_optimal_val_0.10",
+  "test_samples_total": 5,
+  "class_distribution": {
+    "normal": 2,
+    "attack": 3
+  },
+  "metrics": {
+    "accuracy": 0.6,
+    "balanced_accuracy": 0.5,
+    "precision": 0.6,
+    "recall_detection_rate": 1.0,
+    "f1_score": 0.75,
+    "roc_auc": 0.3333,
+    "pr_auc": 0.7333,
+    "specificity": 0.0,
+    "false_positive_rate": 1.0,
+    "false_negative_rate": 0.0
+  },
+  "confusion_matrix": {
+    "true_negatives": 0,
+    "false_positives": 2,
+    "false_negatives": 0,
+    "true_positives": 3
+  },
+  "zero_day_evaluation": {
+    "unseen_categories": [
+      "zero_day_unseen"
+    ],
+    "unseen_attack_detection_rate": 1.0,
+    "known_attack_detection_rate": 1.0,
+    "category_breakdown": {
+      "normal": {
+        "total_samples": 2,
+        "detected_anomalies": 2,
+        "detection_rate": 1.0,
+        "is_unseen_zero_day": false,
+        "mean_attack_probability": 0.33
+      },
+      "zero_day_unseen": {
+        "total_samples": 2,
+        "detected_anomalies": 2,
+        "detection_rate": 1.0,
+        "is_unseen_zero_day": true,
+        "mean_attack_probability": 0.26
+      },
+      "dos": {
+        "total_samples": 1,
+        "detected_anomalies": 1,
+        "detection_rate": 1.0,
+        "is_unseen_zero_day": false,
+        "mean_attack_probability": 0.86
+      }
+    }
+  },
+  "top_feature_importances": [
+    {
+      "feature": "feat_total_bytes",
+      "importance": 0.174464,
+      "rank": 1
+    },
+    {
+      "feature": "feat_src_byte_rate",
+      "importance": 0.149643,
+      "rank": 2
+    },
+    {
+      "feature": "dst_host_srv_count",
+      "importance": 0.127698,
+      "rank": 3
+    },
+    {
+      "feature": "src_bytes",
+      "importance": 0.107533,
+      "rank": 4
+    },
+    {
+      "feature": "dst_bytes",
+      "importance": 0.103985,
+      "rank": 5
+    },
+    {
+      "feature": "feat_byte_ratio",
+      "importance": 0.063571,
+      "rank": 6
+    },
+    {
+      "feature": "dst_host_count",
+      "importance": 0.043321,
+      "rank": 7
+    },
+    {
+      "feature": "protocol_type_tcp",
+      "importance": 0.035833,
+      "rank": 8
+    },
+    {
+      "feature": "flag_SF",
+      "importance": 0.030119,
+      "rank": 9
+    },
+    {
+      "feature": "service_telnet",
+      "importance": 0.029228,
+      "rank": 10
+    }
+  ],
+  "generated_plots": [
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\cm_rf_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\roc_rf_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\pr_curve_rf_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\feature_importance_rf_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\score_dist_rf_synthetic.png"
+  ]
+}

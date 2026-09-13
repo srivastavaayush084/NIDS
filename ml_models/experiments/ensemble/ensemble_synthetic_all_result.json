@@ -1,0 +1,160 @@
+{
+  "experiment_id": "eval_ensemble_synthetic_20260908_072233",
+  "timestamp": "2026-09-08T07:22:33.411674+00:00",
+  "model_name": "ensemble",
+  "model_version": "1.0.0",
+  "dataset": "synthetic",
+  "evaluation_type": "all",
+  "input_unit": "samples",
+  "sample_count": 5,
+  "threshold_used": 50.0,
+  "unseen_categories": [
+    "zero_day_unseen"
+  ],
+  "standard_metrics": {
+    "classification": {
+      "accuracy": 0.6,
+      "balanced_accuracy": 0.5,
+      "precision": 0.6,
+      "recall": 1.0,
+      "f1_score": 0.75,
+      "roc_auc": 0.5,
+      "pr_auc": 0.6389,
+      "specificity": 0.0,
+      "false_positive_rate": 1.0,
+      "false_negative_rate": 0.0
+    },
+    "confusion_matrix": {
+      "true_positives": 3,
+      "true_negatives": 0,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "total_samples": 5
+    },
+    "performance": {
+      "total_inference_time_ms": 456.078,
+      "average_latency_ms": 91.2156,
+      "throughput_samples_per_sec": 10.96
+    },
+    "metric_diagnostics": {}
+  },
+  "scenario_metrics": {
+    "known_attack": {
+      "classification": {
+        "accuracy": 0.3333,
+        "balanced_accuracy": 0.5,
+        "precision": 0.3333,
+        "recall": 1.0,
+        "f1_score": 0.5,
+        "roc_auc": 0.5,
+        "pr_auc": 0.5,
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "false_negative_rate": 0.0
+      },
+      "confusion_matrix": {
+        "true_positives": 1,
+        "true_negatives": 0,
+        "false_positives": 2,
+        "false_negatives": 0,
+        "total_samples": 3
+      },
+      "performance": {
+        "total_inference_time_ms": 273.647,
+        "average_latency_ms": 91.2156,
+        "throughput_samples_per_sec": 10.96
+      },
+      "metric_diagnostics": {}
+    },
+    "unseen_attack": {
+      "classification": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1_score": 0.6667,
+        "roc_auc": 0.5,
+        "pr_auc": 0.5833,
+        "specificity": 0.0,
+        "false_positive_rate": 1.0,
+        "false_negative_rate": 0.0
+      },
+      "confusion_matrix": {
+        "true_positives": 2,
+        "true_negatives": 0,
+        "false_positives": 2,
+        "false_negatives": 0,
+        "total_samples": 4
+      },
+      "performance": {
+        "total_inference_time_ms": 364.862,
+        "average_latency_ms": 91.2156,
+        "throughput_samples_per_sec": 10.96
+      },
+      "metric_diagnostics": {}
+    }
+  },
+  "category_breakdown": {
+    "normal": {
+      "samples": 2,
+      "detected_as_attack": 2,
+      "detection_rate": 1.0,
+      "false_negative_rate": null,
+      "is_unseen_during_training": false,
+      "status_label": "KNOWN"
+    },
+    "zero_day_unseen": {
+      "samples": 2,
+      "detected_as_attack": 2,
+      "detection_rate": 1.0,
+      "false_negative_rate": 0.0,
+      "is_unseen_during_training": true,
+      "status_label": "UNSEEN DURING TRAINING"
+    },
+    "dos": {
+      "samples": 1,
+      "detected_as_attack": 1,
+      "detection_rate": 1.0,
+      "false_negative_rate": 0.0,
+      "is_unseen_during_training": false,
+      "status_label": "KNOWN"
+    }
+  },
+  "predictions_summary": {
+    "normal_predictions": 0,
+    "attack_predictions": 5,
+    "actual_normal": 2,
+    "actual_attack": 3
+  },
+  "raw_predictions": {
+    "y_true": [
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "y_pred": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "raw_scores": [
+      60.7,
+      86.3,
+      85.32,
+      90.83,
+      89.72
+    ],
+    "anomaly_scores": [
+      60.7,
+      86.3,
+      85.32,
+      90.83,
+      89.72
+    ],
+    "probabilities": null
+  }
+}

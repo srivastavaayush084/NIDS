@@ -1,0 +1,11 @@
+original,category,binary
+ipsweep,probe,1
+normal,normal,0
+warezclient,r2l,1
+normal,normal,0
+neptune,dos,1
+portsweep,probe,1
+normal,normal,0
+buffer_overflow,u2r,1
+ipsweep,probe,1
+normal,normal,0

@@ -1,0 +1,6 @@
+original,category,binary
+normal,normal,0
+synthetic_zero_day,zero_day_unseen,1
+neptune,dos,1
+normal,normal,0
+synthetic_zero_day,zero_day_unseen,1

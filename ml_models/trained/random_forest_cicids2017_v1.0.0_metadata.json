@@ -1,0 +1,188 @@
+{
+  "model_name": "random_forest",
+  "version": "1.0.0",
+  "dataset": "cicids2017",
+  "training_timestamp": "2026-09-12T20:19:01.904115+00:00",
+  "training_duration_seconds": 16.99,
+  "model_type": "supervised_classifier_baseline",
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": null,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "max_features": "sqrt",
+    "bootstrap": true,
+    "class_weight": "balanced",
+    "criterion": "gini",
+    "random_state": 42,
+    "n_jobs": -1,
+    "decision_threshold": 0.45999999999999996,
+    "threshold_strategy": "f1_optimal_val_0.46",
+    "feature_count": 74
+  },
+  "training_samples_total": 143230,
+  "class_distribution": {
+    "normal": 83999,
+    "attack": 59231
+  },
+  "validation_samples_total": 30693,
+  "decision_threshold": 0.46,
+  "threshold_strategy": "f1_optimal_val_0.46",
+  "feature_names": [
+    "destination_port",
+    "flow_duration",
+    "total_fwd_packets",
+    "total_backward_packets",
+    "total_length_of_fwd_packets",
+    "total_length_of_bwd_packets",
+    "fwd_packet_length_max",
+    "fwd_packet_length_min",
+    "fwd_packet_length_mean",
+    "fwd_packet_length_std",
+    "bwd_packet_length_max",
+    "bwd_packet_length_min",
+    "bwd_packet_length_mean",
+    "bwd_packet_length_std",
+    "flow_bytes_per_s",
+    "flow_packets_per_s",
+    "flow_iat_mean",
+    "flow_iat_std",
+    "flow_iat_max",
+    "flow_iat_min",
+    "fwd_iat_total",
+    "fwd_iat_mean",
+    "fwd_iat_std",
+    "fwd_iat_max",
+    "fwd_iat_min",
+    "bwd_iat_total",
+    "bwd_iat_mean",
+    "bwd_iat_std",
+    "bwd_iat_max",
+    "bwd_iat_min",
+    "fwd_psh_flags",
+    "fwd_urg_flags",
+    "fwd_header_length",
+    "bwd_header_length",
+    "fwd_packets_per_s",
+    "bwd_packets_per_s",
+    "min_packet_length",
+    "max_packet_length",
+    "packet_length_mean",
+    "packet_length_std",
+    "packet_length_variance",
+    "fin_flag_count",
+    "syn_flag_count",
+    "rst_flag_count",
+    "psh_flag_count",
+    "ack_flag_count",
+    "urg_flag_count",
+    "cwe_flag_count",
+    "ece_flag_count",
+    "down/up_ratio",
+    "average_packet_size",
+    "avg_fwd_segment_size",
+    "avg_bwd_segment_size",
+    "fwd_header_length_1",
+    "subflow_fwd_packets",
+    "subflow_fwd_bytes",
+    "subflow_bwd_packets",
+    "subflow_bwd_bytes",
+    "init_win_bytes_forward",
+    "init_win_bytes_backward",
+    "act_data_pkt_fwd",
+    "min_seg_size_forward",
+    "active_mean",
+    "active_std",
+    "active_max",
+    "active_min",
+    "idle_mean",
+    "idle_std",
+    "idle_max",
+    "idle_min",
+    "feat_byte_ratio",
+    "feat_total_bytes",
+    "feat_src_byte_rate",
+    "feat_packet_ratio"
+  ],
+  "feature_count": 74,
+  "top_feature_importances": [
+    {
+      "feature": "destination_port",
+      "importance": 0.091483,
+      "rank": 1
+    },
+    {
+      "feature": "init_win_bytes_forward",
+      "importance": 0.057718,
+      "rank": 2
+    },
+    {
+      "feature": "min_packet_length",
+      "importance": 0.052686,
+      "rank": 3
+    },
+    {
+      "feature": "init_win_bytes_backward",
+      "importance": 0.052269,
+      "rank": 4
+    },
+    {
+      "feature": "fwd_packet_length_min",
+      "importance": 0.047733,
+      "rank": 5
+    },
+    {
+      "feature": "bwd_packet_length_max",
+      "importance": 0.037783,
+      "rank": 6
+    },
+    {
+      "feature": "bwd_packet_length_mean",
+      "importance": 0.033038,
+      "rank": 7
+    },
+    {
+      "feature": "packet_length_std",
+      "importance": 0.032581,
+      "rank": 8
+    },
+    {
+      "feature": "bwd_packet_length_min",
+      "importance": 0.030345,
+      "rank": 9
+    },
+    {
+      "feature": "bwd_packet_length_std",
+      "importance": 0.025418,
+      "rank": 10
+    },
+    {
+      "feature": "min_seg_size_forward",
+      "importance": 0.024118,
+      "rank": 11
+    },
+    {
+      "feature": "avg_fwd_segment_size",
+      "importance": 0.023506,
+      "rank": 12
+    },
+    {
+      "feature": "fwd_packet_length_mean",
+      "importance": 0.022978,
+      "rank": 13
+    },
+    {
+      "feature": "packet_length_variance",
+      "importance": 0.022408,
+      "rank": 14
+    },
+    {
+      "feature": "max_packet_length",
+      "importance": 0.022311,
+      "rank": 15
+    }
+  ],
+  "artifact_path": "ml_models\\trained\\random_forest_cicids2017_v1.0.0.joblib",
+  "metadata_path": "ml_models\\trained\\random_forest_cicids2017_v1.0.0_metadata.json",
+  "preprocessing_artifact_path": "ml_models\\preprocessing\\cicids2017"
+}

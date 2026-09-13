@@ -1,0 +1,79 @@
+{
+  "total_samples": 125973,
+  "total_features": 41,
+  "memory_usage_mb": 58.35,
+  "duplicate_rows": 16,
+  "missing_cells": 0,
+  "numerical_feature_count": 38,
+  "categorical_feature_count": 3,
+  "numerical_features": [
+    "duration",
+    "src_bytes",
+    "dst_bytes",
+    "land",
+    "wrong_fragment",
+    "urgent",
+    "hot",
+    "num_failed_logins",
+    "logged_in",
+    "num_compromised",
+    "root_shell",
+    "su_attempted",
+    "num_root",
+    "num_file_creations",
+    "num_shells",
+    "num_access_files",
+    "num_outbound_cmds",
+    "is_host_login",
+    "is_guest_login",
+    "count",
+    "srv_count",
+    "serror_rate",
+    "srv_serror_rate",
+    "rerror_rate",
+    "srv_rerror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "srv_diff_host_rate",
+    "dst_host_count",
+    "dst_host_srv_count",
+    "dst_host_same_srv_rate",
+    "dst_host_diff_srv_rate",
+    "dst_host_same_src_port_rate",
+    "dst_host_srv_diff_host_rate",
+    "dst_host_serror_rate",
+    "dst_host_srv_serror_rate",
+    "dst_host_rerror_rate",
+    "dst_host_srv_rerror_rate"
+  ],
+  "categorical_features": [
+    "protocol_type",
+    "service",
+    "flag"
+  ],
+  "class_distribution": {
+    "normal": 67343,
+    "attack": 58630
+  },
+  "class_percentages": {
+    "normal": 53.46,
+    "attack": 46.54
+  },
+  "attack_category_distribution": {
+    "normal": 67343,
+    "dos": 45927,
+    "probe": 11656,
+    "r2l": 995,
+    "u2r": 52
+  },
+  "attack_category_percentages": {
+    "normal": 53.46,
+    "dos": 36.46,
+    "probe": 9.25,
+    "r2l": 0.79,
+    "u2r": 0.04
+  },
+  "normal_count": 67343,
+  "attack_count": 58630,
+  "imbalance_ratio": 1.149
+}

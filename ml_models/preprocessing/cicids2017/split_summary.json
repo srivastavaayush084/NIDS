@@ -1,0 +1,43 @@
+{
+  "strategy": "stratified",
+  "unseen_categories": [],
+  "train_samples": 143230,
+  "val_samples": 30693,
+  "test_samples": 30693,
+  "train_normal": 83999,
+  "train_attack": 59231,
+  "val_normal": 18001,
+  "val_attack": 12692,
+  "test_normal": 18000,
+  "test_attack": 12693,
+  "train_categories": {
+    "normal": 83999,
+    "dos": 25619,
+    "portscan": 10500,
+    "ddos": 10500,
+    "brute_force": 9685,
+    "other_attack": 1526,
+    "botnet": 1376,
+    "infiltration": 25
+  },
+  "val_categories": {
+    "normal": 18001,
+    "dos": 5490,
+    "portscan": 2250,
+    "ddos": 2250,
+    "brute_force": 2075,
+    "other_attack": 327,
+    "botnet": 295,
+    "infiltration": 5
+  },
+  "test_categories": {
+    "normal": 18000,
+    "dos": 5490,
+    "ddos": 2250,
+    "portscan": 2250,
+    "brute_force": 2075,
+    "other_attack": 327,
+    "botnet": 295,
+    "infiltration": 6
+  }
+}

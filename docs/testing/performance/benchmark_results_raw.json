@@ -1,0 +1,1248 @@
+{
+  "environment": {
+    "os": "Windows",
+    "os_release": "10",
+    "os_version": "10.0.19045",
+    "architecture": "AMD64",
+    "processor": "Intel64 Family 6 Model 142 Stepping 9, GenuineIntel",
+    "cpu_physical_cores": 2,
+    "cpu_logical_cores": 4,
+    "total_ram_gb": 7.9,
+    "available_ram_gb": 0.48,
+    "python_version": "3.14.3",
+    "fastapi_version": "0.141.1",
+    "torch_version": "2.14.0+cpu",
+    "scikit_learn_version": "1.9.0",
+    "uvicorn_version": "0.52.4"
+  },
+  "baseline_apis": {
+    "GET /health": {
+      "count": 60,
+      "mean_ms": 85.324,
+      "min_ms": 69.228,
+      "max_ms": 230.797,
+      "std_dev_ms": 20.375,
+      "p50_ms": 82.365,
+      "p90_ms": 93.431,
+      "p95_ms": 97.202,
+      "p99_ms": 153.537,
+      "throughput_rps": 11.72,
+      "total_duration_s": 5.12,
+      "successful": 60,
+      "failed": 0
+    },
+    "GET /api/v1/health": {
+      "count": 60,
+      "mean_ms": 78.925,
+      "min_ms": 67.655,
+      "max_ms": 100.9,
+      "std_dev_ms": 7.459,
+      "p50_ms": 77.906,
+      "p90_ms": 89.378,
+      "p95_ms": 90.274,
+      "p99_ms": 99.494,
+      "throughput_rps": 12.67,
+      "total_duration_s": 4.736,
+      "successful": 60,
+      "failed": 0
+    },
+    "GET /api/v1/monitoring/status": {
+      "count": 60,
+      "mean_ms": 41.828,
+      "min_ms": 37.839,
+      "max_ms": 61.939,
+      "std_dev_ms": 3.818,
+      "p50_ms": 40.515,
+      "p90_ms": 45.022,
+      "p95_ms": 46.396,
+      "p99_ms": 56.041,
+      "throughput_rps": 23.91,
+      "total_duration_s": 2.51,
+      "successful": 60,
+      "failed": 0
+    },
+    "GET /api/v1/models": {
+      "count": 60,
+      "mean_ms": 72.804,
+      "min_ms": 53.452,
+      "max_ms": 164.581,
+      "std_dev_ms": 16.42,
+      "p50_ms": 68.955,
+      "p90_ms": 87.746,
+      "p95_ms": 98.681,
+      "p99_ms": 132.917,
+      "throughput_rps": 13.73,
+      "total_duration_s": 4.368,
+      "successful": 60,
+      "failed": 0
+    },
+    "GET /api/v1/statistics/summary": {
+      "count": 60,
+      "mean_ms": 176.553,
+      "min_ms": 120.617,
+      "max_ms": 504.127,
+      "std_dev_ms": 54.529,
+      "p50_ms": 170.149,
+      "p90_ms": 216.632,
+      "p95_ms": 251.957,
+      "p99_ms": 368.903,
+      "throughput_rps": 5.66,
+      "total_duration_s": 10.593,
+      "successful": 60,
+      "failed": 0
+    },
+    "GET /api/v1/alerts": {
+      "count": 60,
+      "mean_ms": 208.389,
+      "min_ms": 121.848,
+      "max_ms": 394.727,
+      "std_dev_ms": 65.457,
+      "p50_ms": 185.61,
+      "p90_ms": 287.226,
+      "p95_ms": 351.808,
+      "p99_ms": 388.507,
+      "throughput_rps": 4.8,
+      "total_duration_s": 12.503,
+      "successful": 60,
+      "failed": 0
+    },
+    "GET /api/v1/monitoring/interfaces": {
+      "count": 60,
+      "mean_ms": 58.877,
+      "min_ms": 49.188,
+      "max_ms": 85.706,
+      "std_dev_ms": 8.791,
+      "p50_ms": 56.132,
+      "p90_ms": 70.635,
+      "p95_ms": 78.836,
+      "p99_ms": 82.848,
+      "throughput_rps": 16.98,
+      "total_duration_s": 3.533,
+      "successful": 60,
+      "failed": 0
+    }
+  },
+  "authentication": {
+    "POST /auth/login (Bcrypt)": {
+      "count": 30,
+      "mean_ms": 574.798,
+      "min_ms": 511.302,
+      "max_ms": 883.396,
+      "std_dev_ms": 73.089,
+      "p50_ms": 555.756,
+      "p90_ms": 611.228,
+      "p95_ms": 687.044,
+      "p99_ms": 843.703,
+      "throughput_rps": 1.74,
+      "total_duration_s": 17.246
+    },
+    "GET /auth/me (JWT Verify)": {
+      "count": 30,
+      "mean_ms": 67.93,
+      "min_ms": 45.965,
+      "max_ms": 324.404,
+      "std_dev_ms": 48.838,
+      "p50_ms": 56.957,
+      "p90_ms": 85.913,
+      "p95_ms": 88.443,
+      "p99_ms": 256.307,
+      "throughput_rps": 14.72,
+      "total_duration_s": 2.038
+    },
+    "POST /auth/refresh": {
+      "count": 30,
+      "mean_ms": 121.308,
+      "min_ms": 86.991,
+      "max_ms": 413.545,
+      "std_dev_ms": 58.352,
+      "p50_ms": 107.482,
+      "p90_ms": 151.441,
+      "p95_ms": 162.594,
+      "p99_ms": 340.988,
+      "throughput_rps": 8.24,
+      "total_duration_s": 3.641
+    }
+  },
+  "single_detection_breakdown": {
+    "e2e_roundtrip": {
+      "count": 30,
+      "mean_ms": 499.223,
+      "min_ms": 421.625,
+      "max_ms": 680.11,
+      "std_dev_ms": 62.012,
+      "p50_ms": 491.666,
+      "p90_ms": 591.156,
+      "p95_ms": 596.483,
+      "p99_ms": 656.727,
+      "throughput_rps": 2.0,
+      "total_duration_s": 14.977
+    },
+    "avg_backend_processing_ms": 390.503,
+    "avg_isolation_forest_ms": 49.773,
+    "avg_autoencoder_ms": 1.269,
+    "avg_random_forest_ms": 35.1,
+    "avg_network_and_overhead_ms": 108.72
+  },
+  "model_benchmarks": {
+    "isolation_forest": {
+      "batch_1": {
+        "batch_size": 1,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 27.214,
+          "min_ms": 19.345,
+          "max_ms": 49.969,
+          "std_dev_ms": 9.261,
+          "p50_ms": 22.828,
+          "p90_ms": 41.427,
+          "p95_ms": 45.89,
+          "p99_ms": 49.154,
+          "throughput_rps": 36.75,
+          "total_duration_s": 0.544
+        },
+        "per_record_us": 27214.21,
+        "throughput_records_sec": 36.7
+      },
+      "batch_10": {
+        "batch_size": 10,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 18.756,
+          "min_ms": 15.594,
+          "max_ms": 20.828,
+          "std_dev_ms": 1.392,
+          "p50_ms": 19.01,
+          "p90_ms": 20.51,
+          "p95_ms": 20.801,
+          "p99_ms": 20.823,
+          "throughput_rps": 53.32,
+          "total_duration_s": 0.375
+        },
+        "per_record_us": 1875.64,
+        "throughput_records_sec": 533.2
+      },
+      "batch_50": {
+        "batch_size": 50,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 18.629,
+          "min_ms": 15.829,
+          "max_ms": 21.377,
+          "std_dev_ms": 1.478,
+          "p50_ms": 18.8,
+          "p90_ms": 20.385,
+          "p95_ms": 20.702,
+          "p99_ms": 21.242,
+          "throughput_rps": 53.68,
+          "total_duration_s": 0.373
+        },
+        "per_record_us": 372.57,
+        "throughput_records_sec": 2684.0
+      },
+      "batch_100": {
+        "batch_size": 100,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 31.585,
+          "min_ms": 17.792,
+          "max_ms": 58.2,
+          "std_dev_ms": 11.1,
+          "p50_ms": 28.469,
+          "p90_ms": 42.822,
+          "p95_ms": 57.517,
+          "p99_ms": 58.064,
+          "throughput_rps": 31.66,
+          "total_duration_s": 0.632
+        },
+        "per_record_us": 315.85,
+        "throughput_records_sec": 3166.1
+      },
+      "batch_500": {
+        "batch_size": 500,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 31.993,
+          "min_ms": 20.3,
+          "max_ms": 51.6,
+          "std_dev_ms": 6.742,
+          "p50_ms": 32.561,
+          "p90_ms": 36.6,
+          "p95_ms": 37.41,
+          "p99_ms": 48.762,
+          "throughput_rps": 31.26,
+          "total_duration_s": 0.64
+        },
+        "per_record_us": 63.99,
+        "throughput_records_sec": 15628.5
+      }
+    },
+    "autoencoder": {
+      "batch_1": {
+        "batch_size": 1,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 1.03,
+          "min_ms": 0.523,
+          "max_ms": 2.348,
+          "std_dev_ms": 0.549,
+          "p50_ms": 0.828,
+          "p90_ms": 1.844,
+          "p95_ms": 2.247,
+          "p99_ms": 2.328,
+          "throughput_rps": 971.03,
+          "total_duration_s": 0.021
+        },
+        "per_record_us": 1029.83,
+        "throughput_records_sec": 971.0
+      },
+      "batch_10": {
+        "batch_size": 10,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 1.174,
+          "min_ms": 0.549,
+          "max_ms": 5.209,
+          "std_dev_ms": 1.036,
+          "p50_ms": 0.779,
+          "p90_ms": 1.884,
+          "p95_ms": 2.597,
+          "p99_ms": 4.686,
+          "throughput_rps": 852.11,
+          "total_duration_s": 0.023
+        },
+        "per_record_us": 117.36,
+        "throughput_records_sec": 8521.1
+      },
+      "batch_50": {
+        "batch_size": 50,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 1.526,
+          "min_ms": 0.683,
+          "max_ms": 5.27,
+          "std_dev_ms": 1.115,
+          "p50_ms": 1.022,
+          "p90_ms": 2.59,
+          "p95_ms": 3.807,
+          "p99_ms": 4.978,
+          "throughput_rps": 655.44,
+          "total_duration_s": 0.031
+        },
+        "per_record_us": 30.51,
+        "throughput_records_sec": 32771.9
+      },
+      "batch_100": {
+        "batch_size": 100,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 1.362,
+          "min_ms": 1.021,
+          "max_ms": 3.859,
+          "std_dev_ms": 0.645,
+          "p50_ms": 1.156,
+          "p90_ms": 1.635,
+          "p95_ms": 2.464,
+          "p99_ms": 3.58,
+          "throughput_rps": 734.44,
+          "total_duration_s": 0.027
+        },
+        "per_record_us": 13.62,
+        "throughput_records_sec": 73444.4
+      },
+      "batch_500": {
+        "batch_size": 500,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 1.801,
+          "min_ms": 0.873,
+          "max_ms": 4.162,
+          "std_dev_ms": 0.812,
+          "p50_ms": 1.634,
+          "p90_ms": 2.747,
+          "p95_ms": 3.536,
+          "p99_ms": 4.037,
+          "throughput_rps": 555.3,
+          "total_duration_s": 0.036
+        },
+        "per_record_us": 3.6,
+        "throughput_records_sec": 277648.2
+      }
+    },
+    "lstm_autoencoder": {
+      "batch_1": {
+        "batch_size": 1,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 6.273,
+          "min_ms": 1.214,
+          "max_ms": 88.534,
+          "std_dev_ms": 18.882,
+          "p50_ms": 1.961,
+          "p90_ms": 2.961,
+          "p95_ms": 7.725,
+          "p99_ms": 72.372,
+          "throughput_rps": 159.42,
+          "total_duration_s": 0.125
+        },
+        "per_record_us": 6272.55,
+        "throughput_records_sec": 159.4
+      },
+      "batch_10": {
+        "batch_size": 10,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 2.3,
+          "min_ms": 1.282,
+          "max_ms": 14.471,
+          "std_dev_ms": 2.819,
+          "p50_ms": 1.469,
+          "p90_ms": 2.426,
+          "p95_ms": 3.269,
+          "p99_ms": 12.231,
+          "throughput_rps": 434.7,
+          "total_duration_s": 0.046
+        },
+        "per_record_us": 230.04,
+        "throughput_records_sec": 4347.0
+      },
+      "batch_50": {
+        "batch_size": 50,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 2.479,
+          "min_ms": 1.706,
+          "max_ms": 6.03,
+          "std_dev_ms": 0.902,
+          "p50_ms": 2.394,
+          "p90_ms": 2.808,
+          "p95_ms": 3.207,
+          "p99_ms": 5.465,
+          "throughput_rps": 403.4,
+          "total_duration_s": 0.05
+        },
+        "per_record_us": 49.58,
+        "throughput_records_sec": 20170.1
+      },
+      "batch_100": {
+        "batch_size": 100,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 3.036,
+          "min_ms": 2.131,
+          "max_ms": 4.937,
+          "std_dev_ms": 0.681,
+          "p50_ms": 3.093,
+          "p90_ms": 3.672,
+          "p95_ms": 3.744,
+          "p99_ms": 4.698,
+          "throughput_rps": 329.35,
+          "total_duration_s": 0.061
+        },
+        "per_record_us": 30.36,
+        "throughput_records_sec": 32935.0
+      },
+      "batch_500": {
+        "batch_size": 500,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 7.698,
+          "min_ms": 5.877,
+          "max_ms": 11.105,
+          "std_dev_ms": 1.206,
+          "p50_ms": 7.612,
+          "p90_ms": 8.869,
+          "p95_ms": 9.269,
+          "p99_ms": 10.738,
+          "throughput_rps": 129.9,
+          "total_duration_s": 0.154
+        },
+        "per_record_us": 15.4,
+        "throughput_records_sec": 64949.2
+      }
+    },
+    "random_forest": {
+      "batch_1": {
+        "batch_size": 1,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 11.453,
+          "min_ms": 9.046,
+          "max_ms": 16.78,
+          "std_dev_ms": 2.387,
+          "p50_ms": 10.263,
+          "p90_ms": 15.51,
+          "p95_ms": 15.831,
+          "p99_ms": 16.59,
+          "throughput_rps": 87.31,
+          "total_duration_s": 0.229
+        },
+        "per_record_us": 11453.33,
+        "throughput_records_sec": 87.3
+      },
+      "batch_10": {
+        "batch_size": 10,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 11.091,
+          "min_ms": 8.511,
+          "max_ms": 20.539,
+          "std_dev_ms": 3.35,
+          "p50_ms": 9.784,
+          "p90_ms": 17.933,
+          "p95_ms": 18.069,
+          "p99_ms": 20.045,
+          "throughput_rps": 90.16,
+          "total_duration_s": 0.222
+        },
+        "per_record_us": 1109.12,
+        "throughput_records_sec": 901.6
+      },
+      "batch_50": {
+        "batch_size": 50,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 9.257,
+          "min_ms": 7.164,
+          "max_ms": 11.318,
+          "std_dev_ms": 0.908,
+          "p50_ms": 9.079,
+          "p90_ms": 10.259,
+          "p95_ms": 11.033,
+          "p99_ms": 11.261,
+          "throughput_rps": 108.03,
+          "total_duration_s": 0.185
+        },
+        "per_record_us": 185.14,
+        "throughput_records_sec": 5401.3
+      },
+      "batch_100": {
+        "batch_size": 100,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 9.23,
+          "min_ms": 7.273,
+          "max_ms": 10.409,
+          "std_dev_ms": 0.852,
+          "p50_ms": 9.379,
+          "p90_ms": 10.222,
+          "p95_ms": 10.361,
+          "p99_ms": 10.4,
+          "throughput_rps": 108.35,
+          "total_duration_s": 0.185
+        },
+        "per_record_us": 92.3,
+        "throughput_records_sec": 10834.7
+      },
+      "batch_500": {
+        "batch_size": 500,
+        "batch_latency": {
+          "count": 20,
+          "mean_ms": 10.161,
+          "min_ms": 8.015,
+          "max_ms": 11.059,
+          "std_dev_ms": 0.814,
+          "p50_ms": 10.344,
+          "p90_ms": 10.961,
+          "p95_ms": 10.994,
+          "p99_ms": 11.046,
+          "throughput_rps": 98.42,
+          "total_duration_s": 0.203
+        },
+        "per_record_us": 20.32,
+        "throughput_records_sec": 49208.9
+      }
+    }
+  },
+  "batch_detection": {
+    "batch_1": {
+      "batch_size": 1,
+      "batch_latency": {
+        "count": 3,
+        "mean_ms": 173.962,
+        "min_ms": 165.827,
+        "max_ms": 183.559,
+        "std_dev_ms": 7.312,
+        "p50_ms": 172.5,
+        "p90_ms": 181.347,
+        "p95_ms": 182.453,
+        "p99_ms": 183.337,
+        "throughput_rps": 5.75,
+        "total_duration_s": 0.522
+      },
+      "per_record_ms": 173.962,
+      "throughput_records_sec": 5.7
+    },
+    "batch_10": {
+      "batch_size": 10,
+      "batch_latency": {
+        "count": 3,
+        "mean_ms": 217.263,
+        "min_ms": 203.646,
+        "max_ms": 232.503,
+        "std_dev_ms": 11.836,
+        "p50_ms": 215.642,
+        "p90_ms": 229.13,
+        "p95_ms": 230.816,
+        "p99_ms": 232.165,
+        "throughput_rps": 4.6,
+        "total_duration_s": 0.652
+      },
+      "per_record_ms": 21.726,
+      "throughput_records_sec": 46.0
+    },
+    "batch_50": {
+      "batch_size": 50,
+      "batch_latency": {
+        "count": 3,
+        "mean_ms": 610.19,
+        "min_ms": 403.091,
+        "max_ms": 1013.06,
+        "std_dev_ms": 284.91,
+        "p50_ms": 414.419,
+        "p90_ms": 893.332,
+        "p95_ms": 953.196,
+        "p99_ms": 1001.087,
+        "throughput_rps": 1.64,
+        "total_duration_s": 1.831
+      },
+      "per_record_ms": 12.204,
+      "throughput_records_sec": 81.9
+    },
+    "batch_100": {
+      "batch_size": 100,
+      "batch_latency": {
+        "count": 2,
+        "mean_ms": 1311.143,
+        "min_ms": 988.565,
+        "max_ms": 1633.721,
+        "std_dev_ms": 322.578,
+        "p50_ms": 1311.143,
+        "p90_ms": 1569.205,
+        "p95_ms": 1601.463,
+        "p99_ms": 1627.269,
+        "throughput_rps": 0.76,
+        "total_duration_s": 2.622
+      },
+      "per_record_ms": 13.111,
+      "throughput_records_sec": 76.3
+    },
+    "batch_250": {
+      "batch_size": 250,
+      "batch_latency": {
+        "count": 1,
+        "mean_ms": 2088.189,
+        "min_ms": 2088.189,
+        "max_ms": 2088.189,
+        "std_dev_ms": 0.0,
+        "p50_ms": 2088.189,
+        "p90_ms": 2088.189,
+        "p95_ms": 2088.189,
+        "p99_ms": 2088.189,
+        "throughput_rps": 0.48,
+        "total_duration_s": 2.088
+      },
+      "per_record_ms": 8.353,
+      "throughput_records_sec": 119.7
+    },
+    "batch_500": {
+      "batch_size": 500,
+      "batch_latency": {
+        "count": 1,
+        "mean_ms": 2761.238,
+        "min_ms": 2761.238,
+        "max_ms": 2761.238,
+        "std_dev_ms": 0.0,
+        "p50_ms": 2761.238,
+        "p90_ms": 2761.238,
+        "p95_ms": 2761.238,
+        "p99_ms": 2761.238,
+        "throughput_rps": 0.36,
+        "total_duration_s": 2.761
+      },
+      "per_record_ms": 5.522,
+      "throughput_records_sec": 181.1
+    }
+  },
+  "ensemble_comparison": {
+    "isolation_forest_ms": {
+      "count": 30,
+      "mean_ms": 23.006,
+      "min_ms": 16.687,
+      "max_ms": 37.747,
+      "std_dev_ms": 5.975,
+      "p50_ms": 20.458,
+      "p90_ms": 34.186,
+      "p95_ms": 36.863,
+      "p99_ms": 37.535,
+      "throughput_rps": 43.47,
+      "total_duration_s": 0.69
+    },
+    "autoencoder_ms": {
+      "count": 30,
+      "mean_ms": 0.895,
+      "min_ms": 0.632,
+      "max_ms": 2.336,
+      "std_dev_ms": 0.394,
+      "p50_ms": 0.732,
+      "p90_ms": 1.447,
+      "p95_ms": 1.687,
+      "p99_ms": 2.16,
+      "throughput_rps": 1116.89,
+      "total_duration_s": 0.027
+    },
+    "random_forest_ms": {
+      "count": 30,
+      "mean_ms": 10.944,
+      "min_ms": 7.15,
+      "max_ms": 21.585,
+      "std_dev_ms": 3.21,
+      "p50_ms": 10.234,
+      "p90_ms": 15.572,
+      "p95_ms": 17.471,
+      "p99_ms": 20.839,
+      "throughput_rps": 91.37,
+      "total_duration_s": 0.328
+    },
+    "ensemble_composite_ms": {
+      "count": 30,
+      "mean_ms": 57.234,
+      "min_ms": 42.455,
+      "max_ms": 108.71,
+      "std_dev_ms": 15.651,
+      "p50_ms": 50.569,
+      "p90_ms": 78.694,
+      "p95_ms": 86.749,
+      "p99_ms": 104.03,
+      "throughput_rps": 17.47,
+      "total_duration_s": 1.717
+    },
+    "overhead_ms": 22.389
+  },
+  "xai_overhead": {
+    "without_xai": {
+      "count": 30,
+      "mean_ms": 305.187,
+      "min_ms": 262.877,
+      "max_ms": 403.886,
+      "std_dev_ms": 34.134,
+      "p50_ms": 304.08,
+      "p90_ms": 340.177,
+      "p95_ms": 359.325,
+      "p99_ms": 394.172,
+      "throughput_rps": 3.28,
+      "total_duration_s": 9.156
+    },
+    "with_xai": {
+      "count": 30,
+      "mean_ms": 475.181,
+      "min_ms": 395.274,
+      "max_ms": 754.391,
+      "std_dev_ms": 74.822,
+      "p50_ms": 460.138,
+      "p90_ms": 527.833,
+      "p95_ms": 613.333,
+      "p99_ms": 733.271,
+      "throughput_rps": 2.1,
+      "total_duration_s": 14.255
+    },
+    "overhead_ms": 169.994,
+    "overhead_percent": 55.7
+  },
+  "alert_engine": {
+    "no_alert_ms": {
+      "count": 30,
+      "mean_ms": 295.849,
+      "min_ms": 265.196,
+      "max_ms": 371.095,
+      "std_dev_ms": 31.112,
+      "p50_ms": 284.27,
+      "p90_ms": 350.231,
+      "p95_ms": 358.649,
+      "p99_ms": 369.43,
+      "throughput_rps": 3.38,
+      "total_duration_s": 8.875
+    },
+    "alert_generated_and_deduplicated_ms": {
+      "count": 30,
+      "mean_ms": 346.987,
+      "min_ms": 270.333,
+      "max_ms": 705.029,
+      "std_dev_ms": 95.834,
+      "p50_ms": 321.539,
+      "p90_ms": 409.279,
+      "p95_ms": 552.197,
+      "p99_ms": 686.096,
+      "throughput_rps": 2.88,
+      "total_duration_s": 10.41
+    },
+    "alert_overhead_ms": 51.138
+  },
+  "mongodb_operations": {
+    "User Lookup by Username": {
+      "count": 20,
+      "mean_ms": 43.636,
+      "min_ms": 36.948,
+      "max_ms": 61.783,
+      "std_dev_ms": 5.908,
+      "p50_ms": 42.603,
+      "p90_ms": 49.932,
+      "p95_ms": 50.816,
+      "p99_ms": 59.589,
+      "throughput_rps": 22.92,
+      "total_duration_s": 0.873
+    },
+    "Detection Result Insert": {
+      "count": 20,
+      "mean_ms": 47.566,
+      "min_ms": 38.793,
+      "max_ms": 81.441,
+      "std_dev_ms": 8.986,
+      "p50_ms": 45.512,
+      "p90_ms": 53.728,
+      "p95_ms": 59.343,
+      "p99_ms": 77.021,
+      "throughput_rps": 21.02,
+      "total_duration_s": 0.951
+    },
+    "Detection History Query": {
+      "count": 20,
+      "mean_ms": 54.581,
+      "min_ms": 43.797,
+      "max_ms": 95.992,
+      "std_dev_ms": 12.724,
+      "p50_ms": 49.422,
+      "p90_ms": 68.181,
+      "p95_ms": 77.593,
+      "p99_ms": 92.312,
+      "throughput_rps": 18.32,
+      "total_duration_s": 1.092
+    },
+    "Alert Statistics Aggregation": {
+      "count": 20,
+      "mean_ms": 46.79,
+      "min_ms": 38.231,
+      "max_ms": 66.87,
+      "std_dev_ms": 6.603,
+      "p50_ms": 45.685,
+      "p90_ms": 55.797,
+      "p95_ms": 56.5,
+      "p99_ms": 64.796,
+      "throughput_rps": 21.37,
+      "total_duration_s": 0.936
+    },
+    "Audit Log Insert": {
+      "count": 20,
+      "mean_ms": 55.096,
+      "min_ms": 43.624,
+      "max_ms": 76.085,
+      "std_dev_ms": 9.832,
+      "p50_ms": 52.794,
+      "p90_ms": 72.252,
+      "p95_ms": 74.975,
+      "p99_ms": 75.863,
+      "throughput_rps": 18.15,
+      "total_duration_s": 1.102
+    }
+  },
+  "network_monitoring": {
+    "start_status": 200,
+    "stop_status": 200,
+    "samples_collected": 6,
+    "final_telemetry": {
+      "status": "stopped",
+      "message": "Monitoring session stopped successfully.",
+      "stopped_at": "2026-09-08T16:16:03.629680Z",
+      "summary": {
+        "running": false,
+        "active": false,
+        "source": "live",
+        "target": "Wi-Fi",
+        "interface": "Wi-Fi",
+        "dataset_name": "synthetic",
+        "status_message": "Monitoring session stopped. Total processed: 5 flows",
+        "message": "Monitoring session stopped. Total processed: 5 flows",
+        "started_at": "2026-09-08T16:15:57.994878Z",
+        "stopped_at": "2026-09-08T16:16:03.629421Z",
+        "last_packet_at": "2026-09-08T16:16:01.418927Z",
+        "uptime_seconds": 5.63,
+        "packets_captured": 200,
+        "packets_parsed": 200,
+        "packets_processed": 5,
+        "flows_created": 75,
+        "events_processed": 5,
+        "anomalies_detected": 5,
+        "detections_generated": 5,
+        "alerts_generated": 5,
+        "dropped_events": 0,
+        "error_count": 0,
+        "error": null,
+        "throughput_pkts_sec": 35.5,
+        "packets_per_second": 35.5,
+        "throughput_flows_sec": 13.31,
+        "flows_per_second": 13.31,
+        "avg_detection_latency_ms": 702.67,
+        "buffer_utilization_pct": 0.0,
+        "models_compatible": {
+          "isolation_forest": true,
+          "autoencoder": true,
+          "lstm_autoencoder": true,
+          "random_forest": true,
+          "ensemble": true
+        },
+        "available_interfaces": []
+      }
+    }
+  },
+  "pcap_benchmark": {
+    "status_code": 200,
+    "duration_ms": 3966.57,
+    "response": {
+      "status": "completed",
+      "file": "C:\\Users\\Win\\Desktop\\ZERO\\data\\sample\\sample_network_traffic.pcap",
+      "packets_read": 15,
+      "packets_parsed": 15,
+      "flows_extracted": 10,
+      "detections_completed": 10,
+      "anomalies_flagged": 10,
+      "alerts_triggered": 10,
+      "execution_time_ms": 3887.58,
+      "throughput_pkts_per_sec": 3.86,
+      "throughput_flows_per_sec": 2.57,
+      "model_compatibility": {
+        "isolation_forest": {
+          "model_name": "isolation_forest",
+          "compatible": true,
+          "available_features": 26,
+          "total_required_features": 26,
+          "missing_features": [],
+          "explanation": "All 26 required features extracted and mapped."
+        },
+        "autoencoder": {
+          "model_name": "autoencoder",
+          "compatible": true,
+          "available_features": 26,
+          "total_required_features": 26,
+          "missing_features": [],
+          "explanation": "All 26 required features extracted and mapped."
+        },
+        "lstm_autoencoder": {
+          "model_name": "lstm_autoencoder",
+          "compatible": true,
+          "available_features": 26,
+          "total_required_features": 26,
+          "missing_features": [],
+          "explanation": "All 26 required features extracted and mapped."
+        },
+        "random_forest": {
+          "model_name": "random_forest",
+          "compatible": true,
+          "available_features": 26,
+          "total_required_features": 26,
+          "missing_features": [],
+          "explanation": "All 26 required features extracted and mapped."
+        },
+        "ensemble": {
+          "model_name": "ensemble",
+          "compatible": true,
+          "available_features": 26,
+          "total_required_features": 26,
+          "missing_features": [],
+          "explanation": "All 26 required features extracted and mapped."
+        }
+      },
+      "sample_flows": [
+        {
+          "flow_id": "flow-0d9c74b76cee",
+          "src_ip": "192.168.1.50",
+          "dst_ip": "192.168.1.100",
+          "protocol": "TCP",
+          "service": "http",
+          "is_anomaly": true,
+          "risk_score": 83.7,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-cf45f74a941b",
+          "src_ip": "192.168.1.50",
+          "dst_ip": "8.8.8.8",
+          "protocol": "UDP",
+          "service": "dns",
+          "is_anomaly": true,
+          "risk_score": 83.7,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-7f6611ba0b86",
+          "src_ip": "192.168.1.50",
+          "dst_ip": "192.168.1.1",
+          "protocol": "ICMP",
+          "service": "eco_i",
+          "is_anomaly": true,
+          "risk_score": 84.44,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-bd7a33b252f6",
+          "src_ip": "10.0.0.99",
+          "dst_ip": "192.168.1.100",
+          "protocol": "TCP",
+          "service": "ftp",
+          "is_anomaly": true,
+          "risk_score": 84.44,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-c14aba758a07",
+          "src_ip": "10.0.0.99",
+          "dst_ip": "192.168.1.100",
+          "protocol": "TCP",
+          "service": "ssh",
+          "is_anomaly": true,
+          "risk_score": 84.44,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-15ded01d0b58",
+          "src_ip": "10.0.0.99",
+          "dst_ip": "192.168.1.100",
+          "protocol": "TCP",
+          "service": "telnet",
+          "is_anomaly": true,
+          "risk_score": 84.44,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-44ffe76e7ebe",
+          "src_ip": "10.0.0.99",
+          "dst_ip": "192.168.1.100",
+          "protocol": "TCP",
+          "service": "http",
+          "is_anomaly": true,
+          "risk_score": 84.44,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-d88155248e25",
+          "src_ip": "10.0.0.99",
+          "dst_ip": "192.168.1.100",
+          "protocol": "TCP",
+          "service": "ssl_tls",
+          "is_anomaly": true,
+          "risk_score": 84.44,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-7899666005a7",
+          "src_ip": "10.0.0.99",
+          "dst_ip": "192.168.1.100",
+          "protocol": "TCP",
+          "service": "mysql",
+          "is_anomaly": true,
+          "risk_score": 83.7,
+          "severity": "CRITICAL"
+        },
+        {
+          "flow_id": "flow-a5915b1c9f84",
+          "src_ip": "10.0.0.99",
+          "dst_ip": "192.168.1.100",
+          "protocol": "TCP",
+          "service": "http",
+          "is_anomaly": true,
+          "risk_score": 83.7,
+          "severity": "CRITICAL"
+        }
+      ]
+    }
+  },
+  "concurrent_api_load": {
+    "concurrency_1": {
+      "concurrency": 1,
+      "total_requests": 10,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 4.78,
+      "avg_latency_ms": 143.25,
+      "p50_ms": 140.5,
+      "p95_ms": 163.73,
+      "p99_ms": 165.79
+    },
+    "concurrency_5": {
+      "concurrency": 5,
+      "total_requests": 50,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 20.23,
+      "avg_latency_ms": 176.39,
+      "p50_ms": 173.15,
+      "p95_ms": 208.12,
+      "p99_ms": 223.5
+    },
+    "concurrency_10": {
+      "concurrency": 10,
+      "total_requests": 100,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 27.83,
+      "avg_latency_ms": 267.2,
+      "p50_ms": 209.51,
+      "p95_ms": 546.41,
+      "p99_ms": 574.96
+    },
+    "concurrency_25": {
+      "concurrency": 25,
+      "total_requests": 250,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 26.74,
+      "avg_latency_ms": 749.47,
+      "p50_ms": 657.26,
+      "p95_ms": 1504.2,
+      "p99_ms": 2712.77
+    },
+    "concurrency_50": {
+      "concurrency": 50,
+      "total_requests": 500,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 20.88,
+      "avg_latency_ms": 1859.86,
+      "p50_ms": 1160.63,
+      "p95_ms": 5532.87,
+      "p99_ms": 9137.25
+    }
+  },
+  "concurrent_detection_load": {
+    "concurrency_1": {
+      "concurrency": 1,
+      "total_requests": 5,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 2.23,
+      "avg_latency_ms": 284.03,
+      "p50_ms": 279.37,
+      "p95_ms": 317.95,
+      "p99_ms": 325.12
+    },
+    "concurrency_5": {
+      "concurrency": 5,
+      "total_requests": 25,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 7.24,
+      "avg_latency_ms": 574.83,
+      "p50_ms": 556.07,
+      "p95_ms": 694.39,
+      "p99_ms": 697.45
+    },
+    "concurrency_10": {
+      "concurrency": 10,
+      "total_requests": 50,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 7.7,
+      "avg_latency_ms": 1114.62,
+      "p50_ms": 1134.57,
+      "p95_ms": 1376.09,
+      "p99_ms": 2004.33
+    },
+    "concurrency_25": {
+      "concurrency": 25,
+      "total_requests": 125,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 9.93,
+      "avg_latency_ms": 2317.02,
+      "p50_ms": 2228.62,
+      "p95_ms": 3156.37,
+      "p99_ms": 3456.35
+    },
+    "concurrency_50": {
+      "concurrency": 50,
+      "total_requests": 250,
+      "success_rate_percent": 100.0,
+      "throughput_rps": 4.73,
+      "avg_latency_ms": 8378.48,
+      "p50_ms": 4979.89,
+      "p95_ms": 21010.68,
+      "p99_ms": 22398.4
+    }
+  },
+  "resource_usage": {
+    "idle": {
+      "pid": 2376,
+      "cpu_percent": 0.0,
+      "memory_rss_mb": 382.29,
+      "memory_vms_mb": 563.5,
+      "num_threads": 12
+    },
+    "dashboard_active": {
+      "pid": 2376,
+      "cpu_percent": 0.0,
+      "memory_rss_mb": 382.29,
+      "memory_vms_mb": 563.5,
+      "num_threads": 12
+    },
+    "batch_processing": {
+      "pid": 2376,
+      "cpu_percent": 0.0,
+      "memory_rss_mb": 382.34,
+      "memory_vms_mb": 563.56,
+      "num_threads": 14
+    }
+  },
+  "worker_stability": {
+    "all_passed": true,
+    "cycles": [
+      {
+        "cycle": 1,
+        "duration_ms": 2330.26,
+        "success": true
+      },
+      {
+        "cycle": 2,
+        "duration_ms": 2445.83,
+        "success": true
+      },
+      {
+        "cycle": 3,
+        "duration_ms": 2434.83,
+        "success": true
+      },
+      {
+        "cycle": 4,
+        "duration_ms": 2456.29,
+        "success": true
+      },
+      {
+        "cycle": 5,
+        "duration_ms": 2499.09,
+        "success": true
+      },
+      {
+        "cycle": 6,
+        "duration_ms": 2564.66,
+        "success": true
+      },
+      {
+        "cycle": 7,
+        "duration_ms": 2526.95,
+        "success": true
+      },
+      {
+        "cycle": 8,
+        "duration_ms": 2470.93,
+        "success": true
+      },
+      {
+        "cycle": 9,
+        "duration_ms": 2516.38,
+        "success": true
+      },
+      {
+        "cycle": 10,
+        "duration_ms": 2616.13,
+        "success": true
+      }
+    ]
+  },
+  "frontend_polling_audit": {
+    "dashboard_polling_interval_ms": 5000,
+    "alerts_polling_interval_ms": 5000,
+    "monitoring_polling_interval_ms": 3000,
+    "system_health_polling_interval_ms": 10000,
+    "unmount_cleanup_verified": true,
+    "overlapping_requests_prevented": true,
+    "retry_backoff_active": true
+  }
+}

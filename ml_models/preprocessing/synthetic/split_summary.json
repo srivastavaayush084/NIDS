@@ -1,0 +1,31 @@
+{
+  "strategy": "unseen_zero_day",
+  "unseen_categories": [
+    "zero_day_unseen"
+  ],
+  "train_samples": 10,
+  "val_samples": 3,
+  "test_samples": 5,
+  "train_normal": 4,
+  "train_attack": 6,
+  "val_normal": 2,
+  "val_attack": 1,
+  "test_normal": 2,
+  "test_attack": 3,
+  "train_categories": {
+    "normal": 4,
+    "probe": 3,
+    "r2l": 1,
+    "dos": 1,
+    "u2r": 1
+  },
+  "val_categories": {
+    "normal": 2,
+    "r2l": 1
+  },
+  "test_categories": {
+    "normal": 2,
+    "zero_day_unseen": 2,
+    "dos": 1
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "model_name": "random_forest",
+  "version": "1.0.0",
+  "dataset": "synthetic",
+  "training_timestamp": "2026-09-07T22:17:05.684861+00:00",
+  "training_duration_seconds": 0.43,
+  "model_type": "supervised_classifier_baseline",
+  "hyperparameters": {
+    "n_estimators": 50,
+    "max_depth": null,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "max_features": "sqrt",
+    "bootstrap": true,
+    "class_weight": "balanced",
+    "criterion": "gini",
+    "random_state": 42,
+    "n_jobs": -1,
+    "decision_threshold": 0.1,
+    "threshold_strategy": "f1_optimal_val_0.10",
+    "feature_count": 26
+  },
+  "training_samples_total": 10,
+  "class_distribution": {
+    "normal": 4,
+    "attack": 6
+  },
+  "validation_samples_total": 3,
+  "decision_threshold": 0.1,
+  "threshold_strategy": "f1_optimal_val_0.10",
+  "feature_names": [
+    "src_bytes",
+    "dst_bytes",
+    "count",
+    "srv_count",
+    "serror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "dst_host_count",
+    "dst_host_srv_count",
+    "feat_byte_ratio",
+    "feat_total_bytes",
+    "feat_src_byte_rate",
+    "feat_packet_ratio",
+    "protocol_type_icmp",
+    "protocol_type_tcp",
+    "service_eco_i",
+    "service_ftp",
+    "service_ftp_data",
+    "service_http",
+    "service_private",
+    "service_smtp",
+    "service_ssl_tls",
+    "service_telnet",
+    "flag_REJ",
+    "flag_S0",
+    "flag_SF"
+  ],
+  "feature_count": 26,
+  "top_feature_importances": [
+    {
+      "feature": "feat_total_bytes",
+      "importance": 0.174464,
+      "rank": 1
+    },
+    {
+      "feature": "feat_src_byte_rate",
+      "importance": 0.149643,
+      "rank": 2
+    },
+    {
+      "feature": "dst_host_srv_count",
+      "importance": 0.127698,
+      "rank": 3
+    },
+    {
+      "feature": "src_bytes",
+      "importance": 0.107533,
+      "rank": 4
+    },
+    {
+      "feature": "dst_bytes",
+      "importance": 0.103985,
+      "rank": 5
+    },
+    {
+      "feature": "feat_byte_ratio",
+      "importance": 0.063571,
+      "rank": 6
+    },
+    {
+      "feature": "dst_host_count",
+      "importance": 0.043321,
+      "rank": 7
+    },
+    {
+      "feature": "protocol_type_tcp",
+      "importance": 0.035833,
+      "rank": 8
+    },
+    {
+      "feature": "flag_SF",
+      "importance": 0.030119,
+      "rank": 9
+    },
+    {
+      "feature": "service_telnet",
+      "importance": 0.029228,
+      "rank": 10
+    },
+    {
+      "feature": "count",
+      "importance": 0.026667,
+      "rank": 11
+    },
+    {
+      "feature": "service_ftp_data",
+      "importance": 0.018958,
+      "rank": 12
+    },
+    {
+      "feature": "service_private",
+      "importance": 0.017048,
+      "rank": 13
+    },
+    {
+      "feature": "service_ftp",
+      "importance": 0.016071,
+      "rank": 14
+    },
+    {
+      "feature": "service_http",
+      "importance": 0.012222,
+      "rank": 15
+    }
+  ],
+  "artifact_path": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\trained\\random_forest_synthetic_v1.0.0.joblib",
+  "metadata_path": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\trained\\random_forest_synthetic_v1.0.0_metadata.json",
+  "preprocessing_artifact_path": "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\preprocessing\\synthetic"
+}

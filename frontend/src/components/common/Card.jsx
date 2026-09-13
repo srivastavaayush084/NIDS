@@ -1,0 +1,40 @@
+import React from 'react';
+
+export function Card({
+  title,
+  subtitle,
+  icon: Icon,
+  action,
+  children,
+  className = '',
+  headerClassName = '',
+  bodyClassName = '',
+  badge = null,
+}) {
+  return (
+    <div className={`bg-slate-900/70 border border-white/10 rounded-xl overflow-hidden backdrop-blur-md shadow-lg ${className}`}>
+      {(title || subtitle || Icon || action) && (
+        <div className={`px-5 py-4 border-b border-white/5 flex items-center justify-between gap-4 ${headerClassName}`}>
+          <div className="flex items-center gap-3">
+            {Icon && (
+              <div className="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                <Icon className="w-4 h-4" />
+              </div>
+            )}
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-slate-100 tracking-wide">{title}</h3>
+                {badge}
+              </div>
+              {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
+            </div>
+          </div>
+          {action && <div className="shrink-0">{action}</div>}
+        </div>
+      )}
+      <div className={`p-5 ${bodyClassName}`}>{children}</div>
+    </div>
+  );
+}
+
+export default Card;

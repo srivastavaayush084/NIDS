@@ -1,0 +1,85 @@
+{
+  "model_name": "autoencoder",
+  "dataset": "synthetic",
+  "evaluation_timestamp": "2026-09-07T21:44:27.407802+00:00",
+  "threshold_used": 1.078857,
+  "threshold_strategy": "percentile_95.0_normal_val",
+  "test_samples_total": 5,
+  "normal_samples": 2,
+  "attack_samples": 3,
+  "metrics": {
+    "accuracy": 0.8,
+    "precision": 0.75,
+    "recall_detection_rate": 1.0,
+    "f1_score": 0.8571,
+    "roc_auc": 0.8333,
+    "specificity": 0.5,
+    "false_positive_rate": 0.5,
+    "false_negative_rate": 0.0
+  },
+  "reconstruction_stats": {
+    "normal_mean_mse": 10.028339,
+    "normal_std_mse": 9.599129,
+    "attack_mean_mse": 156.286606,
+    "attack_std_mse": 108.408081
+  },
+  "reconstruction_error_distribution": {
+    "overall": {
+      "mean": 97.783302,
+      "median": 19.627468,
+      "max": 239.979675
+    },
+    "normal": {
+      "mean": 10.028339,
+      "median": 10.028339,
+      "percentile_95": 18.667555
+    },
+    "attack": {
+      "mean": 156.286606,
+      "median": 225.683365,
+      "percentile_95": 238.550049
+    }
+  },
+  "confusion_matrix": {
+    "true_negatives": 1,
+    "false_positives": 1,
+    "false_negatives": 0,
+    "true_positives": 3
+  },
+  "zero_day_evaluation": {
+    "unseen_categories": [
+      "zero_day_unseen"
+    ],
+    "unseen_attack_detection_rate": 1.0,
+    "known_attack_detection_rate": 1.0,
+    "category_breakdown": {
+      "normal": {
+        "total_samples": 2,
+        "detected_anomalies": 1,
+        "detection_rate": 0.5,
+        "is_unseen_zero_day": false,
+        "mean_reconstruction_error": 10.028339
+      },
+      "zero_day_unseen": {
+        "total_samples": 2,
+        "detected_anomalies": 2,
+        "detection_rate": 1.0,
+        "is_unseen_zero_day": true,
+        "mean_reconstruction_error": 232.831512
+      },
+      "dos": {
+        "total_samples": 1,
+        "detected_anomalies": 1,
+        "detection_rate": 1.0,
+        "is_unseen_zero_day": false,
+        "mean_reconstruction_error": 3.196771
+      }
+    }
+  },
+  "generated_plots": [
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\cm_autoencoder_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\roc_autoencoder_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\recon_dist_autoencoder_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\loss_curve_autoencoder_synthetic.png"
+  ]
+}

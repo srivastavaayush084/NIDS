@@ -1,0 +1,34 @@
+{
+  "strategy": "standard",
+  "unseen_categories": [],
+  "train_samples": 88181,
+  "val_samples": 18896,
+  "test_samples": 18896,
+  "train_normal": 47171,
+  "train_attack": 41010,
+  "val_normal": 10073,
+  "val_attack": 8823,
+  "test_normal": 10099,
+  "test_attack": 8797,
+  "train_categories": {
+    "normal": 47171,
+    "dos": 32209,
+    "probe": 8088,
+    "r2l": 674,
+    "u2r": 39
+  },
+  "val_categories": {
+    "normal": 10073,
+    "dos": 6853,
+    "probe": 1808,
+    "r2l": 155,
+    "u2r": 7
+  },
+  "test_categories": {
+    "normal": 10099,
+    "dos": 6865,
+    "probe": 1760,
+    "r2l": 166,
+    "u2r": 6
+  }
+}

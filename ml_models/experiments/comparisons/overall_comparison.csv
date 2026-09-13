@@ -1,0 +1,6 @@
+Model,Dataset,Evaluation Type,Accuracy,Balanced Accuracy,Precision,Recall (Detection Rate),F1-Score,ROC-AUC,PR-AUC,FPR,FNR,Specificity (TNR),Avg Latency (ms),Throughput (items/sec),Zero-Day Recall (Detection Rate),Zero-Day F1-Score,Zero-Day Miss Rate (FNR)
+isolation_forest,synthetic,Standard,0.4,0.3333,0.5,0.6667,0.5714,0.3333,0.5333,1.0,0.3333,0.0,12.9604,77.16,1.0,0.6667,0.0
+autoencoder,synthetic,Standard,0.8,0.75,0.75,1.0,0.8571,0.75,0.75,0.5,0.0,0.5,0.9413,1062.36,1.0,0.8,0.0
+lstm_autoencoder,synthetic,Standard,1.0,1.0,1.0,1.0,1.0,,,,0.0,,4.9857,200.57,,,
+random_forest,synthetic,Standard,0.6,0.5,0.6,1.0,0.75,0.3333,0.7333,1.0,0.0,0.0,8.5412,117.08,1.0,0.6667,0.0
+ensemble,synthetic,Standard,0.6,0.5,0.6,1.0,0.75,0.5,0.6389,1.0,0.0,0.0,91.7689,10.9,1.0,0.6667,0.0

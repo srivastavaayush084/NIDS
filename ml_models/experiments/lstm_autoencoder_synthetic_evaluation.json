@@ -1,0 +1,71 @@
+{
+  "model_name": "lstm_autoencoder",
+  "dataset": "synthetic",
+  "evaluation_timestamp": "2026-09-07T21:59:29.808493+00:00",
+  "threshold_used": 0.658657,
+  "threshold_strategy": "percentile_95.0_normal_val",
+  "sequence_length": 3,
+  "test_samples_total": 3,
+  "normal_samples": 0,
+  "attack_samples": 3,
+  "metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall_detection_rate": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": NaN,
+    "specificity": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.0
+  },
+  "reconstruction_stats": {
+    "normal_mean_mse": 0.0,
+    "normal_std_mse": 0.0,
+    "attack_mean_mse": 92.207344,
+    "attack_std_mse": 3.069632
+  },
+  "reconstruction_error_distribution": {
+    "overall": {
+      "mean": 92.207344,
+      "median": 90.574707,
+      "max": 96.507172
+    },
+    "normal": {
+      "mean": 0.0,
+      "median": 0.0,
+      "percentile_95": 0.0
+    },
+    "attack": {
+      "mean": 92.207344,
+      "median": 90.574707,
+      "percentile_95": 95.913925
+    }
+  },
+  "confusion_matrix": {
+    "true_negatives": 0,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "true_positives": 3
+  },
+  "zero_day_evaluation": {
+    "unseen_categories": [
+      "zero_day_unseen"
+    ],
+    "unseen_attack_detection_rate": "N/A",
+    "known_attack_detection_rate": 1.0,
+    "category_breakdown": {
+      "dos": {
+        "total_samples": 3,
+        "detected_anomalies": 3,
+        "detection_rate": 1.0,
+        "is_unseen_zero_day": false,
+        "mean_reconstruction_error": 92.207344
+      }
+    }
+  },
+  "generated_plots": [
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\cm_lstm_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\recon_dist_lstm_synthetic.png",
+    "C:\\Users\\Win\\Desktop\\ZERO\\ml_models\\experiments\\plots\\loss_curve_lstm_synthetic.png"
+  ]
+}

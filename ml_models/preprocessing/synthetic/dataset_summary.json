@@ -1,0 +1,53 @@
+{
+  "total_samples": 18,
+  "total_features": 13,
+  "memory_usage_mb": 0.0,
+  "duplicate_rows": 0,
+  "missing_cells": 0,
+  "numerical_feature_count": 10,
+  "categorical_feature_count": 3,
+  "numerical_features": [
+    "duration",
+    "src_bytes",
+    "dst_bytes",
+    "count",
+    "srv_count",
+    "serror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "dst_host_count",
+    "dst_host_srv_count"
+  ],
+  "categorical_features": [
+    "protocol_type",
+    "service",
+    "flag"
+  ],
+  "class_distribution": {
+    "normal": 8,
+    "attack": 10
+  },
+  "class_percentages": {
+    "normal": 44.44,
+    "attack": 55.56
+  },
+  "attack_category_distribution": {
+    "normal": 8,
+    "probe": 3,
+    "dos": 2,
+    "r2l": 2,
+    "zero_day_unseen": 2,
+    "u2r": 1
+  },
+  "attack_category_percentages": {
+    "normal": 44.44,
+    "probe": 16.67,
+    "dos": 11.11,
+    "r2l": 11.11,
+    "zero_day_unseen": 11.11,
+    "u2r": 5.56
+  },
+  "normal_count": 8,
+  "attack_count": 10,
+  "imbalance_ratio": 0.8
+}
