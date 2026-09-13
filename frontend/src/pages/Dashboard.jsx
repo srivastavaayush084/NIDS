@@ -61,7 +61,13 @@ export function Dashboard({
           icon={BarChart3}
         >
           <SeverityDistributionChart
-            data={summary?.severity_distribution || alertStats?.severity_distribution}
+            data={
+              summary?.severity_distribution ||
+              summary?.alerts_by_severity ||
+              alertStats?.severity_distribution ||
+              alertStats?.severity_breakdown ||
+              {}
+            }
           />
         </Card>
       </div>

@@ -40,17 +40,23 @@ class StatisticsService:
         total_anom = det_stats.get("anomalies", 0)
         anom_rate = round((total_anom / total_det * 100.0), 2) if total_det > 0 else 0.0
 
+        severity_counts = alt_stats.get("severity_counts", {
+            "CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0
+        })
+        status_counts = alt_stats.get("status_counts", {
+            "OPEN": 0, "ACKNOWLEDGED": 0, "RESOLVED": 0, "DISMISSED": 0
+        })
+
         return DashboardSummaryStatistics(
             total_detections=total_det,
             total_anomalies=total_anom,
             anomaly_rate=anom_rate,
             total_alerts=alt_stats.get("total", 0),
-            alerts_by_status=alt_stats.get("status_counts", {
-                "OPEN": 0, "ACKNOWLEDGED": 0, "RESOLVED": 0, "DISMISSED": 0
-            }),
-            alerts_by_severity=alt_stats.get("severity_counts", {
-                "CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0
-            }),
+            open_alerts=status_counts.get("OPEN", 0),
+            critical_alerts=severity_counts.get("CRITICAL", 0),
+            alerts_by_status=status_counts,
+            alerts_by_severity=severity_counts,
+            severity_distribution=severity_counts,
             average_risk_score=det_stats.get("avg_risk_score", 0.0),
             active_models_count=4,
             last_detection_time=det_stats.get("last_timestamp"),
@@ -66,6 +72,7 @@ class StatisticsService:
         """
         alt_stats = await self.alert_repo.get_alert_stats(start_time, end_time)
         status_counts = alt_stats.get("status_counts", {})
+        severity_counts = alt_stats.get("severity_counts", {})
 
         return AlertStatisticsResponse(
             total_alerts=alt_stats.get("total", 0),
@@ -73,7 +80,8 @@ class StatisticsService:
             acknowledged_alerts=status_counts.get("ACKNOWLEDGED", 0),
             resolved_alerts=status_counts.get("RESOLVED", 0),
             dismissed_alerts=status_counts.get("DISMISSED", 0),
-            severity_breakdown=alt_stats.get("severity_counts", {}),
+            severity_breakdown=severity_counts,
+            severity_distribution=severity_counts,
             status_breakdown=status_counts,
             top_source_ips=alt_stats.get("top_source_ips", []),
             top_destination_ips=alt_stats.get("top_destination_ips", []),

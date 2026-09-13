@@ -9,6 +9,8 @@ class DashboardSummaryStatistics(BaseModel):
     total_anomalies: int = 0
     anomaly_rate: float = 0.0
     total_alerts: int = 0
+    open_alerts: int = 0
+    critical_alerts: int = 0
     alerts_by_status: Dict[str, int] = Field(default_factory=lambda: {
         "OPEN": 0,
         "ACKNOWLEDGED": 0,
@@ -16,6 +18,12 @@ class DashboardSummaryStatistics(BaseModel):
         "DISMISSED": 0,
     })
     alerts_by_severity: Dict[str, int] = Field(default_factory=lambda: {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+    })
+    severity_distribution: Dict[str, int] = Field(default_factory=lambda: {
         "CRITICAL": 0,
         "HIGH": 0,
         "MEDIUM": 0,
@@ -34,6 +42,7 @@ class AlertStatisticsResponse(BaseModel):
     resolved_alerts: int = 0
     dismissed_alerts: int = 0
     severity_breakdown: Dict[str, int] = Field(default_factory=dict)
+    severity_distribution: Dict[str, int] = Field(default_factory=dict)
     status_breakdown: Dict[str, int] = Field(default_factory=dict)
     top_source_ips: List[Dict[str, Any]] = Field(default_factory=list)
     top_destination_ips: List[Dict[str, Any]] = Field(default_factory=list)

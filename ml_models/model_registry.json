@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated_at": "2026-09-13T04:25:01.548857+00:00",
+  "updated_at": "2026-09-13T05:22:34.723826+00:00",
   "models": {
     "isolation_forest_synthetic_v1.0.0": {
       "model_key": "isolation_forest_synthetic_v1.0.0",
@@ -63,7 +63,7 @@
       "model_type": "deep_learning_autoencoder",
       "dataset": "synthetic_test",
       "version": "1.0.0",
-      "artifact_path": "C:\\Users\\ayush\\AppData\\Local\\Temp\\pytest-of-ayush\\pytest-3\\test_autoencoder_trainer_workf0\\models\\autoencoder_synthetic_test_v1.0.0.pt",
+      "artifact_path": "C:\\Users\\ayush\\AppData\\Local\\Temp\\pytest-of-ayush\\pytest-4\\test_autoencoder_trainer_workf0\\models\\autoencoder_synthetic_test_v1.0.0.pt",
       "preprocessing_dir": "ml_models\\preprocessing\\synthetic_test",
       "feature_count": 8,
       "feature_names": [
@@ -100,7 +100,7 @@
       "metrics": {},
       "training_samples": 0,
       "is_active": true,
-      "registered_at": "2026-09-13T04:24:49.104274+00:00"
+      "registered_at": "2026-09-13T05:22:24.506024+00:00"
     },
     "autoencoder_synthetic_v1.0.0": {
       "model_key": "autoencoder_synthetic_v1.0.0",
@@ -171,7 +171,7 @@
       "model_type": "sequential_anomaly_detector",
       "dataset": "synthetic_test",
       "version": "1.0.0",
-      "artifact_path": "C:\\Users\\ayush\\AppData\\Local\\Temp\\pytest-of-ayush\\pytest-3\\test_lstm_trainer_workflow0\\models\\lstm_autoencoder_synthetic_test_v1.0.0.pt",
+      "artifact_path": "C:\\Users\\ayush\\AppData\\Local\\Temp\\pytest-of-ayush\\pytest-4\\test_lstm_trainer_workflow0\\models\\lstm_autoencoder_synthetic_test_v1.0.0.pt",
       "preprocessing_dir": "",
       "feature_count": 6,
       "feature_names": [
@@ -194,7 +194,7 @@
       },
       "training_samples": 46,
       "is_active": true,
-      "registered_at": "2026-09-13T04:24:55.083445+00:00"
+      "registered_at": "2026-09-13T05:22:29.634910+00:00"
     },
     "lstm_autoencoder_synthetic_v1.0.0": {
       "model_key": "lstm_autoencoder_synthetic_v1.0.0",
@@ -253,7 +253,7 @@
       "model_type": "supervised_classifier_baseline",
       "dataset": "synthetic_test",
       "version": "1.0.0",
-      "artifact_path": "C:\\Users\\ayush\\AppData\\Local\\Temp\\pytest-of-ayush\\pytest-3\\test_random_forest_trainer_wor0\\models\\random_forest_synthetic_test_v1.0.0.joblib",
+      "artifact_path": "C:\\Users\\ayush\\AppData\\Local\\Temp\\pytest-of-ayush\\pytest-4\\test_random_forest_trainer_wor0\\models\\random_forest_synthetic_test_v1.0.0.joblib",
       "preprocessing_dir": "",
       "feature_count": 6,
       "feature_names": [
@@ -284,7 +284,7 @@
       },
       "training_samples": 50,
       "is_active": true,
-      "registered_at": "2026-09-13T04:25:01.548857+00:00"
+      "registered_at": "2026-09-13T05:22:34.723119+00:00"
     },
     "random_forest_synthetic_v1.0.0": {
       "model_key": "random_forest_synthetic_v1.0.0",

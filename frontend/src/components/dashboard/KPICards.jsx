@@ -5,8 +5,8 @@ import { formatNumber } from '../../utils/formatters';
 export function KPICards({ summary = null }) {
   const totalDetections = summary?.total_detections ?? summary?.detections_count ?? 0;
   const totalAnomalies = summary?.total_anomalies ?? summary?.anomalies_count ?? 0;
-  const openAlerts = summary?.open_alerts ?? summary?.active_alerts ?? 0;
-  const criticalAlerts = summary?.critical_alerts ?? summary?.severity_distribution?.CRITICAL ?? 0;
+  const openAlerts = summary?.open_alerts ?? summary?.active_alerts ?? summary?.alerts_by_status?.OPEN ?? 0;
+  const criticalAlerts = summary?.critical_alerts ?? summary?.severity_distribution?.CRITICAL ?? summary?.alerts_by_severity?.CRITICAL ?? 0;
   const avgRiskScore = summary?.average_risk_score ?? summary?.avg_risk_score ?? 0;
 
   const cards = [
