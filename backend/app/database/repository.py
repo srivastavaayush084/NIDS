@@ -13,6 +13,19 @@ from backend.app.database.collections import (
 )
 
 
+def _ensure_utc_datetimes(val: Any) -> Any:
+    """Ensure any naive datetime has tzinfo=timezone.utc, recursing through dicts and lists."""
+    if isinstance(val, datetime):
+        if val.tzinfo is None:
+            return val.replace(tzinfo=timezone.utc)
+        return val
+    elif isinstance(val, dict):
+        return {k: _ensure_utc_datetimes(v) for k, v in val.items()}
+    elif isinstance(val, list):
+        return [_ensure_utc_datetimes(v) for v in val]
+    return val
+
+
 class BaseRepository:
     """Generic async MongoDB repository providing standard CRUD, pagination, and query operations."""
     
@@ -35,7 +48,8 @@ class BaseRepository:
         """Retrieve single document matching filter."""
         if self.collection is None:
             return None
-        return await self.collection.find_one(query)
+        doc = await self.collection.find_one(query)
+        return _ensure_utc_datetimes(doc) if doc else None
 
     async def find_many(
         self,
@@ -53,7 +67,8 @@ class BaseRepository:
         cursor = self.collection.find(filter_query).skip(clamped_skip).limit(clamped_limit)
         if sort:
             cursor = cursor.sort(sort)
-        return await cursor.to_list(length=clamped_limit)
+        docs = await cursor.to_list(length=clamped_limit)
+        return [_ensure_utc_datetimes(d) for d in docs]
 
     async def insert_one(self, document: Dict[str, Any]) -> Optional[str]:
         """Insert single document and return its hex ID string."""
@@ -166,7 +181,7 @@ class DetectionResultRepository(BaseRepository):
                     "total": res.get("total", 0),
                     "anomalies": res.get("anomalies", 0),
                     "avg_risk_score": round(float(res.get("avg_risk_score", 0.0) or 0.0), 2),
-                    "last_timestamp": res.get("last_timestamp"),
+                    "last_timestamp": _ensure_utc_datetimes(res.get("last_timestamp")),
                 }
         except Exception:
             pass

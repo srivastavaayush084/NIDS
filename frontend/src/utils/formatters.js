@@ -2,11 +2,44 @@
  * Standardized data formatters for UI presentation.
  */
 
+/**
+ * Safely parse a date input (Date instance, timestamp number, or ISO string).
+ * If an ISO string lacks timezone information (e.g. "2026-09-13T05:06:57.997000"),
+ * standard JavaScript new Date(...) parses it in local client time instead of UTC.
+ * Since backend timestamps are recorded in UTC, normalize naive ISO strings to UTC by appending 'Z'.
+ */
+export function parseDate(dateInput) {
+  if (!dateInput) return null;
+  if (dateInput instanceof Date) {
+    return isNaN(dateInput.getTime()) ? null : dateInput;
+  }
+  if (typeof dateInput === 'number') {
+    const d = new Date(dateInput);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  if (typeof dateInput === 'string') {
+    const str = dateInput.trim();
+    if (!str) return null;
+
+    // Matches YYYY-MM-DDTHH:mm:ss(.sss) or YYYY-MM-DD HH:mm:ss(.sss) without Z or +/-offset
+    const isoWithoutTzRegex = /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:\.\d+)?$/;
+    if (isoWithoutTzRegex.test(str)) {
+      const normalized = str.replace(' ', 'T') + 'Z';
+      const d = new Date(normalized);
+      if (!isNaN(d.getTime())) return d;
+    }
+
+    const d = new Date(str);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  return null;
+}
+
 export function formatDate(dateInput) {
   if (!dateInput) return '—';
   try {
-    const d = new Date(dateInput);
-    if (isNaN(d.getTime())) return String(dateInput);
+    const d = parseDate(dateInput);
+    if (!d) return String(dateInput);
     return new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
       month: 'short',
@@ -24,10 +57,11 @@ export function formatDate(dateInput) {
 export function formatRelativeTime(dateInput) {
   if (!dateInput) return '—';
   try {
-    const d = new Date(dateInput);
-    if (isNaN(d.getTime())) return '—';
+    const d = parseDate(dateInput);
+    if (!d) return '—';
     const now = new Date();
-    const diffSec = Math.floor((now.getTime() - d.getTime()) / 1000);
+    // Clamp to 0 to gracefully handle minor clock skew between client and server
+    const diffSec = Math.max(0, Math.floor((now.getTime() - d.getTime()) / 1000));
 
     if (diffSec < 5) return 'just now';
     if (diffSec < 60) return `${diffSec}s ago`;

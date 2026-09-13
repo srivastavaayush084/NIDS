@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
+  parseDate,
   formatDate,
   formatRelativeTime,
   formatBytes,
@@ -9,6 +10,29 @@ import {
 } from '../utils/formatters';
 
 describe('formatters utility suite', () => {
+  it('parses dates with timezone awareness', () => {
+    expect(parseDate(null)).toBeNull();
+    expect(parseDate('')).toBeNull();
+    expect(parseDate('invalid-date')).toBeNull();
+
+    // Naive ISO string without Z should be parsed as UTC
+    const naiveIso = '2026-09-13T10:00:00';
+    const parsedNaive = parseDate(naiveIso);
+    expect(parsedNaive).not.toBeNull();
+    expect(parsedNaive.toISOString()).toBe('2026-09-13T10:00:00.000Z');
+
+    // ISO string with space separator
+    const spaceIso = '2026-09-13 10:00:00';
+    const parsedSpace = parseDate(spaceIso);
+    expect(parsedSpace).not.toBeNull();
+    expect(parsedSpace.toISOString()).toBe('2026-09-13T10:00:00.000Z');
+
+    // Standard UTC ISO string with Z
+    const utcIso = '2026-09-13T10:00:00Z';
+    const parsedUtc = parseDate(utcIso);
+    expect(parsedUtc.toISOString()).toBe('2026-09-13T10:00:00.000Z');
+  });
+
   it('formats dates properly', () => {
     expect(formatDate(null)).toBe('—');
     expect(formatDate('invalid-date')).toBe('invalid-date');
@@ -17,10 +41,20 @@ describe('formatters utility suite', () => {
     expect(typeof valid).toBe('string');
   });
 
-  it('formats relative times', () => {
+  it('formats relative times and handles timezone offsets accurately', () => {
     expect(formatRelativeTime(null)).toBe('—');
     const now = new Date();
     expect(formatRelativeTime(now.toISOString())).toBe('just now');
+
+    // 2 minutes ago, formatted as naive ISO string without 'Z'
+    const twoMinAgo = new Date(now.getTime() - 2 * 60 * 1000);
+    const naiveTwoMinAgoIso = twoMinAgo.toISOString().replace('Z', '');
+    // Should correctly resolve to '2m ago' and NOT '5h ago'
+    expect(formatRelativeTime(naiveTwoMinAgoIso)).toBe('2m ago');
+
+    // Clock skew tolerance (1-2 seconds in future returns 'just now')
+    const slightlyFuture = new Date(now.getTime() + 2000);
+    expect(formatRelativeTime(slightlyFuture.toISOString())).toBe('just now');
   });
 
   it('formats byte volumes accurately', () => {

@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 import { StatusPill } from '../components/common/StatusPill';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import { ErrorAlert } from '../components/common/ErrorAlert';
+import { formatDate } from '../utils/formatters';
 import { Users as UsersIcon, UserPlus, Shield, CheckCircle2, XCircle, RefreshCw, KeyRound, AlertTriangle, Calendar, Clock, Check } from 'lucide-react';
 
 export function getUserSafeErrorMessage(err) {
@@ -223,8 +224,8 @@ export function Users() {
               <tbody className="divide-y divide-white/5 font-medium">
                 {users.map((u) => {
                   const isCurrent = (u.user_id || u.id) === (currentUser?.user_id || currentUser?.id);
-                  const createdDate = u.created_at ? new Date(u.created_at).toLocaleDateString() : '—';
-                  const lastLoginDate = u.last_login_at ? new Date(u.last_login_at).toLocaleString() : 'Never';
+                  const createdDate = formatDate(u.created_at);
+                  const lastLoginDate = u.last_login_at ? formatDate(u.last_login_at) : 'Never';
 
                   return (
                     <tr key={u.user_id || u.id} className="hover:bg-slate-800/30 transition">

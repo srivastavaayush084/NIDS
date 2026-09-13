@@ -18,6 +18,7 @@ async def connect_to_mongo() -> bool:
 
         db_manager.client = AsyncIOMotorClient(
             settings.MONGODB_URI,
+            tz_aware=True,
             minPoolSize=settings.MONGODB_MIN_POOL_SIZE,
             maxPoolSize=settings.MONGODB_MAX_POOL_SIZE,
             serverSelectionTimeoutMS=settings.MONGODB_TIMEOUT_MS,
@@ -72,6 +73,7 @@ async def check_mongo_health() -> Tuple[bool, Optional[float], Dict[str, Any]]:
         try:
             db_manager.client = AsyncIOMotorClient(
                 settings.MONGODB_URI,
+                tz_aware=True,
                 minPoolSize=settings.MONGODB_MIN_POOL_SIZE,
                 maxPoolSize=settings.MONGODB_MAX_POOL_SIZE,
                 serverSelectionTimeoutMS=settings.MONGODB_TIMEOUT_MS,
