@@ -160,16 +160,27 @@ export function Sidebar({ openAlertsCount = 0, isMonitoring = false, onCloseMobi
         )}
 
         {/* Pipeline Stack Banner */}
-        <div className="p-3.5 rounded-xl bg-slate-800/40 border border-white/5 space-y-2">
-          <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold">
-            <Layers className="w-3.5 h-3.5" />
-            <span>Active ML Ensemble</span>
+        <div className="p-3 rounded-xl bg-slate-800/40 border border-white/5 space-y-2.5 overflow-hidden">
+          <div className="flex items-center justify-between text-indigo-400 text-xs font-bold">
+            <div className="flex items-center gap-2">
+              <Layers className="w-3.5 h-3.5" />
+              <span>Active ML Ensemble</span>
+            </div>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" title="Ensemble Active" />
           </div>
-          <div className="flex flex-wrap gap-1 text-[9px] font-mono text-slate-400">
-            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-white/5">IsolationForest</span>
-            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-white/5">Autoencoder</span>
-            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-white/5">LSTM</span>
-            <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-white/5">RandomForest</span>
+          <div className="grid grid-cols-2 gap-1.5 text-[9px] font-mono text-slate-300">
+            <span className="px-1.5 py-1 rounded bg-slate-900/90 border border-white/5 text-center truncate" title="Isolation Forest (Unsupervised Anomaly)">
+              IsolationForest
+            </span>
+            <span className="px-1.5 py-1 rounded bg-slate-900/90 border border-white/5 text-center truncate" title="Dense Autoencoder (Reconstruction Error)">
+              Autoencoder
+            </span>
+            <span className="px-1.5 py-1 rounded bg-slate-900/90 border border-white/5 text-center truncate" title="LSTM Autoencoder (Temporal Sequence)">
+              LSTM
+            </span>
+            <span className="px-1.5 py-1 rounded bg-slate-900/90 border border-white/5 text-center truncate" title="Random Forest (Multi-Class Signature Classifier)">
+              RandomForest
+            </span>
           </div>
         </div>
       </div>
