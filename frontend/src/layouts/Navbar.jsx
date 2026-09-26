@@ -24,7 +24,17 @@ export function Navbar({
   const localString = currentTime.toLocaleTimeString([], { hour12: false });
 
   return (
-    <header className="h-16 border-b border-[#E2E8F0] bg-white/95 backdrop-blur-xl sticky top-0 z-30 px-6 sm:px-8 flex items-center justify-between shadow-2xs">
+    <header
+      className="nids-navbar h-16 border-b border-[#E2E8F0] px-6 sm:px-8 flex items-center justify-between shadow-2xs"
+      style={{
+        backgroundColor: '#FFFFFF',
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        borderBottom: '1px solid #E2E8F0',
+        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.05)',
+      }}
+    >
       {/* Left: SOC Telemetry Indicators */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#EAF2FF] border border-[#2563EB]/20 text-xs font-semibold text-[#2563EB]">

@@ -379,6 +379,7 @@ button {
 
 /* Backgrounds */
 /* Main Background: Very Light Blue #F6F9FC | Cards: White #FFFFFF */
+.bg-white, .bg-white\/95, .bg-white\/90, .bg-white\/80 { background-color: #FFFFFF !important; }
 .bg-slate-950 { background-color: #F6F9FC; }
 .bg-slate-900 { background-color: #FFFFFF; }
 .bg-slate-900\/40, .bg-slate-900\/50, .bg-slate-900\/60, .bg-slate-900\/70, .bg-slate-900\/80 { background-color: #FFFFFF; }
@@ -386,6 +387,24 @@ button {
 .bg-slate-800\/30, .bg-slate-800\/40, .bg-slate-800\/60, .bg-slate-800\/80 { background-color: #F1F5F9; }
 .bg-slate-700\/50 { background-color: #E2E8F0; }
 .bg-white\/10 { background-color: #F1F5F9; }
+.bg-red-50 { background-color: #FEF2F2 !important; }
+.bg-amber-50 { background-color: #FFFBEB !important; }
+.bg-emerald-50 { background-color: #ECFDF5 !important; }
+.border-red-200 { border-color: #FECACA !important; }
+.border-amber-200 { border-color: #FDE68A !important; }
+.border-emerald-200 { border-color: #A7F3D0 !important; }
+
+/* Sticky Top Navigation Bar (Guaranteed Solid Opaque Background to Prevent Content Bleed on Scroll) */
+.nids-navbar {
+  height: 64px !important;
+  min-height: 64px !important;
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
 
 /* Backdrop Blur & Gradients */
 .backdrop-blur-md, .backdrop-blur-sm, .backdrop-blur-xl { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
