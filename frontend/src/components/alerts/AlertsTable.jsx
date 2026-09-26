@@ -7,6 +7,9 @@ import { Eye, CheckCircle2, ShieldCheck, XCircle } from 'lucide-react';
 
 export function AlertsTable({
   alerts = [],
+  selectedIds = [],
+  onToggleSelect,
+  onToggleSelectAll,
   onViewDetails,
   onAcknowledge,
   onResolve,
@@ -22,11 +25,29 @@ export function AlertsTable({
     );
   }
 
+  const pageIds = alerts.map((a) => a.alert_id || a._id || a.id).filter(Boolean);
+  const isAllSelected = pageIds.length > 0 && pageIds.every((id) => selectedIds.includes(id));
+  const isSomeSelected = pageIds.some((id) => selectedIds.includes(id)) && !isAllSelected;
+
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-left text-xs">
         <thead>
           <tr className="border-b border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-800/40">
+            {onToggleSelect && (
+              <th className="w-10 px-4 py-3 text-center">
+                <input
+                  type="checkbox"
+                  aria-label="Select all incidents on this page"
+                  checked={isAllSelected}
+                  ref={(el) => {
+                    if (el) el.indeterminate = isSomeSelected;
+                  }}
+                  onChange={onToggleSelectAll}
+                  className="w-4 h-4 rounded border-slate-600 bg-slate-800 text-blue-600 focus:ring-blue-500 focus:ring-offset-slate-900 cursor-pointer"
+                />
+              </th>
+            )}
             <th className="px-4 py-3">Severity</th>
             <th className="px-4 py-3">Alert Title & ID</th>
             <th className="px-4 py-3">Source &rarr; Target</th>
@@ -58,12 +79,26 @@ export function AlertsTable({
               ? 'border-l-medium'
               : 'border-l-low';
 
+            const isSelected = selectedIds.includes(alertId);
+            const selectedClass = isSelected ? 'bg-indigo-950/40 hover:bg-indigo-900/50' : 'hover:bg-slate-800/40';
+
             return (
               <tr
                 key={alertId}
-                className={`hover:bg-slate-800/40 transition-all duration-150 group cursor-pointer ${borderClass}`}
+                className={`${selectedClass} transition-all duration-150 group cursor-pointer ${borderClass}`}
                 onClick={() => onViewDetails && onViewDetails(alertId)}
               >
+                {onToggleSelect && (
+                  <td className="w-10 px-4 py-3 text-center" onClick={(e) => e.stopPropagation()}>
+                    <input
+                      type="checkbox"
+                      aria-label={`Select incident ${alertId}`}
+                      checked={isSelected}
+                      onChange={() => onToggleSelect(alertId)}
+                      className="w-4 h-4 rounded border-slate-600 bg-slate-800 text-blue-600 focus:ring-blue-500 focus:ring-offset-slate-900 cursor-pointer"
+                    />
+                  </td>
+                )}
                 <td className="px-4 py-3">
                   <SeverityBadge severity={alt.severity} size="sm" />
                 </td>

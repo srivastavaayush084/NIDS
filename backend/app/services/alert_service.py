@@ -247,6 +247,55 @@ class AlertService:
             logger.info(f"Alert [{alert_id}] marked as DISMISSED by {user_id or 'system'}")
         return updated
 
+    async def bulk_update_alerts(
+        self,
+        alert_ids: List[str],
+        action: str,
+        note: Optional[str] = None,
+        user_id: Optional[str] = None,
+    ) -> int:
+        """Batch transition multiple alerts to RESOLVED, DISMISSED, or ACKNOWLEDGED."""
+        action_upper = action.strip().upper()
+        if action_upper == "RESOLVE":
+            status = "RESOLVED"
+            res_note = note or "Bulk resolved by analyst."
+            dis_reason = None
+            audit_action = "ALERT_BULK_RESOLVED"
+        elif action_upper == "DISMISS":
+            status = "DISMISSED"
+            res_note = None
+            dis_reason = note or "Confirmed as normal / false positive by analyst."
+            audit_action = "ALERT_BULK_DISMISSED"
+        elif action_upper == "ACKNOWLEDGE":
+            status = "ACKNOWLEDGED"
+            res_note = None
+            dis_reason = None
+            audit_action = "ALERT_BULK_ACKNOWLEDGED"
+        else:
+            raise ValueError(f"Invalid bulk action: {action}")
+
+        count = await self.repository.bulk_update_status(
+            alert_ids=alert_ids,
+            status=status,
+            assigned_to=user_id,
+            resolution_note=res_note,
+            dismissal_reason=dis_reason,
+        )
+        if count > 0:
+            await self._write_audit_log(
+                action=audit_action,
+                resource=f"alerts_batch_{len(alert_ids)}",
+                user_id=user_id,
+                details={
+                    "count": count,
+                    "status": status,
+                    "note": note,
+                    "alert_ids": alert_ids[:50],
+                },
+            )
+            logger.info(f"Bulk updated {count} alerts to status {status} by {user_id or 'analyst'}")
+        return count
+
     async def query_alerts(
         self,
         params: Optional[AlertFilterParams] = None,

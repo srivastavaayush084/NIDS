@@ -246,6 +246,48 @@ async def dismiss_alert(
     }
 
 
+class BulkAlertActionRequest(BaseModel):
+    alert_ids: List[str] = Field(..., min_length=1, max_length=1000, description="List of alert IDs to update")
+    action: str = Field(..., description="Action: 'resolve', 'dismiss', or 'acknowledge'")
+    note: Optional[str] = Field(default=None, description="Optional resolution note or dismissal reason")
+
+
+@router.post(
+    "/bulk",
+    response_model=Dict[str, Any],
+    summary="Bulk Update Security Alerts (Resolve, Confirm Normal/Dismiss, Acknowledge)",
+)
+async def bulk_update_alerts(
+    body: BulkAlertActionRequest,
+    current_user: UserDocument = Depends(require_analyst_or_admin),
+):
+    """
+    Perform a batch status update across multiple security alerts simultaneously.
+    Can resolve multiple incidents or confirm/dismiss them as normal/false positives at once.
+    """
+    valid_actions = ["resolve", "dismiss", "acknowledge"]
+    action_clean = body.action.strip().lower()
+    if action_clean not in valid_actions:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Invalid action '{body.action}'. Must be one of {valid_actions}.",
+        )
+
+    count = await alert_service.bulk_update_alerts(
+        alert_ids=body.alert_ids,
+        action=action_clean,
+        note=body.note,
+        user_id=current_user.username,
+    )
+
+    action_label = "resolved" if action_clean == "resolve" else ("confirmed as normal / dismissed" if action_clean == "dismiss" else "acknowledged")
+    return {
+        "success": True,
+        "updated_count": count,
+        "message": f"Successfully {action_label} {count} incident(s).",
+    }
+
+
 # =============================================================================
 # Legacy Alert Endpoints (Phases 1-2 Compatibility)
 # =============================================================================

@@ -6,30 +6,63 @@ export function AlertActionModal({
   isOpen = false,
   type = 'resolve', // 'resolve', 'dismiss', 'acknowledge'
   alertId = null,
+  count = 1,
   onClose,
   onSubmit,
   loading = false,
 }) {
+  const isBulk = count > 1;
   const [note, setNote] = useState('');
   const [error, setError] = useState(null);
 
+  React.useEffect(() => {
+    if (isOpen) {
+      setNote(
+        isBulk
+          ? (type === 'resolve' ? 'Bulk resolved by security analyst.' : 'Confirmed as normal benign traffic / false positive.')
+          : ''
+      );
+      setError(null);
+    }
+  }, [isOpen, isBulk, type]);
+
   const getTitle = () => {
+    if (isBulk) {
+      switch (type) {
+        case 'resolve':
+          return `Resolve ${count} Security Incidents`;
+        case 'dismiss':
+          return `Confirm ${count} Incidents as Normal`;
+        default:
+          return `Acknowledge ${count} Incidents`;
+      }
+    }
     switch (type) {
       case 'resolve':
         return 'Resolve Security Incident';
       case 'dismiss':
-        return 'Dismiss Alert';
+        return 'Confirm as Normal / Dismiss Alert';
       default:
         return 'Acknowledge Alert';
     }
   };
 
   const getSubtitle = () => {
+    if (isBulk) {
+      switch (type) {
+        case 'resolve':
+          return `Transition all ${count} selected incidents to RESOLVED status`;
+        case 'dismiss':
+          return `Confirm all ${count} selected incidents as normal / false positive (DISMISSED)`;
+        default:
+          return `Acknowledge all ${count} selected incidents`;
+      }
+    }
     switch (type) {
       case 'resolve':
         return `Provide remediation notes for alert ${alertId}`;
       case 'dismiss':
-        return `State reason for dismissing alert ${alertId} (e.g. false positive)`;
+        return `State reason for confirming alert ${alertId} as normal`;
       default:
         return `Confirm taking ownership of alert ${alertId}`;
     }
@@ -115,7 +148,7 @@ export function AlertActionModal({
             }`}
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
-            <span>Confirm {type.charAt(0).toUpperCase() + type.slice(1)}</span>
+            <span>Confirm {isBulk ? `${count} Incidents` : type.charAt(0).toUpperCase() + type.slice(1)}</span>
           </button>
         </div>
       </form>

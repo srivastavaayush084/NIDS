@@ -41,6 +41,17 @@ export const alertsApi = {
       user_id: userId,
     });
   },
+
+  /**
+   * Bulk transition multiple alerts to RESOLVED, DISMISSED (normal), or ACKNOWLEDGED.
+   */
+  async bulkUpdateAlerts(alertIds, action, note = null) {
+    return apiClient.post('/api/v1/alerts/bulk', {
+      alert_ids: alertIds,
+      action: action,
+      note: note,
+    });
+  },
 };
 
 export default alertsApi;

@@ -266,6 +266,35 @@ class AlertRepository(BaseRepository):
         result = await self.collection.update_one({"alert_id": alert_id}, {"$set": set_fields})
         return result.modified_count > 0
 
+    async def bulk_update_status(
+        self,
+        alert_ids: List[str],
+        status: str,
+        assigned_to: Optional[str] = None,
+        resolution_note: Optional[str] = None,
+        dismissal_reason: Optional[str] = None,
+    ) -> int:
+        """Update the lifecycle status across multiple alerts in a single batch operation."""
+        if self.collection is None or not alert_ids:
+            return 0
+        now = datetime.now(timezone.utc)
+        set_fields: Dict[str, Any] = {
+            "status": status,
+            "updated_at": now,
+        }
+        if assigned_to is not None:
+            set_fields["assigned_to"] = assigned_to
+        if resolution_note is not None:
+            set_fields["resolution_note"] = resolution_note
+        if dismissal_reason is not None:
+            set_fields["dismissal_reason"] = dismissal_reason
+
+        result = await self.collection.update_many(
+            {"alert_id": {"$in": alert_ids}},
+            {"$set": set_fields},
+        )
+        return result.modified_count
+
     async def get_alert_stats(
         self,
         start_time: Optional[datetime] = None,

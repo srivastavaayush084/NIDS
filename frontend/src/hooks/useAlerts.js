@@ -111,6 +111,19 @@ export function useAlerts(initialParams = {}, autoPoll = true) {
     }
   };
 
+  const bulkUpdateAlerts = async (alertIds, action, note = null) => {
+    try {
+      setActionLoading(true);
+      const res = await alertsApi.bulkUpdateAlerts(alertIds, action, note);
+      await fetchAlerts();
+      return res;
+    } catch (err) {
+      throw err;
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
   return {
     alerts,
     pagination,
@@ -124,6 +137,7 @@ export function useAlerts(initialParams = {}, autoPoll = true) {
     acknowledgeAlert,
     resolveAlert,
     dismissAlert,
+    bulkUpdateAlerts,
   };
 }
 
