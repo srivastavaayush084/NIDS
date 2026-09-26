@@ -4,8 +4,11 @@ export const authApi = {
   /**
    * Authenticate with username or email + password.
    */
-  async login(credentials) {
-    return apiClient.post('/api/v1/auth/login', credentials);
+  async login(credentials, password) {
+    const payload = typeof credentials === 'string'
+      ? { username: credentials, password }
+      : credentials;
+    return apiClient.post('/api/v1/auth/login', payload);
   },
 
   /**

@@ -31,6 +31,63 @@ async def lifespan(app: FastAPI):
     db_connected = await connect_to_mongo()
     is_healthy, latency_ms, db_details = await check_mongo_health()
     
+    # Auto-seed initial admin and analyst accounts if database is empty or missing admin
+    if is_healthy:
+        try:
+            from datetime import datetime, timezone
+            from backend.app.database.repository import UserRepository
+            from backend.app.auth.password import hash_password
+            user_repo = UserRepository()
+            admin_user = await user_repo.get_user_by_username("admin")
+            if not admin_user:
+                logger.info("No admin user found. Automatically provisioning initial development/admin account...")
+                now = datetime.now(timezone.utc)
+                initial_users = [
+                    {
+                        "user_id": "usr-admin-01",
+                        "username": "admin",
+                        "email": "admin@zeroday.local",
+                        "full_name": "System Administrator",
+                        "hashed_password": hash_password("AdminPass123!"),
+                        "role": "admin",
+                        "is_active": True,
+                        "created_at": now,
+                        "updated_at": None,
+                        "last_login_at": None,
+                    },
+                    {
+                        "user_id": "usr-analyst-01",
+                        "username": "analyst",
+                        "email": "analyst@zeroday.local",
+                        "full_name": "Security Operations Analyst",
+                        "hashed_password": hash_password("Analyst12345!"),
+                        "role": "analyst",
+                        "is_active": True,
+                        "created_at": now,
+                        "updated_at": None,
+                        "last_login_at": None,
+                    },
+                    {
+                        "user_id": "usr-viewer-01",
+                        "username": "viewer",
+                        "email": "viewer@zeroday.local",
+                        "full_name": "Security Telemetry Viewer",
+                        "hashed_password": hash_password("Viewer12345!"),
+                        "role": "viewer",
+                        "is_active": True,
+                        "created_at": now,
+                        "updated_at": None,
+                        "last_login_at": None,
+                    },
+                ]
+                for u in initial_users:
+                    exists = await user_repo.get_user_by_username(u["username"])
+                    if not exists:
+                        await user_repo.create_user(u)
+                logger.info("Initial user accounts provisioned successfully.")
+        except Exception as seed_err:
+            logger.warning(f"Auto-seeding initial users skipped: {seed_err}")
+    
     # 2. Initialize ML Model Manager
     model_manager.load_models()
     models_status = model_manager.get_model_status()

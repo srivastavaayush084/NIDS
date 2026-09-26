@@ -56,6 +56,10 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     const res = await authApi.login(credentials);
+    if (!res || typeof res !== 'object' || !res.access_token) {
+      const errMsg = res?.message || res?.detail || 'Authentication failed: Invalid credentials or empty response from server.';
+      throw new Error(errMsg);
+    }
     const { access_token, refresh_token, user: userData } = res;
     apiClient.setSession(access_token, refresh_token, userData);
     setToken(access_token);

@@ -7,7 +7,18 @@
 const DEFAULT_BASE_URL = 'http://localhost:8000';
 const DEFAULT_TIMEOUT_MS = 15000;
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || DEFAULT_BASE_URL;
+export function normalizeBaseUrl(url) {
+  if (!url || typeof url !== 'string') return DEFAULT_BASE_URL;
+  let clean = url.trim().replace(/\/+$/, '');
+  if (!clean) return DEFAULT_BASE_URL;
+  // Automatically prepend https:// if a hostname is provided without protocol (e.g. from Render or env vars)
+  if (!clean.startsWith('http://') && !clean.startsWith('https://') && !clean.startsWith('/')) {
+    clean = `https://${clean}`;
+  }
+  return clean;
+}
+
+export const API_BASE_URL = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL);
 
 const ACCESS_TOKEN_KEY = 'zeroday_access_token';
 const REFRESH_TOKEN_KEY = 'zeroday_refresh_token';
@@ -35,7 +46,7 @@ export function formatQueryParams(params = {}) {
 
 export class ApiClient {
   constructor(baseUrl = API_BASE_URL) {
-    this.baseUrl = baseUrl.replace(/\/+$/, '');
+    this.baseUrl = normalizeBaseUrl(baseUrl);
     this._isRefreshing = false;
     this._refreshSubscribers = [];
   }
@@ -161,11 +172,19 @@ export class ApiClient {
 
       // Attempt to parse JSON body
       let data = null;
-      const contentType = response.headers.get('content-type');
-      if (contentType && contentType.includes('application/json')) {
+      const contentType = (response.headers.get('content-type') || '').toLowerCase();
+      if (contentType.includes('application/json')) {
         data = await response.json().catch(() => null);
       } else {
         const text = await response.text().catch(() => '');
+        // Check if we received an HTML response for an API call (indicates SPA rewrite fallback or wrong backend URL)
+        if (text && (text.includes('<!DOCTYPE html') || text.includes('<!doctype html') || text.includes('<html'))) {
+          throw new ApiError(
+            'Received HTML response from server instead of API data. This usually indicates an incorrect VITE_API_BASE_URL or unreachable backend.',
+            response.status,
+            { responsePreview: text.substring(0, 150) }
+          );
+        }
         data = text ? { message: text } : null;
       }
 
