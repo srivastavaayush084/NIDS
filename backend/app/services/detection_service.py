@@ -14,6 +14,7 @@ from backend.app.services.ensemble_service import ensemble_service
 from backend.app.services.explainer_service import explainer_service
 from backend.app.services.alert_service import alert_service
 from backend.app.services.lstm_service import lstm_service
+from backend.app.ml.ensemble.severity import classify_severity
 from backend.app.detection.engine import detection_engine
 from backend.app.schemas.detection import (
     SingleDetectionRequest,
@@ -401,16 +402,9 @@ class DetectionService:
             except Exception as e:
                 logger.warning(f"[{det_id}] Sequence XAI calculation error: {e}")
 
-        # Map risk score to threat severity
+        # Map risk score to threat severity using centralized classifier
         risk = float(getattr(seq_result, "anomaly_score", getattr(seq_result, "risk_score", 0.0)))
-        if risk >= 75.0:
-            severity = "CRITICAL"
-        elif risk >= 50.0:
-            severity = "HIGH"
-        elif risk >= 25.0:
-            severity = "MEDIUM"
-        else:
-            severity = "LOW"
+        severity = classify_severity(risk)
 
         raw_err = float(getattr(seq_result, "raw_score", getattr(seq_result, "reconstruction_error", 0.0)))
         th = float(getattr(seq_result, "threshold", 0.5))

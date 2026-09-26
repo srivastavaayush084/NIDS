@@ -169,9 +169,9 @@ class Settings(BaseSettings):
 
     # Security Alert Engine Configuration
     ALERTS_ENABLED: bool = True
-    ALERT_MIN_RISK_SCORE: float = 50.0
+    ALERT_MIN_RISK_SCORE: float = 25.0
     ALERT_LOW_ENABLED: bool = False
-    ALERT_MEDIUM_ENABLED: bool = False
+    ALERT_MEDIUM_ENABLED: bool = True
     ALERT_HIGH_ENABLED: bool = True
     ALERT_CRITICAL_ENABLED: bool = True
     ALERT_DEDUP_WINDOW_SECONDS: int = 300
