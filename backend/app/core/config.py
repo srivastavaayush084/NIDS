@@ -31,10 +31,12 @@ class Settings(BaseSettings):
     @field_validator("CORS_ORIGINS", mode="before")
     @classmethod
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
-        if isinstance(v, str) and not v.startswith("["):
-            return [i.strip() for i in v.split(",") if i.strip()]
-        elif isinstance(v, (list, str)):
-            return v
+        if isinstance(v, str):
+            clean_str = v.strip().strip("'\"").strip()
+            if not clean_str.startswith("["):
+                return [i.strip().strip("'\"") for i in clean_str.split(",") if i.strip()]
+        elif isinstance(v, list):
+            return [str(i).strip().strip("'\"") for i in v]
         return []
 
     # MongoDB Database Configuration
@@ -47,15 +49,31 @@ class Settings(BaseSettings):
     @field_validator("MONGODB_URI", mode="before")
     @classmethod
     def validate_mongodb_uri(cls, v: Union[str, None]) -> str:
+        if isinstance(v, str):
+            v = v.strip().strip("'\"").strip()
         if not v or not isinstance(v, str) or not (v.startswith("mongodb://") or v.startswith("mongodb+srv://")):
             raise ValueError("MONGODB_URI must be a valid connection string starting with 'mongodb://' or 'mongodb+srv://'")
         return v
+
+    @field_validator("MONGODB_DATABASE", mode="before")
+    @classmethod
+    def sanitize_database_name(cls, v: Union[str, None]) -> str:
+        if isinstance(v, str):
+            return v.strip().strip("'\"").strip()
+        return v or "zero_day_detection"
 
     # Security, JWT & Authentication Configuration
     JWT_SECRET_KEY: str = Field(
         default="dev-insecure-secret-key-change-in-production-1234567890",
         validation_alias=AliasChoices("JWT_SECRET_KEY", "SECRET_KEY")
     )
+
+    @field_validator("JWT_SECRET_KEY", mode="before")
+    @classmethod
+    def sanitize_jwt_secret(cls, v: Union[str, None]) -> str:
+        if isinstance(v, str):
+            return v.strip().strip("'\"").strip()
+        return v
     JWT_ALGORITHM: str = Field(default="HS256", validation_alias=AliasChoices("JWT_ALGORITHM", "ALGORITHM"))
     ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(default=60, validation_alias=AliasChoices("ACCESS_TOKEN_EXPIRE_MINUTES", "ACCESS_TOKEN_EXPIRE"))
     REFRESH_TOKEN_EXPIRE_DAYS: int = Field(default=7, validation_alias=AliasChoices("REFRESH_TOKEN_EXPIRE_DAYS", "REFRESH_TOKEN_EXPIRE"))
