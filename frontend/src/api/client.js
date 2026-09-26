@@ -11,11 +11,39 @@ export function normalizeBaseUrl(url) {
   if (!url || typeof url !== 'string') return DEFAULT_BASE_URL;
   let clean = url.trim().replace(/\/+$/, '');
   if (!clean) return DEFAULT_BASE_URL;
-  // Automatically prepend https:// if a hostname is provided without protocol (e.g. from Render or env vars)
-  if (!clean.startsWith('http://') && !clean.startsWith('https://') && !clean.startsWith('/')) {
-    clean = `https://${clean}`;
+
+  // Extract protocol if present
+  let protocol = '';
+  if (clean.startsWith('http://')) {
+    protocol = 'http://';
+    clean = clean.substring(7);
+  } else if (clean.startsWith('https://')) {
+    protocol = 'https://';
+    clean = clean.substring(8);
   }
-  return clean;
+
+  // If clean is a relative path like '/api', return it as-is
+  if (clean.startsWith('/') && !protocol) {
+    return clean;
+  }
+
+  // Separate hostname/port from path if any
+  const slashIdx = clean.indexOf('/');
+  let hostPart = slashIdx !== -1 ? clean.substring(0, slashIdx) : clean;
+  const pathPart = slashIdx !== -1 ? clean.substring(slashIdx) : '';
+
+  // If host has no dot and is not localhost, it is a Render internal slug (e.g. "zeroday-nids-backend-4p7k")
+  if (!hostPart.includes('.') && !hostPart.includes('localhost')) {
+    hostPart = `${hostPart}.onrender.com`;
+  }
+  clean = `${hostPart}${pathPart}`;
+
+  // Default to https:// for production/remote hostnames without protocol
+  if (!protocol) {
+    protocol = clean.includes('localhost') ? 'http://' : 'https://';
+  }
+
+  return `${protocol}${clean}`;
 }
 
 export const API_BASE_URL = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL);
