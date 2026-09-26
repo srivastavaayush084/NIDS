@@ -121,19 +121,18 @@ export function Dashboard({
       {/* Top KPI Cards */}
       <KPICards summary={summary} monitoringStatus={monitoringStatus} />
 
-      {/* Primary Grid: Live Monitoring + Severity Distribution */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
-          <MonitoringCard
-            status={monitoringStatus}
-            onNavigateToMonitoring={() => navigate('/monitoring')}
-          />
-        </div>
+      {/* Primary Grid: Live Monitoring + Severity Distribution (Equal Width) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <MonitoringCard
+          status={monitoringStatus}
+          onNavigateToMonitoring={() => navigate('/monitoring')}
+        />
 
         <Card
           title="Threat Severity Distribution"
           subtitle="Incident severity breakdown"
           icon={PieChart}
+          className="h-full"
         >
           <SeverityDistributionChart
             data={

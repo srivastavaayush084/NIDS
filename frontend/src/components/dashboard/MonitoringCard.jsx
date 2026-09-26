@@ -18,7 +18,7 @@ export function MonitoringCard({ status = null, onNavigateToMonitoring }) {
   const flowsPerSec = status?.throughput_flows_sec || 0;
 
   return (
-    <div className="p-6 sm:p-7 rounded-2xl border border-[#E2E8F0] bg-white shadow-xs flex flex-col justify-between relative overflow-hidden transition-all duration-200 hover:border-[#CBD5E1] hover:shadow-md">
+    <div className="p-6 sm:p-7 rounded-2xl border border-[#E2E8F0] bg-white shadow-xs flex flex-col justify-between relative overflow-hidden transition-all duration-200 hover:border-[#CBD5E1] hover:shadow-md h-full">
       {/* Top subtle highlight line */}
       <div className={`absolute top-0 left-0 right-0 h-[2px] ${
         isRunning
@@ -61,23 +61,36 @@ export function MonitoringCard({ status = null, onNavigateToMonitoring }) {
         </div>
       </div>
 
-      {/* Spacious 4-column metric panels */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-5 border-b border-[#E2E8F0]">
-        <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-          <span className="text-[11px] uppercase font-semibold text-[#64748B]">Session Uptime</span>
-          <div className="font-mono text-base font-bold text-[#0F172A] mt-1">{formatDuration(uptime)}</div>
+      {/* 2x2 metric panels with distinct light-shade colors */}
+      <div className="grid grid-cols-2 gap-3.5 py-5 border-b border-[#E2E8F0]">
+        {/* Box 1: Session Uptime (Soft Indigo / Blue) */}
+        <div className="p-3.5 rounded-xl bg-[#EEF2FF] border border-[#C7D2FE] transition-all duration-150 hover:shadow-xs hover:border-[#818CF8]">
+          <span className="text-[11px] uppercase font-bold tracking-wider text-[#4338CA]">Session Uptime</span>
+          <div className="font-mono text-base font-bold text-[#1E1B4B] mt-1">{formatDuration(uptime)}</div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-          <span className="text-[11px] uppercase font-semibold text-[#64748B]">Packets Captured</span>
-          <div className="font-mono text-base font-bold text-[#0F172A] mt-1">{formatNumber(packets)} <span className="text-xs text-[#64748B] font-normal">({pktsPerSec} p/s)</span></div>
+
+        {/* Box 2: Packets Captured (Soft Emerald / Mint) */}
+        <div className="p-3.5 rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] transition-all duration-150 hover:shadow-xs hover:border-[#34D399]">
+          <span className="text-[11px] uppercase font-bold tracking-wider text-[#047857]">Packets Captured</span>
+          <div className="font-mono text-base font-bold text-[#064E3B] mt-1">
+            {formatNumber(packets)} <span className="text-xs text-[#059669] font-normal">({pktsPerSec} p/s)</span>
+          </div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-          <span className="text-[11px] uppercase font-semibold text-[#64748B]">Flows Ingested</span>
-          <div className="font-mono text-base font-bold text-[#2563EB] mt-1">{formatNumber(flows)} <span className="text-xs text-[#64748B] font-normal">({flowsPerSec} f/s)</span></div>
+
+        {/* Box 3: Flows Ingested (Soft Sky / Blue) */}
+        <div className="p-3.5 rounded-xl bg-[#F0F9FF] border border-[#BAE6FD] transition-all duration-150 hover:shadow-xs hover:border-[#38BDF8]">
+          <span className="text-[11px] uppercase font-bold tracking-wider text-[#0369A1]">Flows Ingested</span>
+          <div className="font-mono text-base font-bold text-[#0C4A6E] mt-1">
+            {formatNumber(flows)} <span className="text-xs text-[#0284C7] font-normal">({flowsPerSec} f/s)</span>
+          </div>
         </div>
-        <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-          <span className="text-[11px] uppercase font-semibold text-[#64748B]">Anomalies / Alerts</span>
-          <div className="font-mono text-base font-bold text-[#EF4444] mt-1">{formatNumber(anomalies)} <span className="text-xs text-[#64748B] font-normal">/ {formatNumber(alerts)}</span></div>
+
+        {/* Box 4: Anomalies / Alerts (Soft Rose / Coral) */}
+        <div className="p-3.5 rounded-xl bg-[#FFF1F2] border border-[#FECDD3] transition-all duration-150 hover:shadow-xs hover:border-[#FB7185]">
+          <span className="text-[11px] uppercase font-bold tracking-wider text-[#BE123C]">Anomalies / Alerts</span>
+          <div className="font-mono text-base font-bold text-[#881337] mt-1">
+            {formatNumber(anomalies)} <span className="text-xs text-[#E11D48] font-normal">/ {formatNumber(alerts)}</span>
+          </div>
         </div>
       </div>
 
