@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
+import { Preloader } from './components/common/Preloader';
 import { MainLayout } from './layouts/MainLayout';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
@@ -119,11 +120,14 @@ function AuthenticatedApp() {
 
 export function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <AuthenticatedApp />
-      </AuthProvider>
-    </BrowserRouter>
+    <>
+      <Preloader />
+      <BrowserRouter>
+        <AuthProvider>
+          <AuthenticatedApp />
+        </AuthProvider>
+      </BrowserRouter>
+    </>
   );
 }
 

@@ -57,9 +57,9 @@ export function DetectionHistory() {
         <button
           onClick={refetch}
           disabled={loading}
-          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-white/10 transition"
+          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-[#0F172A] text-xs font-semibold border border-[#CBD5E1] shadow-2xs transition"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-indigo-400' : ''}`} />
+          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#2563EB]' : 'text-[#64748B]'}`} />
           <span>Refresh</span>
         </button>
       </div>
@@ -111,7 +111,7 @@ export function DetectionHistory() {
 
         <button
           onClick={handleReset}
-          className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+          className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-[#0F172A] border border-[#CBD5E1] text-xs font-semibold shadow-2xs transition"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>Reset</span>
@@ -209,7 +209,7 @@ export function DetectionHistory() {
                               e.stopPropagation();
                               navigate(`/detections/${detId}`);
                             }}
-                            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+                            className="p-1.5 rounded-lg bg-[#EAF2FF] hover:bg-[#2563EB] text-[#2563EB] hover:text-white transition"
                           >
                             <Eye className="w-3.5 h-3.5" />
                           </button>

@@ -39,29 +39,31 @@ export function ModelComparisonTable({ comparisonData = null }) {
   };
 
   return (
-    <div className="border border-white/10 rounded-xl overflow-hidden bg-slate-900/60 flex flex-col">
+    <div className="border border-[#E2E8F0] rounded-2xl overflow-hidden bg-white shadow-sm flex flex-col hover:shadow-md transition-all duration-200">
       {/* Header & Toggle */}
-      <div className="p-4 bg-slate-800/50 border-b border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="p-4 bg-[#F8FAFC] border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
-            <BarChart2 className="w-4 h-4 text-indigo-400" />
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">
+          <div className="flex items-center gap-2.5">
+            <div className="p-1.5 rounded-lg bg-[#EAF2FF] border border-[#2563EB]/20 text-[#2563EB]">
+              <BarChart2 className="w-4 h-4" />
+            </div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
               Comparative Benchmark Matrix
             </h4>
           </div>
-          <p className="text-[11px] text-slate-400 mt-0.5">
+          <p className="text-[11px] text-[#64748B] mt-0.5 ml-9">
             Standard test set vs. Novel zero-day proxy evaluation.
           </p>
         </div>
 
         {/* Mode Toggle Buttons */}
-        <div className="flex items-center bg-slate-800 p-1 rounded-lg border border-white/5 shrink-0 text-xs">
+        <div className="flex items-center bg-[#F1F5F9] p-1 rounded-lg border border-[#E2E8F0] shrink-0 text-xs">
           <button
             onClick={() => setEvalMode('standard')}
             className={`px-3 py-1.5 rounded-md font-semibold transition ${
               evalMode === 'standard'
-                ? 'bg-indigo-600 text-white shadow'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#2563EB] text-white shadow-sm'
+                : 'text-[#64748B] hover:text-[#0F172A]'
             }`}
           >
             Standard Benchmark
@@ -70,8 +72,8 @@ export function ModelComparisonTable({ comparisonData = null }) {
             onClick={() => setEvalMode('unseen')}
             className={`px-3 py-1.5 rounded-md font-semibold transition ${
               evalMode === 'unseen'
-                ? 'bg-indigo-600 text-white shadow'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#2563EB] text-white shadow-sm'
+                : 'text-[#64748B] hover:text-[#0F172A]'
             }`}
           >
             Unseen Attack / Zero-Day Proxy
@@ -83,7 +85,7 @@ export function ModelComparisonTable({ comparisonData = null }) {
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="border-b border-white/5 text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-800/30">
+            <tr className="border-b border-[#E2E8F0] text-[10px] font-bold uppercase tracking-wider text-[#64748B] bg-[#F8FAFC]">
               <th className="px-4 py-3 font-sans">Model Architecture</th>
               <th className="px-4 py-3">Precision</th>
               <th className="px-4 py-3">Recall</th>
@@ -95,7 +97,7 @@ export function ModelComparisonTable({ comparisonData = null }) {
               <th className="px-4 py-3 text-right">Latency</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/5">
+          <tbody className="divide-y divide-[#E2E8F0]">
             {rows.map((row, idx) => {
               const mData = row[evalMode] || row.metrics || {};
               const isEnsemble = row.model_name.includes('Ensemble');
@@ -103,21 +105,21 @@ export function ModelComparisonTable({ comparisonData = null }) {
               return (
                 <tr
                   key={idx}
-                  className={`hover:bg-slate-800/30 transition ${
-                    isEnsemble ? 'bg-indigo-950/20 font-semibold' : ''
+                  className={`hover:bg-[#F8FAFC] transition ${
+                    isEnsemble ? 'bg-[#EAF2FF]/50 font-semibold' : ''
                   }`}
                 >
-                  <td className="px-4 py-3 font-sans font-bold text-slate-200">
+                  <td className="px-4 py-3 font-sans font-bold text-[#0F172A]">
                     {row.model_name}
                   </td>
-                  <td className="px-4 py-3 text-slate-300">{renderVal(mData.precision)}</td>
-                  <td className="px-4 py-3 text-slate-300">{renderVal(mData.recall)}</td>
-                  <td className="px-4 py-3 font-bold text-emerald-400">{renderVal(mData.f1)}</td>
-                  <td className="px-4 py-3 text-slate-300">{renderVal(mData.roc_auc)}</td>
-                  <td className="px-4 py-3 text-slate-300">{renderVal(mData.pr_auc)}</td>
-                  <td className="px-4 py-3 text-rose-400">{renderVal(mData.fpr)}</td>
-                  <td className="px-4 py-3 text-amber-400">{renderVal(mData.fnr)}</td>
-                  <td className="px-4 py-3 text-right text-indigo-300">
+                  <td className="px-4 py-3 text-[#0F172A]">{renderVal(mData.precision)}</td>
+                  <td className="px-4 py-3 text-[#0F172A]">{renderVal(mData.recall)}</td>
+                  <td className="px-4 py-3 font-bold text-[#10B981]">{renderVal(mData.f1)}</td>
+                  <td className="px-4 py-3 text-[#0F172A]">{renderVal(mData.roc_auc)}</td>
+                  <td className="px-4 py-3 text-[#0F172A]">{renderVal(mData.pr_auc)}</td>
+                  <td className="px-4 py-3 text-[#EF4444]">{renderVal(mData.fpr)}</td>
+                  <td className="px-4 py-3 text-[#F59E0B]">{renderVal(mData.fnr)}</td>
+                  <td className="px-4 py-3 text-right text-[#4F46E5]">
                     {mData.latency_ms !== undefined ? `${mData.latency_ms.toFixed(2)} ms` : '—'}
                   </td>
                 </tr>
@@ -128,10 +130,10 @@ export function ModelComparisonTable({ comparisonData = null }) {
       </div>
 
       {/* Benchmark Disclaimer */}
-      <div className="p-3 bg-slate-800/40 border-t border-white/5 flex items-start gap-2 text-[11px] text-slate-400">
-        <HelpCircle className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
+      <div className="p-3 bg-[#F8FAFC] border-t border-[#E2E8F0] flex items-start gap-2 text-[11px] text-[#64748B]">
+        <HelpCircle className="w-3.5 h-3.5 text-[#94A3B8] shrink-0 mt-0.5" />
         <span>
-          <strong>Evaluation Context:</strong> {evalMode === 'unseen'
+          <strong className="text-[#0F172A]">Evaluation Context:</strong> {evalMode === 'unseen'
             ? 'Unseen Attack evaluation tests model generalizability against novel holdout attack signatures not present during training.'
             : 'Standard evaluation benchmarks model discrimination performance on known training/validation distributions.'}
         </span>

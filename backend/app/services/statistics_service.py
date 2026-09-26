@@ -47,10 +47,21 @@ class StatisticsService:
             "OPEN": 0, "ACKNOWLEDGED": 0, "RESOLVED": 0, "DISMISSED": 0
         })
 
+        # Check active monitoring throughput if a live capture session is running
+        live_rate = 0.0
+        try:
+            from backend.app.monitoring.manager import monitoring_manager
+            st = monitoring_manager.get_status()
+            if st.running:
+                live_rate = round(float(st.throughput_flows_sec or st.flows_per_second or 0.0), 2)
+        except Exception:
+            pass
+
         return DashboardSummaryStatistics(
             total_detections=total_det,
             total_anomalies=total_anom,
             anomaly_rate=anom_rate,
+            detection_rate_per_sec=live_rate,
             total_alerts=alt_stats.get("total", 0),
             open_alerts=status_counts.get("OPEN", 0),
             critical_alerts=severity_counts.get("CRITICAL", 0),

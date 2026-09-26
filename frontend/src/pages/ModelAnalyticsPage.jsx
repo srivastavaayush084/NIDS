@@ -8,8 +8,8 @@ export function ModelAnalyticsPage({ models }) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-bold text-white tracking-wide">AI/ML Model Registry & Analytics</h2>
-          <p className="text-xs text-slate-400">Model ensemble metrics, architecture configurations, and comparison benchmarks</p>
+          <h2 className="text-xl font-bold text-[#0F172A] tracking-wide">AI/ML Model Registry & Analytics</h2>
+          <p className="text-xs text-[#64748B]">Model ensemble metrics, architecture configurations, and comparison benchmarks</p>
         </div>
       </div>
 

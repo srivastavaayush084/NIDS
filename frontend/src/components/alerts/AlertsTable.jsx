@@ -129,7 +129,7 @@ export function AlertsTable({
                   >
                     <button
                       onClick={() => onViewDetails(alertId)}
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                      className="p-1.5 rounded-lg bg-[#EAF2FF] hover:bg-[#2563EB] text-[#2563EB] hover:text-white transition"
                       title="Investigate Alert Details"
                     >
                       <Eye className="w-3.5 h-3.5" />
@@ -139,7 +139,7 @@ export function AlertsTable({
                       <button
                         onClick={() => onAcknowledge(alertId)}
                         disabled={actionLoading}
-                        className="p-1.5 rounded-lg bg-amber-950/40 hover:bg-amber-900/60 border border-amber-500/30 text-amber-300 transition"
+                        className="p-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 border border-[#F59E0B]/30 text-[#D97706] transition"
                         title="Acknowledge Alert"
                       >
                         <CheckCircle2 className="w-3.5 h-3.5" />
@@ -151,7 +151,7 @@ export function AlertsTable({
                         <button
                           onClick={() => onResolve(alertId)}
                           disabled={actionLoading}
-                          className="p-1.5 rounded-lg bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-500/30 text-emerald-300 transition"
+                          className="p-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-[#10B981]/30 text-[#059669] transition"
                           title="Resolve Alert"
                         >
                           <ShieldCheck className="w-3.5 h-3.5" />
@@ -160,7 +160,7 @@ export function AlertsTable({
                         <button
                           onClick={() => onDismiss(alertId)}
                           disabled={actionLoading}
-                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-white/5 text-slate-400 hover:text-slate-200 transition"
+                          className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] transition"
                           title="Dismiss Alert"
                         >
                           <XCircle className="w-3.5 h-3.5" />

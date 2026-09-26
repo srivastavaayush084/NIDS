@@ -26,12 +26,12 @@ export function AlertTrendChart({
       {/* Legend */}
       <div className="flex items-center justify-end gap-4 text-xs">
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-indigo-500" />
-          <span className="text-slate-400">Total Detections</span>
+          <span className="w-2.5 h-2.5 rounded-sm bg-[#2563EB]" />
+          <span className="text-[#64748B]">Total Detections</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-rose-500" />
-          <span className="text-slate-400">Security Alerts</span>
+          <span className="w-2.5 h-2.5 rounded-sm bg-[#EF4444]" />
+          <span className="text-[#64748B]">Security Alerts</span>
         </div>
       </div>
 
@@ -40,22 +40,22 @@ export function AlertTrendChart({
         <svg className="w-full h-full" viewBox="0 0 500 120" preserveAspectRatio="none">
           <defs>
             <linearGradient id="detectionAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#6366f1" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#6366f1" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#2563EB" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#2563EB" stopOpacity="0.0" />
             </linearGradient>
             <linearGradient id="alertBarGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fb7185" />
-              <stop offset="100%" stopColor="#e11d48" />
+              <stop offset="0%" stopColor="#EF4444" />
+              <stop offset="100%" stopColor="#DC2626" />
             </linearGradient>
             <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#6366f1" floodOpacity="0.5" />
+              <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#2563EB" floodOpacity="0.3" />
             </filter>
           </defs>
 
           {/* Grid lines */}
-          <line x1="0" y1="30" x2="500" y2="30" stroke="rgba(255,255,255,0.05)" strokeDasharray="3,3" />
-          <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(255,255,255,0.05)" strokeDasharray="3,3" />
-          <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(255,255,255,0.05)" strokeDasharray="3,3" />
+          <line x1="0" y1="30" x2="500" y2="30" stroke="#E2E8F0" strokeDasharray="3,3" />
+          <line x1="0" y1="60" x2="500" y2="60" stroke="#E2E8F0" strokeDasharray="3,3" />
+          <line x1="0" y1="90" x2="500" y2="90" stroke="#E2E8F0" strokeDasharray="3,3" />
 
           {/* Detections Area Fill */}
           {points.length > 1 && (
@@ -75,7 +75,7 @@ export function AlertTrendChart({
           {points.length > 1 && (
             <polyline
               fill="none"
-              stroke="#818cf8"
+              stroke="#2563EB"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -120,9 +120,9 @@ export function AlertTrendChart({
                 key={`node-${idx}`}
                 cx={cx}
                 cy={cy}
-                r="3"
-                fill="#060913"
-                stroke="#a5b4fc"
+                r="3.5"
+                fill="#FFFFFF"
+                stroke="#2563EB"
                 strokeWidth="2"
               >
                 <title>{`${p.label}: ${p.detections} total detections`}</title>

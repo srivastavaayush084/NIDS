@@ -106,7 +106,7 @@ export function AlertFilters({
       {/* Reset Action */}
       <button
         onClick={handleReset}
-        className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+        className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-[#0F172A] border border-[#CBD5E1] text-xs font-semibold shadow-2xs transition"
       >
         <RotateCcw className="w-3.5 h-3.5" />
         <span>Reset</span>

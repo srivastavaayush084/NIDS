@@ -14,7 +14,7 @@ export function SeverityDistributionChart({ data = {} }) {
   return (
     <div className="flex flex-col gap-4">
       {/* Distribution Progress Bar */}
-      <div className="h-5 w-full bg-slate-950/80 rounded-full p-0.5 border border-white/10 overflow-hidden flex shadow-inner">
+      <div className="h-5 w-full bg-[#F8FAFC] rounded-full p-0.5 border border-[#E2E8F0] overflow-hidden flex shadow-inner">
         {total > 0 ? (
           Object.entries(counts).map(([sev, count]) => {
             if (count === 0) return null;
@@ -27,21 +27,20 @@ export function SeverityDistributionChart({ data = {} }) {
                 style={{
                   width: `${pct}%`,
                   backgroundColor: tier.color,
-                  boxShadow: sev === 'CRITICAL' ? '0 0 8px rgba(244, 63, 94, 0.4)' : undefined,
                 }}
                 title={`${sev}: ${count} (${pct.toFixed(1)}%)`}
               />
             );
           })
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-500 font-mono">
+          <div className="w-full h-full flex items-center justify-center text-[10px] text-[#64748B] font-mono">
             Zero anomalous flows recorded
           </div>
         )}
       </div>
 
-      {/* Legend & Breakdown Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+      {/* Legend & Breakdown Cards: Clean 2x2 Grid with generous space */}
+      <div className="grid grid-cols-2 gap-3.5">
         {Object.entries(counts).map(([sev, count]) => {
           const tier = SEVERITY_TIERS[sev] || SEVERITY_TIERS.LOW;
           const pct = total > 0 ? ((count / total) * 100).toFixed(1) : '0.0';
@@ -50,34 +49,33 @@ export function SeverityDistributionChart({ data = {} }) {
           return (
             <div
               key={sev}
-              className={`p-3 rounded-xl border transition-all duration-200 flex flex-col justify-between ${
+              className={`p-3.5 rounded-xl border transition-all duration-200 flex flex-col justify-between ${
                 hasIncidents && sev === 'CRITICAL'
-                  ? 'bg-rose-950/20 border-rose-500/30'
+                  ? 'bg-red-50/60 border-red-200'
                   : hasIncidents && sev === 'HIGH'
-                  ? 'bg-orange-950/20 border-orange-500/30'
-                  : 'bg-slate-800/40 border-white/5'
+                  ? 'bg-orange-50/60 border-orange-200'
+                  : 'bg-[#F8FAFC] border-[#E2E8F0]'
               }`}
             >
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="flex items-center gap-1.5">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
                   <span
-                    className="w-2 h-2 rounded-full shrink-0"
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
                     style={{
                       backgroundColor: tier.color,
-                      boxShadow: hasIncidents ? `0 0 8px ${tier.color}` : undefined,
                     }}
                   />
-                  <span className="text-[11px] font-semibold text-slate-300">{sev}</span>
+                  <span className="text-xs font-bold tracking-wide text-[#0F172A]">{sev}</span>
                 </div>
-                <span className="text-[10px] font-mono text-slate-400">{pct}%</span>
+                <span className="text-[11px] font-mono font-semibold text-[#64748B]">{pct}%</span>
               </div>
 
               <div className="flex items-baseline justify-between mt-1">
-                <span className="text-xl font-black font-mono text-slate-100">{count}</span>
+                <span className="text-2xl font-black font-mono text-[#0F172A]">{count}</span>
               </div>
 
               {/* Micro proportion bar */}
-              <div className="w-full h-1 bg-slate-900 rounded-full overflow-hidden mt-2">
+              <div className="w-full h-1.5 bg-[#E2E8F0] rounded-full overflow-hidden mt-2.5">
                 <div
                   className="h-full rounded-full transition-all duration-500"
                   style={{

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { RefreshCw, Radio, Menu, Wifi, WifiOff, Clock, ShieldCheck, ShieldAlert } from 'lucide-react';
+import { RefreshCw, Radio, Wifi, WifiOff, Clock, ShieldCheck } from 'lucide-react';
 
 export function Navbar({
   systemStatus = 'HEALTHY',
   isMonitoring = false,
   isRefreshing = false,
   onRefresh,
-  onOpenMobileMenu,
   environment = 'development',
 }) {
   const isOnline = systemStatus !== 'UNAVAILABLE';
@@ -25,34 +24,31 @@ export function Navbar({
   const localString = currentTime.toLocaleTimeString([], { hour12: false });
 
   return (
-    <header className="h-16 border-b border-white/10 bg-slate-900/75 backdrop-blur-xl sticky top-0 z-30 px-4 sm:px-6 flex items-center justify-between shadow-sm">
-      {/* Left: Mobile Toggle & Status Indicators */}
+    <header className="h-16 border-b border-[#E2E8F0] bg-white/95 backdrop-blur-xl sticky top-0 z-30 px-6 sm:px-8 flex items-center justify-between shadow-2xs">
+      {/* Left: SOC Telemetry Indicators */}
       <div className="flex items-center gap-3">
-        <button
-          onClick={onOpenMobileMenu}
-          className="p-2 rounded-xl text-slate-400 hover:text-slate-100 hover:bg-slate-800 md:hidden transition"
-          aria-label="Toggle navigation menu"
-        >
-          <Menu className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#EAF2FF] border border-[#2563EB]/20 text-xs font-semibold text-[#2563EB]">
+          <ShieldCheck className="w-4 h-4 text-[#10B981]" />
+          <span className="font-mono text-[11px] tracking-wider uppercase">Active Defense</span>
+        </div>
 
-        <div className="hidden sm:flex items-center gap-2.5">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/60 border border-white/5 text-xs font-semibold">
+        <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A]">
             {isOnline ? (
-              <Wifi className="w-3.5 h-3.5 text-emerald-400" />
+              <Wifi className="w-3.5 h-3.5 text-[#10B981]" />
             ) : (
-              <WifiOff className="w-3.5 h-3.5 text-rose-400" />
+              <WifiOff className="w-3.5 h-3.5 text-[#EF4444]" />
             )}
-            <span className="text-slate-400">API:</span>
-            <span className={isOnline ? 'text-emerald-400 font-mono' : 'text-rose-400 font-mono'}>
+            <span className="text-[#64748B]">API:</span>
+            <span className={isOnline ? 'text-[#10B981] font-mono' : 'text-[#EF4444] font-mono'}>
               {systemStatus}
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/60 border border-white/5 text-xs font-semibold">
-            <Radio className={`w-3.5 h-3.5 ${isMonitoring ? 'text-emerald-400 animate-pulse' : 'text-slate-400'}`} />
-            <span className="text-slate-400">Ingestion:</span>
-            <span className={isMonitoring ? 'text-emerald-400 font-mono' : 'text-slate-400 font-mono'}>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-semibold text-[#0F172A]">
+            <Radio className={`w-3.5 h-3.5 ${isMonitoring ? 'text-[#10B981] animate-pulse' : 'text-[#64748B]'}`} />
+            <span className="text-[#64748B]">Ingestion:</span>
+            <span className={isMonitoring ? 'text-[#10B981] font-mono' : 'text-[#64748B] font-mono'}>
               {isMonitoring ? 'STREAMING' : 'STANDBY'}
             </span>
           </div>
@@ -62,26 +58,26 @@ export function Navbar({
       {/* Center / Right: Live SOC HUD Clock & Quick Actions */}
       <div className="flex items-center gap-3">
         {/* Live HUD Digital Clock */}
-        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-950/80 border border-white/10 shadow-inner">
-          <Clock className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
+        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
+          <Clock className="w-3.5 h-3.5 text-[#2563EB] animate-pulse" />
           <div className="flex items-center gap-2 text-xs font-mono">
-            <span className="text-slate-200 font-semibold">{localString}</span>
-            <span className="text-slate-500">|</span>
-            <span className="text-indigo-300 font-medium">{utcString} <span className="text-[10px] text-slate-500">UTC</span></span>
+            <span className="text-[#0F172A] font-semibold">{localString}</span>
+            <span className="text-[#64748B]">|</span>
+            <span className="text-[#4F46E5] font-medium">{utcString} <span className="text-[10px] text-[#64748B]">UTC</span></span>
           </div>
         </div>
 
-        <span className="text-[10px] font-mono uppercase font-bold tracking-widest px-2.5 py-1 rounded-md bg-indigo-950/60 text-indigo-300 border border-indigo-500/30">
+        <span className="text-[10px] font-mono uppercase font-bold tracking-widest px-2.5 py-1 rounded-md bg-[#EAF2FF] text-[#2563EB] border border-[#2563EB]/25">
           {environment}
         </span>
 
         <button
           onClick={onRefresh}
           disabled={isRefreshing}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 text-xs font-semibold border border-indigo-500/30 transition disabled:opacity-50 shadow-sm"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold transition disabled:opacity-50 shadow-sm"
           title="Refresh All Telemetry"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-indigo-400' : ''}`} />
+          <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
           <span className="hidden sm:inline">Sync</span>
         </button>
       </div>

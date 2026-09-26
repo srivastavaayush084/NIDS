@@ -1,5 +1,10 @@
 import time
 from typing import Optional, Dict, Any, Tuple
+try:
+    import certifi
+    CA_FILE = certifi.where()
+except ImportError:
+    CA_FILE = None
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 from backend.app.core.config import settings
 from backend.app.core.logging import logger
@@ -16,13 +21,19 @@ async def connect_to_mongo() -> bool:
         masked_uri = settings.MONGODB_URI.split("@")[-1] if "@" in settings.MONGODB_URI else settings.MONGODB_URI
         logger.info(f"Connecting to MongoDB database '{settings.MONGODB_DATABASE}' at [{masked_uri}]...")
 
+        client_kwargs = {
+            "tz_aware": True,
+            "minPoolSize": settings.MONGODB_MIN_POOL_SIZE,
+            "maxPoolSize": settings.MONGODB_MAX_POOL_SIZE,
+            "serverSelectionTimeoutMS": settings.MONGODB_TIMEOUT_MS,
+            "connectTimeoutMS": settings.MONGODB_TIMEOUT_MS,
+        }
+        if CA_FILE:
+            client_kwargs["tlsCAFile"] = CA_FILE
+
         db_manager.client = AsyncIOMotorClient(
             settings.MONGODB_URI,
-            tz_aware=True,
-            minPoolSize=settings.MONGODB_MIN_POOL_SIZE,
-            maxPoolSize=settings.MONGODB_MAX_POOL_SIZE,
-            serverSelectionTimeoutMS=settings.MONGODB_TIMEOUT_MS,
-            connectTimeoutMS=settings.MONGODB_TIMEOUT_MS,
+            **client_kwargs
         )
         db_manager.db = db_manager.client[settings.MONGODB_DATABASE]
 
@@ -71,13 +82,19 @@ async def check_mongo_health() -> Tuple[bool, Optional[float], Dict[str, Any]]:
     """
     if db_manager.client is None or db_manager.db is None:
         try:
+            client_kwargs = {
+                "tz_aware": True,
+                "minPoolSize": settings.MONGODB_MIN_POOL_SIZE,
+                "maxPoolSize": settings.MONGODB_MAX_POOL_SIZE,
+                "serverSelectionTimeoutMS": settings.MONGODB_TIMEOUT_MS,
+                "connectTimeoutMS": settings.MONGODB_TIMEOUT_MS,
+            }
+            if CA_FILE:
+                client_kwargs["tlsCAFile"] = CA_FILE
+
             db_manager.client = AsyncIOMotorClient(
                 settings.MONGODB_URI,
-                tz_aware=True,
-                minPoolSize=settings.MONGODB_MIN_POOL_SIZE,
-                maxPoolSize=settings.MONGODB_MAX_POOL_SIZE,
-                serverSelectionTimeoutMS=settings.MONGODB_TIMEOUT_MS,
-                connectTimeoutMS=settings.MONGODB_TIMEOUT_MS,
+                **client_kwargs
             )
             db_manager.db = db_manager.client[settings.MONGODB_DATABASE]
         except Exception as e:

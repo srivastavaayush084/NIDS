@@ -68,7 +68,7 @@ export function AlertActionModal({
 
         {(type === 'resolve' || type === 'dismiss') && (
           <div>
-            <label className="block text-slate-300 font-semibold mb-1.5">
+            <label className="block text-[#0F172A] font-semibold mb-1.5">
               {type === 'resolve' ? 'Remediation Note *' : 'Dismissal Reason *'}
             </label>
             <textarea
@@ -81,14 +81,14 @@ export function AlertActionModal({
                   ? 'e.g., Blocked malicious source IP on firewall and patched internal host.'
                   : 'e.g., Authorized internal vulnerability scan.'
               }
-              className="w-full bg-slate-800 border border-white/10 rounded-xl p-3 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-3 text-[#0F172A] placeholder-[#64748B] focus:outline-none focus:border-[#2563EB]"
             />
           </div>
         )}
 
         {type === 'acknowledge' && (
-          <p className="text-slate-300 text-xs leading-relaxed">
-            You are acknowledging alert <span className="font-mono text-indigo-400 font-bold">{alertId}</span>.
+          <p className="text-[#0F172A] text-xs leading-relaxed">
+            You are acknowledging alert <span className="font-mono text-[#2563EB] font-bold">{alertId}</span>.
             This assigns ownership to you and marks the incident as under active investigation.
           </p>
         )}
@@ -98,7 +98,7 @@ export function AlertActionModal({
             type="button"
             onClick={onClose}
             disabled={loading}
-            className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+            className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-[#0F172A] border border-[#CBD5E1] font-semibold transition"
           >
             Cancel
           </button>
@@ -106,12 +106,12 @@ export function AlertActionModal({
           <button
             type="submit"
             disabled={loading}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-white transition ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-white transition shadow-sm ${
               type === 'resolve'
-                ? 'bg-emerald-600 hover:bg-emerald-500'
+                ? 'bg-[#10B981] hover:bg-emerald-600'
                 : type === 'dismiss'
-                ? 'bg-slate-700 hover:bg-slate-600'
-                : 'bg-indigo-600 hover:bg-indigo-500'
+                ? 'bg-[#64748B] hover:bg-slate-600'
+                : 'bg-[#2563EB] hover:bg-blue-600'
             }`}
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}

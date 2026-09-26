@@ -43,7 +43,7 @@ export function SeverityBadge({ severity = 'LOW', showIcon = true, size = 'md' }
         backgroundColor: config.bg,
         borderColor: config.border,
         color: config.color,
-        boxShadow: isCritical ? '0 0 12px rgba(244, 63, 94, 0.35)' : undefined,
+        boxShadow: isCritical ? '0 0 12px rgba(239, 68, 68, 0.25)' : undefined,
       }}
       aria-label={`Severity tier: ${config.label}`}
     >

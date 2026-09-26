@@ -2,27 +2,27 @@ import React from 'react';
 
 const STATUS_CONFIGS = {
   // Operational & Monitoring States
-  RUNNING: { label: 'RUNNING', color: '#10b981', bg: 'rgba(16, 185, 129, 0.15)', pulse: true },
-  ACTIVE: { label: 'ACTIVE', color: '#10b981', bg: 'rgba(16, 185, 129, 0.15)', pulse: true },
-  ONLINE: { label: 'ONLINE', color: '#10b981', bg: 'rgba(16, 185, 129, 0.15)', pulse: true },
-  CONNECTED: { label: 'CONNECTED', color: '#10b981', bg: 'rgba(16, 185, 129, 0.15)', pulse: false },
-  STOPPED: { label: 'STOPPED', color: '#94a3b8', bg: 'rgba(148, 163, 184, 0.15)', pulse: false },
-  OFFLINE: { label: 'OFFLINE', color: '#94a3b8', bg: 'rgba(148, 163, 184, 0.15)', pulse: false },
-  DISCONNECTED: { label: 'DISCONNECTED', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.15)', pulse: false },
-  STARTING: { label: 'STARTING', color: '#eab308', bg: 'rgba(234, 179, 8, 0.15)', pulse: true },
-  STOPPING: { label: 'STOPPING', color: '#f97316', bg: 'rgba(249, 115, 22, 0.15)', pulse: true },
-  ERROR: { label: 'ERROR', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.15)', pulse: false },
+  RUNNING: { label: 'RUNNING', color: '#10B981', bg: 'rgba(16, 185, 129, 0.1)', pulse: true },
+  ACTIVE: { label: 'ACTIVE', color: '#10B981', bg: 'rgba(16, 185, 129, 0.1)', pulse: true },
+  ONLINE: { label: 'ONLINE', color: '#10B981', bg: 'rgba(16, 185, 129, 0.1)', pulse: true },
+  CONNECTED: { label: 'CONNECTED', color: '#10B981', bg: 'rgba(16, 185, 129, 0.1)', pulse: false },
+  STOPPED: { label: 'STOPPED', color: '#64748B', bg: 'rgba(100, 116, 139, 0.1)', pulse: false },
+  OFFLINE: { label: 'OFFLINE', color: '#64748B', bg: 'rgba(100, 116, 139, 0.1)', pulse: false },
+  DISCONNECTED: { label: 'DISCONNECTED', color: '#EF4444', bg: 'rgba(239, 68, 68, 0.1)', pulse: false },
+  STARTING: { label: 'STARTING', color: '#F59E0B', bg: 'rgba(245, 158, 11, 0.1)', pulse: true },
+  STOPPING: { label: 'STOPPING', color: '#F59E0B', bg: 'rgba(245, 158, 11, 0.1)', pulse: true },
+  ERROR: { label: 'ERROR', color: '#EF4444', bg: 'rgba(239, 68, 68, 0.1)', pulse: false },
 
   // System Health States
-  HEALTHY: { label: 'HEALTHY', color: '#10b981', bg: 'rgba(16, 185, 129, 0.15)', pulse: false },
-  DEGRADED: { label: 'DEGRADED', color: '#eab308', bg: 'rgba(234, 179, 8, 0.15)', pulse: false },
-  UNAVAILABLE: { label: 'UNAVAILABLE', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.15)', pulse: false },
+  HEALTHY: { label: 'HEALTHY', color: '#10B981', bg: 'rgba(16, 185, 129, 0.1)', pulse: false },
+  DEGRADED: { label: 'DEGRADED', color: '#F59E0B', bg: 'rgba(245, 158, 11, 0.1)', pulse: false },
+  UNAVAILABLE: { label: 'UNAVAILABLE', color: '#EF4444', bg: 'rgba(239, 68, 68, 0.1)', pulse: false },
 
   // Alert Lifecycle States
-  OPEN: { label: 'OPEN', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.15)', pulse: true },
-  ACKNOWLEDGED: { label: 'ACKNOWLEDGED', color: '#f97316', bg: 'rgba(249, 115, 22, 0.15)', pulse: false },
-  RESOLVED: { label: 'RESOLVED', color: '#10b981', bg: 'rgba(16, 185, 129, 0.15)', pulse: false },
-  DISMISSED: { label: 'DISMISSED', color: '#64748b', bg: 'rgba(100, 116, 139, 0.15)', pulse: false },
+  OPEN: { label: 'OPEN', color: '#EF4444', bg: 'rgba(239, 68, 68, 0.1)', pulse: true },
+  ACKNOWLEDGED: { label: 'ACKNOWLEDGED', color: '#F59E0B', bg: 'rgba(245, 158, 11, 0.1)', pulse: false },
+  RESOLVED: { label: 'RESOLVED', color: '#10B981', bg: 'rgba(16, 185, 129, 0.1)', pulse: false },
+  DISMISSED: { label: 'DISMISSED', color: '#64748B', bg: 'rgba(100, 116, 139, 0.1)', pulse: false },
 };
 
 export function StatusPill({ status = 'STOPPED', customLabel = null, size = 'md' }) {
@@ -44,7 +44,7 @@ export function StatusPill({ status = 'STOPPED', customLabel = null, size = 'md'
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-medium rounded-full border border-white/5 ${sizeClasses}`}
+      className={`inline-flex items-center gap-1.5 font-medium rounded-full border border-[#E2E8F0] ${sizeClasses}`}
       style={{
         backgroundColor: config.bg,
         color: config.color,

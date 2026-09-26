@@ -112,21 +112,21 @@ export function AlertDetails() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/alerts')}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+            className="p-2 rounded-xl bg-white hover:bg-slate-50 text-[#0F172A] border border-[#CBD5E1] shadow-2xs transition"
             aria-label="Back to alerts"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-lg font-black text-slate-100">{alt.title || 'Security Incident'}</h2>
+              <h2 className="text-lg font-black text-[#0F172A]">{alt.title || 'Security Incident'}</h2>
               <StatusPill status={status} />
             </div>
-            <div className="flex items-center gap-3 text-xs text-slate-400 font-mono mt-0.5">
+            <div className="flex items-center gap-3 text-xs text-[#64748B] font-mono mt-0.5">
               <span>ID: {alertId}</span>
               {alt.fingerprint && (
                 <span className="flex items-center gap-1">
-                  <Fingerprint className="w-3.5 h-3.5 text-slate-500" />
+                  <Fingerprint className="w-3.5 h-3.5 text-[#64748B]" />
                   FP: {alt.fingerprint.slice(0, 12)}...
                 </span>
               )}
@@ -137,7 +137,7 @@ export function AlertDetails() {
         {/* Action Buttons */}
         <div className="flex items-center gap-2">
           {!isAnalyst && (
-            <span className="text-[11px] text-slate-500 italic bg-slate-800/60 px-2.5 py-1 rounded-lg border border-white/5">
+            <span className="text-[11px] text-[#64748B] italic bg-white px-2.5 py-1 rounded-lg border border-[#E2E8F0]">
               Viewer Mode (Read Only)
             </span>
           )}
@@ -146,7 +146,7 @@ export function AlertDetails() {
             <button
               onClick={() => setModalState({ isOpen: true, type: 'acknowledge' })}
               disabled={actionLoading}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-950/60 hover:bg-amber-900/80 border border-amber-500/40 text-amber-200 text-xs font-semibold transition"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 border border-[#F59E0B]/30 text-[#D97706] text-xs font-semibold transition"
             >
               <CheckCircle2 className="w-4 h-4" />
               <span>Acknowledge</span>
@@ -158,7 +158,7 @@ export function AlertDetails() {
               <button
                 onClick={() => setModalState({ isOpen: true, type: 'resolve' })}
                 disabled={actionLoading}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-lg shadow-emerald-600/25 transition"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#10B981] hover:bg-emerald-600 text-white text-xs font-semibold shadow-md shadow-emerald-500/20 transition"
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span>Resolve Incident</span>
@@ -167,7 +167,7 @@ export function AlertDetails() {
               <button
                 onClick={() => setModalState({ isOpen: true, type: 'dismiss' })}
                 disabled={actionLoading}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-white/10 transition"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-[#0F172A] text-xs font-semibold border border-[#CBD5E1] shadow-2xs transition"
               >
                 <XCircle className="w-4 h-4" />
                 <span>Dismiss</span>

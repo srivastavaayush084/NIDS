@@ -12,29 +12,29 @@ export function Card({
   badge = null,
 }) {
   return (
-    <div className={`bg-slate-900/70 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-md shadow-xl transition-all duration-200 hover:border-white/15 relative ${className}`}>
-      {/* Top subtle glow highlight line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none" />
+    <div className={`bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden shadow-sm transition-all duration-200 hover:border-[#CBD5E1] hover:shadow-md relative ${className}`}>
+      {/* Top subtle highlight line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#2563EB]/20 to-transparent pointer-events-none" />
       {(title || subtitle || Icon || action) && (
-        <div className={`px-5 py-4 border-b border-white/5 flex items-center justify-between gap-4 ${headerClassName}`}>
+        <div className={`px-6 py-4 border-b border-[#E2E8F0] bg-white flex items-center justify-between gap-4 ${headerClassName}`}>
           <div className="flex items-center gap-3">
             {Icon && (
-              <div className="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+              <div className="p-2 rounded-lg bg-[#EAF2FF] border border-[#2563EB]/20 text-[#2563EB]">
                 <Icon className="w-4 h-4" />
               </div>
             )}
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-sm font-semibold text-slate-100 tracking-wide">{title}</h3>
+                <h3 className="text-sm font-bold text-[#0F172A] tracking-wide">{title}</h3>
                 {badge}
               </div>
-              {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
+              {subtitle && <p className="text-xs text-[#64748B] mt-0.5">{subtitle}</p>}
             </div>
           </div>
           {action && <div className="shrink-0">{action}</div>}
         </div>
       )}
-      <div className={`p-5 ${bodyClassName}`}>{children}</div>
+      <div className={`p-6 bg-white text-[#0F172A] ${bodyClassName}`}>{children}</div>
     </div>
   );
 }

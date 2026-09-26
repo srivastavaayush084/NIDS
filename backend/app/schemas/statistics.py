@@ -8,6 +8,7 @@ class DashboardSummaryStatistics(BaseModel):
     total_detections: int = 0
     total_anomalies: int = 0
     anomaly_rate: float = 0.0
+    detection_rate_per_sec: float = 0.0
     total_alerts: int = 0
     open_alerts: int = 0
     critical_alerts: int = 0

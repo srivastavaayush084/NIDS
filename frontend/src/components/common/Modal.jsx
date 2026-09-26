@@ -24,18 +24,18 @@ export function Modal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
       <div
-        className={`w-full ${maxWidth} bg-slate-900 border border-white/15 rounded-2xl shadow-2xl overflow-hidden`}
+        className={`w-full ${maxWidth} bg-white border border-[#E2E8F0] rounded-2xl shadow-2xl overflow-hidden text-[#0F172A]`}
         role="dialog"
         aria-modal="true"
       >
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-[#E2E8F0] flex items-center justify-between bg-white">
           <div>
-            <h3 className="text-base font-bold text-slate-100">{title}</h3>
-            {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
+            <h3 className="text-base font-bold text-[#0F172A]">{title}</h3>
+            {subtitle && <p className="text-xs text-[#64748B] mt-0.5">{subtitle}</p>}
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"
+            className="p-1.5 rounded-lg text-[#64748B] hover:text-[#0F172A] hover:bg-slate-100 transition"
             aria-label="Close dialog"
           >
             <X className="w-4 h-4" />

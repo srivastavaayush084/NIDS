@@ -13,11 +13,11 @@ export function SystemHealth() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-black text-slate-100 uppercase tracking-wide flex items-center gap-2.5">
-            <Activity className="w-5 h-5 text-emerald-400" />
+          <h2 className="text-xl font-black text-[#0F172A] uppercase tracking-wide flex items-center gap-2.5">
+            <Activity className="w-5 h-5 text-[#10B981]" />
             <span>System Health & Telemetry</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-[#64748B] mt-1">
             Real-time operational status across FastAPI server, MongoDB persistence engine, ML models, and network monitoring pipeline.
           </p>
         </div>
@@ -25,9 +25,9 @@ export function SystemHealth() {
         <button
           onClick={refetch}
           disabled={loading}
-          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-white/10 transition"
+          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-[#0F172A] text-xs font-semibold border border-[#CBD5E1] shadow-2xs transition"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-indigo-400' : ''}`} />
+          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#2563EB]' : 'text-[#64748B]'}`} />
           <span>Refresh Diagnostics</span>
         </button>
       </div>

@@ -81,32 +81,32 @@ export function DetectionDetails() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/detections')}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+            className="p-2 rounded-xl bg-white hover:bg-slate-50 text-[#0F172A] border border-[#CBD5E1] shadow-2xs transition"
             aria-label="Back to detections"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-lg font-black text-slate-100">Detection Event Record</h2>
+              <h2 className="text-lg font-black text-[#0F172A]">Detection Event Record</h2>
               <span
                 className={`px-2.5 py-0.5 rounded-full text-xs font-bold font-mono ${
                   isAttack
-                    ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
-                    : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    ? 'bg-red-50 text-[#EF4444] border border-[#EF4444]/30'
+                    : 'bg-emerald-50 text-[#10B981] border border-[#10B981]/30'
                 }`}
               >
                 {(det.prediction || 'NORMAL').toUpperCase()}
               </span>
             </div>
-            <p className="text-xs text-slate-400 font-mono mt-0.5">ID: {detectionId}</p>
+            <p className="text-xs text-[#64748B] font-mono mt-0.5">ID: {detectionId}</p>
           </div>
         </div>
 
         {alertId && (
           <button
             onClick={() => navigate(`/alerts/${alertId}`)}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold shadow-lg shadow-rose-600/25 transition"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#EF4444] hover:bg-red-600 text-white text-xs font-semibold shadow-md shadow-red-500/20 transition"
           >
             <ShieldAlert className="w-4 h-4" />
             <span>View Security Alert</span>

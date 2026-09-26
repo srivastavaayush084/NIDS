@@ -31,12 +31,16 @@ export function SystemHealthGrid({ health = null }) {
   const modelsStatus = (health?.services?.ml_engine?.status || 'HEALTHY').toUpperCase();
   const monitoringStatus = (health?.services?.monitoring?.status || health?.monitoring || 'ACTIVE').toUpperCase();
 
+  const iconColors = ['#2563EB', '#10B981', '#4F46E5', '#06B6D4'];
+  const iconBgs = ['#EAF2FF', '#D1FAE5', '#EDE9FE', '#ECFEFF'];
+
   const components = [
     {
       name: 'REST API Subsystem',
       status: apiStatus,
       icon: Server,
       desc: 'FastAPI REST Layer, CORS middleware, and route dispatchers.',
+      colorIdx: 0,
       metrics: {
         Version: health?.version || '1.0.0',
         Environment: health?.environment || 'development',
@@ -48,6 +52,7 @@ export function SystemHealthGrid({ health = null }) {
       status: dbBadgeStatus,
       icon: Database,
       desc: 'Document storage for alerts, detections, telemetry, and audit logs.',
+      colorIdx: 1,
       metrics: {
         Database: dbName,
         ServerType: dbServerType,
@@ -59,6 +64,7 @@ export function SystemHealthGrid({ health = null }) {
       status: modelsStatus,
       icon: Cpu,
       desc: 'Isolation Forest, Dense Autoencoder, LSTM Autoencoder, and Random Forest.',
+      colorIdx: 2,
       metrics: {
         ModelsActive: `${health?.services?.ml_engine?.details?.available_models ?? 4}/4 Operational`,
         InferenceEngine: 'PyTorch + Joblib',
@@ -70,6 +76,7 @@ export function SystemHealthGrid({ health = null }) {
       status: monitoringStatus,
       icon: Radio,
       desc: 'Packet capture driver, bidirectional flow parser, and buffer queue.',
+      colorIdx: 3,
       metrics: {
         ScapyEngine: 'Operational',
         Driver: 'Npcap / Native',
@@ -96,17 +103,24 @@ export function SystemHealthGrid({ health = null }) {
           return (
             <div
               key={idx}
-              className="p-5 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md flex flex-col justify-between shadow-lg"
+              className="p-5 rounded-2xl border border-[#E2E8F0] bg-white flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200"
             >
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-white/5">
+                <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                    <div
+                      className="p-2.5 rounded-xl border"
+                      style={{
+                        backgroundColor: iconBgs[comp.colorIdx],
+                        color: iconColors[comp.colorIdx],
+                        borderColor: `${iconColors[comp.colorIdx]}20`,
+                      }}
+                    >
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-slate-100">{comp.name}</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">{comp.desc}</p>
+                      <h3 className="text-sm font-bold text-[#0F172A]">{comp.name}</h3>
+                      <p className="text-xs text-[#64748B] mt-0.5">{comp.desc}</p>
                     </div>
                   </div>
                   <StatusPill status={comp.status} />
@@ -114,9 +128,9 @@ export function SystemHealthGrid({ health = null }) {
 
                 <div className="grid grid-cols-3 gap-2 mt-4 text-xs font-mono">
                   {Object.entries(comp.metrics).map(([k, v]) => (
-                    <div key={k} className="p-2 rounded-lg bg-slate-800/40 border border-white/5">
-                      <span className="text-[10px] font-sans uppercase text-slate-400">{k}</span>
-                      <div className="text-slate-200 font-bold mt-0.5 truncate">{v}</div>
+                    <div key={k} className="p-2.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
+                      <span className="text-[10px] font-sans uppercase text-[#64748B] font-semibold">{k}</span>
+                      <div className="text-[#0F172A] font-bold mt-0.5 truncate">{v}</div>
                     </div>
                   ))}
                 </div>
@@ -127,29 +141,31 @@ export function SystemHealthGrid({ health = null }) {
       </div>
 
       {/* Model Health Status Matrix */}
-      <div className="border border-white/10 rounded-xl overflow-hidden bg-slate-900/60 p-5">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4 flex items-center gap-2">
-          <Activity className="w-4 h-4 text-indigo-400" />
+      <div className="border border-[#E2E8F0] rounded-2xl overflow-hidden bg-white p-5 shadow-sm">
+        <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-4 flex items-center gap-2.5">
+          <div className="p-1.5 rounded-lg bg-[#EAF2FF] border border-[#2563EB]/20 text-[#2563EB]">
+            <Activity className="w-4 h-4" />
+          </div>
           <span>Active ML Detection Engine Availability</span>
         </h4>
 
         <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
           {modelsMatrix.map((m, idx) => (
-            <div key={idx} className="p-3 rounded-lg border border-white/5 bg-slate-800/40 flex flex-col justify-between">
+            <div key={idx} className="p-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] flex flex-col justify-between hover:border-[#CBD5E1] transition">
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[11px] font-bold text-slate-200">{m.name}</span>
+                  <span className="text-[11px] font-bold text-[#0F172A]">{m.name}</span>
                   {m.isHealthy ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
                   ) : (
-                    <AlertCircle className="w-3.5 h-3.5 text-rose-400" />
+                    <AlertCircle className="w-3.5 h-3.5 text-[#EF4444]" />
                   )}
                 </div>
-                <span className="text-[10px] text-slate-400 font-mono">{m.type}</span>
+                <span className="text-[10px] text-[#64748B] font-mono">{m.type}</span>
               </div>
-              <div className="mt-3 pt-2 border-t border-white/5 flex items-center justify-between text-[10px]">
-                <span className="text-slate-500">Status</span>
-                <span className={`font-bold ${m.isHealthy ? 'text-emerald-400' : 'text-rose-400'}`}>
+              <div className="mt-3 pt-2 border-t border-[#E2E8F0] flex items-center justify-between text-[10px]">
+                <span className="text-[#64748B]">Status</span>
+                <span className={`font-bold ${m.isHealthy ? 'text-[#10B981]' : 'text-[#EF4444]'}`}>
                   {m.isHealthy ? 'HEALTHY' : 'UNAVAILABLE'}
                 </span>
               </div>

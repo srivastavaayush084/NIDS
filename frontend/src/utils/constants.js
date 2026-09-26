@@ -4,39 +4,39 @@ export const POLLING_INTERVAL_MS = Number(import.meta.env.VITE_POLLING_INTERVAL_
 export const SEVERITY_TIERS = {
   LOW: {
     label: 'LOW',
-    color: '#3b82f6',
-    bg: 'rgba(59, 130, 246, 0.15)',
-    border: 'rgba(59, 130, 246, 0.35)',
+    color: '#2563EB',
+    bg: 'rgba(37, 99, 235, 0.08)',
+    border: 'rgba(37, 99, 235, 0.25)',
     badgeClass: 'badge-low',
   },
   MEDIUM: {
     label: 'MEDIUM',
-    color: '#eab308',
-    bg: 'rgba(234, 179, 8, 0.15)',
-    border: 'rgba(234, 179, 8, 0.35)',
+    color: '#F59E0B',
+    bg: 'rgba(245, 158, 11, 0.08)',
+    border: 'rgba(245, 158, 11, 0.25)',
     badgeClass: 'badge-medium',
   },
   HIGH: {
     label: 'HIGH',
-    color: '#f97316',
-    bg: 'rgba(249, 115, 22, 0.15)',
-    border: 'rgba(249, 115, 22, 0.35)',
+    color: '#F97316',
+    bg: 'rgba(249, 115, 22, 0.08)',
+    border: 'rgba(249, 115, 22, 0.25)',
     badgeClass: 'badge-high',
   },
   CRITICAL: {
     label: 'CRITICAL',
-    color: '#ef4444',
-    bg: 'rgba(239, 68, 68, 0.18)',
-    border: 'rgba(239, 68, 68, 0.45)',
+    color: '#EF4444',
+    bg: 'rgba(239, 68, 68, 0.1)',
+    border: 'rgba(239, 68, 68, 0.3)',
     badgeClass: 'badge-critical',
   },
 };
 
 export const STATUS_COLORS = {
-  OPEN: '#ef4444',
-  ACKNOWLEDGED: '#f97316',
-  RESOLVED: '#10b981',
-  DISMISSED: '#64748b',
+  OPEN: '#EF4444',
+  ACKNOWLEDGED: '#F59E0B',
+  RESOLVED: '#10B981',
+  DISMISSED: '#64748B',
 };
 
 export const MODEL_DESCRIPTIONS = {

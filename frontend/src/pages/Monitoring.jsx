@@ -46,19 +46,19 @@ export function Monitoring() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-black text-slate-100 uppercase tracking-wide flex items-center gap-2.5">
+          <h2 className="text-xl font-black text-[#0F172A] uppercase tracking-wide flex items-center gap-2.5">
             <span>Real-Time Traffic Ingestion</span>
             <StatusPill status={status?.status || (isRunning ? 'RUNNING' : 'STOPPED')} />
           </h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-[#64748B] mt-1">
             {statusMsg}
           </p>
         </div>
       </div>
 
       {status?.error && (
-        <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2.5">
-          <ShieldAlert className="w-4 h-4 text-rose-400 shrink-0" />
+        <div className="p-3.5 rounded-xl bg-red-50 border border-[#EF4444]/30 text-[#991B1B] text-xs flex items-center gap-2.5">
+          <ShieldAlert className="w-4 h-4 text-[#EF4444] shrink-0" />
           <span className="font-semibold">Pipeline Error:</span>
           <span>{status.error}</span>
         </div>
@@ -67,45 +67,45 @@ export function Monitoring() {
       {statusError && <ErrorAlert message={statusError} onRetry={refetch} />}
 
       {/* Top Telemetry Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
-        <div className="p-3.5 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md">
-          <span className="text-[10px] uppercase font-bold text-slate-400">Capture Status</span>
-          <div className="text-sm font-bold font-mono text-slate-100 mt-1">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="p-4 rounded-xl border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200">
+          <span className="text-[10px] uppercase font-bold text-[#64748B] tracking-wider">Capture Status</span>
+          <div className="text-sm font-bold font-mono text-[#0F172A] mt-1.5">
             {isRunning ? status?.source?.toUpperCase() || 'LIVE' : 'IDLE'}
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md">
-          <span className="text-[10px] uppercase font-bold text-slate-400">Session Uptime</span>
-          <div className="text-sm font-bold font-mono text-emerald-400 mt-1">
+        <div className="p-4 rounded-xl border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200">
+          <span className="text-[10px] uppercase font-bold text-[#64748B] tracking-wider">Session Uptime</span>
+          <div className="text-sm font-bold font-mono text-[#10B981] mt-1.5">
             {formatDuration(uptime)}
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md">
-          <span className="text-[10px] uppercase font-bold text-slate-400">Packets Captured</span>
-          <div className="text-sm font-bold font-mono text-slate-100 mt-1">
+        <div className="p-4 rounded-xl border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200">
+          <span className="text-[10px] uppercase font-bold text-[#64748B] tracking-wider">Packets Captured</span>
+          <div className="text-sm font-bold font-mono text-[#0F172A] mt-1.5">
             {formatNumber(packets)}
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md">
-          <span className="text-[10px] uppercase font-bold text-slate-400">Flows Aggregated</span>
-          <div className="text-sm font-bold font-mono text-indigo-300 mt-1">
+        <div className="p-4 rounded-xl border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200">
+          <span className="text-[10px] uppercase font-bold text-[#64748B] tracking-wider">Flows Aggregated</span>
+          <div className="text-sm font-bold font-mono text-[#4F46E5] mt-1.5">
             {formatNumber(flows)}
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md">
-          <span className="text-[10px] uppercase font-bold text-slate-400">Anomalies Detected</span>
-          <div className="text-sm font-bold font-mono text-rose-400 mt-1">
+        <div className="p-4 rounded-xl border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200">
+          <span className="text-[10px] uppercase font-bold text-[#64748B] tracking-wider">Anomalies Detected</span>
+          <div className="text-sm font-bold font-mono text-[#EF4444] mt-1.5">
             {formatNumber(anomalies)}
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl border border-white/10 bg-slate-900/70 backdrop-blur-md">
-          <span className="text-[10px] uppercase font-bold text-slate-400">Alerts Triggered</span>
-          <div className="text-sm font-bold font-mono text-rose-300 mt-1">
+        <div className="p-4 rounded-xl border border-[#E2E8F0] bg-white shadow-sm hover:shadow-md hover:border-[#CBD5E1] transition-all duration-200">
+          <span className="text-[10px] uppercase font-bold text-[#64748B] tracking-wider">Alerts Triggered</span>
+          <div className="text-sm font-bold font-mono text-[#EF4444] mt-1.5">
             {formatNumber(alerts)}
           </div>
         </div>
