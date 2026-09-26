@@ -30,6 +30,8 @@ async def connect_to_mongo() -> bool:
         }
         if CA_FILE:
             client_kwargs["tlsCAFile"] = CA_FILE
+        if "mongodb+srv://" in settings.MONGODB_URI or "ssl=true" in settings.MONGODB_URI.lower() or "tls=true" in settings.MONGODB_URI.lower():
+            client_kwargs["tlsDisableOCSPEndpointCheck"] = True
 
         db_manager.client = AsyncIOMotorClient(
             settings.MONGODB_URI,
@@ -91,6 +93,8 @@ async def check_mongo_health() -> Tuple[bool, Optional[float], Dict[str, Any]]:
             }
             if CA_FILE:
                 client_kwargs["tlsCAFile"] = CA_FILE
+            if "mongodb+srv://" in settings.MONGODB_URI or "ssl=true" in settings.MONGODB_URI.lower() or "tls=true" in settings.MONGODB_URI.lower():
+                client_kwargs["tlsDisableOCSPEndpointCheck"] = True
 
             db_manager.client = AsyncIOMotorClient(
                 settings.MONGODB_URI,
