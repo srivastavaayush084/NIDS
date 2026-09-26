@@ -9,7 +9,7 @@ import { ModelOverviewGrid } from '../components/dashboard/ModelOverviewGrid';
 import { Card } from '../components/common/Card';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import { ErrorAlert } from '../components/common/ErrorAlert';
-import { ShieldAlert, BarChart3, Radio, Cpu, ArrowRight, ShieldCheck, Flame, Zap } from 'lucide-react';
+import { ShieldAlert, PieChart, Radio, Cpu, ArrowRight, ShieldCheck, Flame, Zap } from 'lucide-react';
 
 export function Dashboard({
   summary = null,
@@ -133,7 +133,7 @@ export function Dashboard({
         <Card
           title="Threat Severity Distribution"
           subtitle="Incident severity breakdown"
-          icon={BarChart3}
+          icon={PieChart}
         >
           <SeverityDistributionChart
             data={
