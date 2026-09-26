@@ -1,0 +1,53 @@
+services:
+  # ============================================================================
+  # 1. Zero-Day NIDS Backend Web Service (FastAPI)
+  # ============================================================================
+  - type: web
+    name: zeroday-nids-backend
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: "pip install --upgrade pip && pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu && pip install -r backend/requirements.txt"
+    startCommand: "python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "False"
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: MONGODB_DATABASE
+        value: zero_day_detection
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false
+        # Optional: Add your MongoDB Atlas connection string in Render Dashboard
+        # e.g., mongodb+srv://<username>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority
+
+  # ============================================================================
+  # 2. Zero-Day NIDS Frontend Dashboard (Static Site)
+  # ============================================================================
+  - type: web
+    name: zeroday-nids-frontend
+    runtime: static
+    plan: free
+    region: oregon
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: dist
+    autoDeploy: true
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: zeroday-nids-backend
+          property: host
