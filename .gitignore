@@ -176,6 +176,10 @@ ml_models/checkpoints/
 !ml_models/experiments/**
 !ml_models/model_registry.json
 
+# Ignore temporary zero-day experiment artifacts and dataset dumps
+experiments/zero_day_optimization/
+experiments/zero_day_unseen/
+
 # ------------------------------------------------------------------------------
 # 9. Local Databases & Persistence Files
 # ------------------------------------------------------------------------------

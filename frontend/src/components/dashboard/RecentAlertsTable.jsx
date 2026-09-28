@@ -39,10 +39,10 @@ export function RecentAlertsTable({ alerts = [], onSelectAlert }) {
             const borderClass = sevNorm === 'CRITICAL'
               ? 'border-l-critical'
               : sevNorm === 'HIGH'
-              ? 'border-l-high'
-              : sevNorm === 'MEDIUM'
-              ? 'border-l-medium'
-              : 'border-l-low';
+                ? 'border-l-high'
+                : sevNorm === 'MEDIUM'
+                  ? 'border-l-medium'
+                  : 'border-l-low';
 
             return (
               <tr
@@ -68,9 +68,8 @@ export function RecentAlertsTable({ alerts = [], onSelectAlert }) {
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
-                    <span className={`font-mono font-bold text-xs ${
-                      riskNum >= 70 ? 'text-[#EF4444]' : riskNum >= 40 ? 'text-[#F59E0B]' : 'text-[#10B981]'
-                    }`}>
+                    <span className={`font-mono font-bold text-xs ${riskNum >= 70 ? 'text-[#EF4444]' : riskNum >= 40 ? 'text-[#F59E0B]' : 'text-[#10B981]'
+                      }`}>
                       {risk}
                     </span>
                     <div className="w-12 h-1.5 rounded-full bg-[#E2E8F0] overflow-hidden shrink-0 hidden sm:block">

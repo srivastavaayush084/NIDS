@@ -20,11 +20,10 @@ export function MonitoringCard({ status = null, onNavigateToMonitoring }) {
   return (
     <div className="p-6 sm:p-7 rounded-2xl border border-[#E2E8F0] bg-white shadow-xs flex flex-col justify-between relative overflow-hidden transition-all duration-200 hover:border-[#CBD5E1] hover:shadow-md h-full">
       {/* Top subtle highlight line */}
-      <div className={`absolute top-0 left-0 right-0 h-[2px] ${
-        isRunning
+      <div className={`absolute top-0 left-0 right-0 h-[2px] ${isRunning
           ? 'bg-gradient-to-r from-transparent via-[#10B981]/50 to-transparent'
           : 'bg-gradient-to-r from-transparent via-[#2563EB]/20 to-transparent'
-      }`} />
+        }`} />
 
       <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0]">
         <div className="flex items-center gap-3">

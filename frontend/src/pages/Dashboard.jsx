@@ -34,39 +34,35 @@ export function Dashboard({
   return (
     <div className="flex flex-col gap-8 animate-fade-in">
       {/* SOC Operational Threat Posture Banner */}
-      <div className={`p-6 sm:p-7 rounded-2xl border transition-all duration-300 relative overflow-hidden shadow-sm ${
-        isElevated
+      <div className={`p-6 sm:p-7 rounded-2xl border transition-all duration-300 relative overflow-hidden shadow-sm ${isElevated
           ? 'bg-gradient-to-r from-red-50 via-white to-white border-red-200'
           : openCount > 0
-          ? 'bg-gradient-to-r from-amber-50 via-white to-white border-amber-200'
-          : 'bg-gradient-to-r from-[#EAF2FF] via-white to-white border-[#E2E8F0]'
-      }`}>
+            ? 'bg-gradient-to-r from-amber-50 via-white to-white border-amber-200'
+            : 'bg-gradient-to-r from-[#EAF2FF] via-white to-white border-[#E2E8F0]'
+        }`}>
         {/* Subtle accent line on top */}
         <div
-          className={`absolute top-0 left-0 right-0 h-[3px] ${
-            isElevated
+          className={`absolute top-0 left-0 right-0 h-[3px] ${isElevated
               ? 'bg-gradient-to-r from-transparent via-[#EF4444] to-transparent'
               : 'bg-gradient-to-r from-transparent via-[#2563EB] to-transparent'
-          }`}
+            }`}
         />
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="flex items-start sm:items-center gap-4">
-            <div className={`p-3.5 rounded-2xl border shrink-0 ${
-              isElevated
+            <div className={`p-3.5 rounded-2xl border shrink-0 ${isElevated
                 ? 'bg-red-50 border-red-200 text-[#EF4444]'
                 : 'bg-[#EAF2FF] border-[#2563EB]/25 text-[#2563EB]'
-            }`}>
+              }`}>
               {isElevated ? <Flame className="w-7 h-7 animate-pulse text-[#EF4444]" /> : <ShieldCheck className="w-7 h-7 text-[#10B981]" />}
             </div>
 
             <div>
               <div className="flex flex-wrap items-center gap-3">
-                <span className={`text-[11px] font-mono font-bold tracking-widest px-3 py-1 rounded-full border ${
-                  isElevated
+                <span className={`text-[11px] font-mono font-bold tracking-widest px-3 py-1 rounded-full border ${isElevated
                     ? 'bg-red-50 text-[#EF4444] border-red-200 animate-pulse'
                     : 'bg-emerald-50 text-[#10B981] border-emerald-200'
-                }`}>
+                  }`}>
                   {isElevated ? 'POSTURE: ELEVATED THREAT' : 'POSTURE: ALL CLEAR'}
                 </span>
                 <span className="text-[#64748B] text-xs font-medium">
