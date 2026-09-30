@@ -40,3 +40,14 @@ def test_health_check_degraded_when_db_down(client: TestClient):
         assert data["status"] == "degraded"
         assert data["database"] == "disconnected"
         assert data["services"]["database"]["status"] == "disconnected"
+
+
+def test_lightweight_root_health_check(client: TestClient):
+    """Test that GET /health returns 200 OK with lightweight UptimeRobot schema."""
+    response = client.get("/health")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "ok"
+    assert data["service"] == "ZeroDayAI Backend"
+    assert "timestamp" in data
+

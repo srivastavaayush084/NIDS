@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from datetime import datetime, timezone
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.core.config import settings
@@ -163,9 +164,21 @@ def create_application() -> FastAPI:
     # Register API Routers
     app.include_router(api_router, prefix=settings.API_V1_STR)
     
-    # Direct alias for health check at /api/health and root /health
+    # Comprehensive diagnostic health checks (/api/v1/health and /api/health)
     app.include_router(health.router, prefix="/api", include_in_schema=False)
-    app.include_router(health.router, include_in_schema=False)
+
+    # Lightweight health check for uptime monitoring probes (UptimeRobot, Render)
+    @app.get("/health", tags=["Health"], summary="Lightweight Service Health Check")
+    async def health_check():
+        """
+        Lightweight health check endpoint for UptimeRobot and Render monitoring probes.
+        Returns HTTP 200 with minimal latency without hitting database or ML engines.
+        """
+        return {
+            "status": "ok",
+            "service": "ZeroDayAI Backend",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
 
     return app
 
